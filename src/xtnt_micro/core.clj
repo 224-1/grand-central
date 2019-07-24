@@ -13,18 +13,22 @@
             [ring.adapter.jetty     :as jetty]
             [ring.middleware.reload :refer [wrap-reload]]
             [compojure.core         :refer [defroutes GET]]
-            [compojure.route        :refer [not-found]]
+            [compojure.route        :refer [not-found resources]]
             [hiccup.core            :refer :all]
             [hiccup.page            :refer :all]))
 
 (defn boiler-plate
   [request]
   (html5 {:lang "en"}
+         [:head (include-css "style.css")
+          [:link {:href "https://fonts.googleapis.com/css?family=Roboto&display=swap" :rel "stylesheet"}]
+          ]
          [:body [:h1 "Boilerplate for Clojure Ring based server"]]))
 
 (defroutes app
   (GET "/" [] boiler-plate)
   (GET "/forms" [] frm/forms)
+  (resources "/")
   (not-found "<h1>Page not found</h1>"))
 
 (defn -main
