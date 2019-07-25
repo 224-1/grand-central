@@ -20,7 +20,7 @@
 (defn boiler-plate
   [request]
   (html5 {:lang "en"}
-         [:head (include-css "style.css")
+         [:head (include-css "forms.css") (include-css "main.css")
           [:link {:href "https://fonts.googleapis.com/css?family=Roboto&display=swap" :rel "stylesheet"}]
           ]
          [:body [:h1 "Boilerplate for Clojure Ring based server"]]))
@@ -43,4 +43,6 @@
 	[port-number]
 	(jetty/run-jetty (wrap-reload #'app)
                    {:port (Integer. port-number)}))
+
+
 
