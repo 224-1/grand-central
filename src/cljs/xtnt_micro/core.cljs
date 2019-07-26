@@ -3,6 +3,7 @@
 [:html
  [:head
   [:script {:type "text/javascript", :src "https://www.google.com/jsapi"}]
+  
   [:script {:type "text/javascript"
 
             (def data #js [])
@@ -14,7 +15,13 @@
              (.-onmessage socket)
              (fn [event]
                (.push data (aget (.parse js/JSON (.-data js/event)) "happiness"))
-               (.push timestamps (new Date))))
+               (.push timestamps (new Date))
+               (refreshChart)))
+
+            (defn refreshChart
+              []
+              (js (.LineChart Chartkick) "chart" (zip #js [timestamps data])))
+
 
             (defn zip
               [arrays]
@@ -22,4 +29,5 @@
  [:body
   [:div {:id "chart", :style "height: 300px;"}]
   ]]
+
 

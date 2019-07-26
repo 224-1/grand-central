@@ -36591,4 +36591,19 @@ goog.require("cljs.core");
 goog.define("process.env.NODE_ENV", "development");
 goog.provide("xtnt_micro.core");
 goog.require("cljs.core");
-document.write("\x3ch1\x3eHello Browser\x3c/h1\x3e");
+new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "html", "html", -998796897), new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "head", "head", -771383919), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "script", "script", -1304443801), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "type", 
+"type", 1174270348), "text/javascript", new cljs.core.Keyword(null, "src", "src", -1651076051), "https://www.google.com/jsapi"], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "script", "script", -1304443801), cljs.core.PersistentArrayMap.createAsIfByAssoc([new cljs.core.Keyword(null, "type", "type", 1174270348), "text/javascript", xtnt_micro.core.data = [], xtnt_micro.core.timestamps = [], xtnt_micro.core.socket = new WebSocket("ws://localhost:8080/happiness"), 
+xtnt_micro.core.socket.onmessage = function(event) {
+  xtnt_micro.core.data.push(JSON.parse(event.data)["happiness"]);
+  xtnt_micro.core.timestamps.push(new xtnt_micro.core.Date);
+  return xtnt_micro.core.refreshChart.call(null);
+}, xtnt_micro.core.refreshChart = function xtnt_micro$core$refreshChart() {
+  return xtnt_micro.core.js.call(null, xtnt_micro.core.Chartkick.LineChart(), "chart", xtnt_micro.core.zip.call(null, [xtnt_micro.core.timestamps, xtnt_micro.core.data]));
+}, xtnt_micro.core.zip = function xtnt_micro$core$zip(arrays) {
+  return arrays[0].map(function(_, i) {
+    return arrays.map(function(array) {
+      return array[i];
+    });
+  });
+}])], null)], null), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "body", "body", -2049205669), new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null, "div", "div", 1057191632), new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null, "id", "id", -1388402092), "chart", new cljs.core.Keyword(null, "style", "style", -496642736), "height: 300px;"], null)], null)], null)], 
+null);

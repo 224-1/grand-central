@@ -1,8 +1,8 @@
 (ns xtnt-micro.core
-   (:use [compojure.core :only (defroutes GET)]
-        [ring.util.response]
-       [ring.middleware.cors]
-        [org.httpkit.server])
+   (:use    [compojure.core :only (defroutes GET)]
+            [ring.util.response]
+            [ring.middleware.cors]
+            [org.httpkit.server])
   (:require [compojure.route :as route]
             [compojure.handler :as handler]
             [ring.middleware.reload :as reload]
