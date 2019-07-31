@@ -1,0 +1,1 @@
+{:main xtnt-micro.core, :asset-path "js/compiled/out", :output-to "resources/public/js/compiled/xtnt-micro.js", :output-dir "resources/public/js/compiled/out", :source-map-timestamp true, :optimizations :none, :preloads [figwheel.connect], :external-config #:figwheel{:config {:build-id "dev", :websocket-url "ws://localhost:3450/figwheel-ws"}}}
