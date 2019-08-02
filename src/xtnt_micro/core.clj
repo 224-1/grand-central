@@ -7,7 +7,7 @@
             [hiccup.core            :refer :all]
             [hiccup.page            :refer :all]))
 
-(defn boiler-plate 
+(defn boiler-plate
   [request]
   (html5 {:lang "en"}
          [:head (include-css "dashboard.css") (include-css "normalize.css") (include-css "skeleton.css")]
@@ -24,7 +24,6 @@
 	[port-number]
 	(jetty/run-jetty app
                    {:port (Integer. port-number)}))
-
 
 (defn -dev-main
 	"A very simple web server using Ring and Jetty"
