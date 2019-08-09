@@ -52,3 +52,8 @@
   (GET "/" [] (resp/resource-response "index.html" {:root "public"}))
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
+
+(defn -main
+  "I don't do a whole lot ... yet."
+  [& [port]]
+  (hk/run-server app {:port (or (Integer. port) 9500)}))
