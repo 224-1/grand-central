@@ -14,7 +14,7 @@
                  [reagent "0.8.1"]
                  [medley "1.1.0"]
                  [http-kit "2.4.0-alpha2"]]
-:main xtnt-micro.handler
+  :main xtnt-micro.handler
 
   :source-paths ["src/clj" "src/cljs"]
   :resource-paths ["target" "resources"]
@@ -32,6 +32,7 @@
                     [com.bhauman/rebel-readline-cljs "0.1.4"]
                     [figwheel-sidecar "0.5.19" :exclusions [[http-kit]]]]
 
+     :main xtnt-micro.handler
      :cljsbuild
          {:builds {:dev {:source-paths ["src/cljs"]
                          :figwheel true
@@ -49,7 +50,7 @@
 
     :uberjar {:prep-tasks ["compile" ["cljsbuild" "once" "min"]]
               :aot :all
-              :main xtnt-micro.main
+              :main xtnt-micro.handler
               :cljsbuild
                {:builds {:min
                          {:source-paths ["src/cljs"]
