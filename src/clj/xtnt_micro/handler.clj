@@ -53,7 +53,7 @@
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& [port]]
-  (hk/run-server app {:port (or (Integer. port) 9500)}))
+(defn -main []
+  (let [port (Integer/parseInt (or (System/getenv "PORT") "8000"))]
+    (hk/run-server app {:port port})
+    (println (str "Server is running on port " port))))
