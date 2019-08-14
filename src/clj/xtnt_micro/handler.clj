@@ -52,3 +52,7 @@
   (GET "/" [] (resp/resource-response "index.html" {:root "public"}))
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
+
+(defn -main []
+    (hk/run-server app {:port 9500})
+    (println (str "Server is running on port 9500")))
