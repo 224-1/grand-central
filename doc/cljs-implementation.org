@@ -1,38 +1,37 @@
-#+begin_center
-Add clojurescript, figwheel, reagent / reframe to existing clojure project 
-#+end_center
+
+* Add clojurescript, figwheel, reagent / reframe to existing clojure project 
 
 ** The first thing to change in order to accommodate Figwheel Main is my project.clj. 
 ** A new version of ClojureScript is necessary:
 
-#+begin_clojure
+#+BEGIN_SRC
 :dependencies
 [ ;; … more dependencies …
   [org.clojure/clojurescript "1.10.312"]
   ;; … more dependencies …
 ]
-#+end_clojure
+#+END_SRC
 
 ** Then, new values for :source-paths and :resource-paths:
 
-#+begin_clojure
+#+BEGIN_SRC
 :source-paths ["src/clj" "src/cljs"]
 :resource-paths ["target" "resources"]
-#+end_clojure
+#+END_SRC
 
 ** As the Figwheel Main README suggests, let’s add a couple of useful aliases:
 
-#+begin_clojure
+#+BEGIN_SRC
  :aliases
     {"fig" ["trampoline" "run" "-m" "figwheel.main"]
      "build-dev" ["trampoline" "run" "-m" "figwheel.main" "-b" "dev" "-r"]}
-#+end_clojure
+#+END_SRC
 
 *** If you want to run the command from shell or terminal:
 
-#+begin_clojure
+#+BEGIN_SRC
 lein trampoline run -m figwheel.main -- -b dev -r
-#+end_clojure
+#+END_SRC
 
 *** This will launch a REPL and start autobuilding and reloading the src directory so that any files you add or change in that directory will automatically be hot reloaded into the browser.
 *** The -b dev or --build dev flag option is indicating that Figwheel should read dev.cljs.edn for build configuration.
@@ -40,38 +39,38 @@ lein trampoline run -m figwheel.main -- -b dev -r
 *** using the aliases.
 **** You can invoke the above command using the fig alias like so:
 
-#+begin_clojure
+#+BEGIN_SRC
 lein fig -- -b dev -r
-#+end_clojure
+#+END_SRC
 
 **** You can also just use the build-dev alias to get the same result:
-#+begin_clojure
+#+BEGIN_SRC
 lein build-dev
-#+end_clojure
+#+END_SRC
 
 ** And the actual Figwheel Main dependencies:
 
-#+begin_clojure
+#+BEGIN_SRC
 :profiles
   {:dev
    {:dependencies [[com.bhauman/figwheel-main "0.1.4"]
                    [com.bhauman/rebel-readline-cljs "0.1.4"]]}}
-#+end_clojure
+#+END_SRC
 
 ** With project.clj ready, I move to dev.cljs.edn. Create a file with name dev.cljs.edn. 
 *** This is what Figwheel Main needs to know the entry point of my application:
 
-#+begin_clojure
+#+BEGIN_SRC
 {:main example.core}
 ;;In xtnt-micro project case it is {:main xtnt-micro.core}
-#+end_clojure
+#+END_SRC
 
 *** Create a file with name figwheel-main.edn:
 
-#+begin_clojure
+#+BEGIN_SRC
 {:watch-dirs ["src/cljs"]
  :css-dirs ["resources/public/css"]}
-#+end_clojure
+#+END_SRC
 
 ** Using your own HTML to host your app
 
@@ -83,6 +82,7 @@ lein build-dev
 *** The default output path is available at cljs-out/[build-id]-main.js. 
 *** So in this case it will be: cljs-out/dev-main.js
 
+#+BEGIN_EXPORT html
 <!DOCTYPE html>
 <html>
   <head>
@@ -92,7 +92,7 @@ lein build-dev
     <script src="cljs-out/dev-main.js"></script>
   </body>
 </html>
-
+#+END_EXPORT
 *** You can place CSS and other static assets in the resources/public directory.
     
 
@@ -102,6 +102,6 @@ lein build-dev
 
 
 **** References
-***** https://figwheel.org/
-***** https://figwheel.org/tutorial
-***** https://github.com/bhauman/figwheel-main/blob/master/doc/figwheel-main-options.md
+ [[https://figwheel.org/][Figwheel]]
+ [[https://figwheel.org/tutorial][Figwheel Tutorial]]
+ [[https://github.com/bhauman/figwheel-main/blob/master/doc/figwheel-main-options.md][Bhauman Figwheel-main]]
