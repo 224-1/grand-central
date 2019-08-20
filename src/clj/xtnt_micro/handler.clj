@@ -54,5 +54,5 @@
   (route/not-found "<h1>Page not found</h1>"))
 
 (defn -main []
-    (hk/run-server app {:port 9500})
-    (println (str "Server is running on port 9500")))
+    (hk/run-server app {:port 8000})
+    (println (str "Server is running on port 8000")))
