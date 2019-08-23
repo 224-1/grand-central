@@ -6,7 +6,8 @@
    [compojure.route :as route]
    [clojure.core.async :as async]
    [ring.util.response :as resp]
-   [medley.core :refer [random-uuid]]))
+   [medley.core :refer [random-uuid]]
+   [ring.middleware.reload :refer [wrap-reload]]))
 
 ; Use a transducer to append a unique id to each message
 (defonce main-chan (async/chan 1 (map #(assoc % :id (random-uuid)))))
@@ -54,5 +55,5 @@
   (route/not-found "<h1>Page not found</h1>"))
 
 (defn -main []
-    (hk/run-server app {:port 8000})
+  (hk/run-server  (wrap-reload #'app) {:port 8000})
     (println (str "Server is running on port 8000")))
