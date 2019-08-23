@@ -1,0 +1,586 @@
+
+.sidenav {
+  background-color: #f7f9f9 ;
+  height: 100%;
+  width: 230px;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  border-right: 1px solid rgba(0,0,0,0.2);
+  letter-spacing: 1.2px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-top: 35px;
+ 
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 24px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+}
+
+.sidenav a:hover {
+  border-radius: 20px; 
+  color: #27ae60;
+}
+
+#listlogo img{
+padding-right: 10px;
+position: relative;
+top: 3.25px;
+}
+
+#listlogo{
+  padding-left: 50px;
+}
+
+#sidehr{
+  width: 70%;
+  margin: 10px auto;
+}
+
+.main {
+  margin-left: 160px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.button2 {
+  position: relative;
+  margin: 0 auto;
+  left:60px;
+  top: 30px; 
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17px;
+  background-color: #27ae60;
+}
+
+.button2 img{
+  float: left; 
+  padding: 5px;
+}
+
+.followbtn{
+  float: right;
+  margin: 0px 10px 0px 10px;
+  border-color: #27ae60;
+  color: #27ae60;
+}
+
+.followbtn:hover{
+  border-color:white;
+  background-color:#27ae60;
+  color:white; 
+}
+  .container{
+    position: relative;
+    transform: translate(31.7%,0%);
+    border-right: 1px solid rgba(0,0,0,0.2); 
+  }
+
+
+
+@media screen and (max-width: 1204px) {
+
+  .sidenav a{
+    font-size:19px;
+  }
+
+  .listlogo img{
+    padding: 0;
+    margin: 0 auto;
+    width:40px;
+  }
+
+  .listlogo a{
+    display: none;
+  }
+
+  .container{
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 1040px){
+  .sidenav a{
+    font-size: 15px;
+  }
+
+  .button2{
+    margin-right: 20px; 
+    font-size: 10px;
+  }
+
+}
+
+@media screen and (max-width: 930px){
+  .sidenav a{
+    font-size: 0px;
+    color: transparent;
+  }
+}
+
+.logo{
+  margin-left: 15px;
+}
+
+/*html::-webkit-scrollbar { width: 0 !important }*/
+
+
+@media screen and (max-width: 550px){
+.sidenav{
+  display: none;
+}
+.container{
+  border:1px solid rgba(0,0,0,0.2); 
+  margin: 0%;
+}
+
+}
+
+.backarrow{
+  position: relative;
+  top:5px;
+  left: 10px;
+  display: inline-block;
+}
+.feedheader{
+  position: fixed;
+  z-index: 1;
+  top:0;
+  background-color: white;
+  width: 100%;
+  height: 50px; 
+  overflow: hidden;
+}
+
+.feedheader h4{
+  font-weight: bold;
+  position: relative;
+  bottom: 5px;
+}
+
+.feedheader .lol{ 
+  padding:0;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.feedheader p{
+  position: relative;
+  top: 13px;
+  right: 155px;
+
+}
+.storyimg{
+  position:relative;
+  top:50px; 
+  display: inline-block;
+}
+
+.storyimgicon img{
+  position: relative;
+  top: 5px;
+}
+
+#threedots{
+  margin:0px 5px 0px 5px; 
+  float:right;
+}
+
+.blocks{
+  display: inline-block;
+}
+
+.storyinfo{
+  display: inline-block;
+  padding: 10px;
+}
+
+.heading h2{
+  margin: 0;
+}
+
+#storylabel{
+  float: left;
+}
+
+#storyhr{
+  visibility: hidden; 
+  margin:15px;
+}
+
+.understory p{
+  float: left;
+   padding-left: 15px;
+}
+
+#storyicons{
+  float: left;
+   border-radius: 100%; 
+   position: relative;
+    top: 7px; 
+    left: 5px; 
+    border:1px solid black;
+}
+
+.inlinks { 
+  float: left;
+}
+
+.storyinfo p{
+  margin-bottom: 0;
+  padding: 5px;
+  font-size: 17px;
+
+}
+
+.storyinfo a{
+  text-decoration: none;
+  color: #27ae60;
+}
+
+.topnav {
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  display: inline;
+  color: black;
+  text-align: center;
+  padding: 14px 25px;
+  padding-left: 65px;
+  padding-right: 65px;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.topnav a:hover {
+  background-color: #edfbf3 ;
+  color: #27ae60;
+}
+
+.topnav a.active {
+  color: #27ae60;
+  border-left:0.5px solid rgba(0,0,0,0.20);
+  border-bottom: 1px solid #27ae60;
+  background-color: white; 
+}
+
+#underlisthr{
+margin: 1px;
+}
+
+.newsfeeder{
+  margin-bottom: 20px;  
+  width: 100%;
+  
+}
+
+.feeds{
+  margin:0 auto;
+  width:98.5%;
+  margin-top: 1px;
+  height: 600px;
+}
+#feedlinker{
+  padding: 10px; padding-left: 15px;
+  float: left;
+  display: inline;
+}
+
+#feedsh2 {
+  padding-top: 30px;
+  display: inline-block;
+}
+
+#feedsp1 {
+  position: relative;
+  bottom: 5px;
+}
+
+#feedsp2 {
+  float: left;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#expandimage{ 
+position: relative;
+top:5px;
+left: 290px 
+}
+
+#feedstoryimage{
+  display: block; position: relative; top: 5%; right: 10%; float: right; width: 75%; margin: 0; border-radius: 10px;
+}
+
+.feedattach {
+    float: left;
+    position: relative;
+    top: 33px;
+    opacity: 0.8;
+}
+
+.feedattach a{
+  color: #666666;
+}
+
+.feedattach label {
+  padding: 10px;
+  padding-left: 60px;
+}
+
+#underfeedhr{
+  margin: 30px;
+}
+
+.rightcontainer{
+  position: fixed;
+  right: 0;
+  top: 0;
+  margin:3px;
+  width: 21%;
+  height: 800px;
+
+}
+.rightcontainer::-webkit-scrollbar { width: 0 !important }
+
+.searchbar{
+  padding-left: 12px;
+  padding-bottom: 5px;
+}
+
+.searchbar input{
+  background-image: url(https://i.imgur.com/2eH46DS.png);
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: 7px 7px;
+  background-width:30px;
+  background-size: 22px;  
+  padding-left: 35px;
+  position: relative;
+  top:5px;
+  margin: 0 auto;
+  background-color: #f7f9f9;
+  border-color:white;
+  border-radius: 5px;
+  width: 95%; 
+}
+
+.searchbar input:focus{
+  border-color: #95a5a6;
+  background-color: #ecf0f1;
+  color:black;
+}
+
+.trending{
+    position: relative;
+    top:20px;
+    margin: 0 auto;
+    background-color: #f7f9f9;
+    border-radius: 10px;
+    width: 90%;
+    height: 290px; 
+    overflow-y: scroll;
+}
+
+.trending::-webkit-scrollbar { width: 0 !important }
+
+.trendcontent{
+  padding:0.5px;
+  float: left;
+}
+
+#trendheader h4{
+text-align: center;
+ margin: 10px; 
+ font-size: 31px;
+  font-weight: normal;
+}
+
+.trendcontent p,label{
+  margin: 0;
+  padding: 1.5px;
+  padding-left: 10px;
+  font-size: 16px;
+  display: block;
+}
+
+.trendcontent label{
+  font-weight: bold;
+  color: #27ae60;
+  font-size: 20px
+}
+
+#trendhr{
+  margin:0;
+  width: 100%;
+  display: block; 
+  height: 1px;
+  border: 0; 
+  border-top: 1px solid #e1e7e9;
+  padding: 0; 
+}
+
+#showmore a{
+text-decoration: none;
+ color: black;
+ cursor: pointer;
+}
+
+#showmore label{
+  font-size: 19px;
+   font-weight: normal; 
+   padding-left: 75px; 
+   padding-top: 5px;
+}
+
+.mightlike{
+ position: relative;
+ top:40px;
+ margin: 0 auto;
+ background-color: #f7f9f9;
+ border-radius: 10px;
+ width: 90%;
+ height: 235px;
+ overflow-y: scroll; 
+}
+
+.mightlike h3{
+ text-align: center;
+ font-weight: normal;
+ font-size: 31px; 
+ margin: 10px;
+}
+
+.mlikecontent{
+  margin: 0;
+  padding-left: 10px;
+  font-size: 16px;
+  margin: 10px;
+}
+
+.mightlike img,label{
+  float: left;
+}
+
+.mlikecontent label,p{
+  margin: 0;
+  padding: 1px;
+  display: inline-block;
+  padding-left: 10px;
+
+}
+.mlikecontent p{
+  width: 50%;
+  margin: 0;
+  float: left;
+}
+
+.mlikecontent a{
+  text-decoration: none;
+  color: Black;
+}
+
+.mightlike::-webkit-scrollbar { width: 0 !important }
+
+#separatorhr{
+  position: relative;
+   top: 40px;
+    width: 60%;
+}
+
+.terms{
+  width: 95%;
+  height: 100px;
+  margin: 0 auto;
+  position: relative;
+  top: 40px;
+}
+
+.terms ul{
+  list-style-type: none;
+}
+
+.terms li{
+  padding: 3px;
+  padding-right: 20px;
+  margin: 0;
+  text-decoration: none;
+    float: left;
+    color: rgb(0,0,0,0.8);
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown .dropbtn img{
+  float: left; padding-top: 10px;
+}
+
+.dropbtn{
+  padding: 0;
+  float: left;
+  border:none;
+  position: relative;
+  bottom: 5px;
+  text-transform: none;
+  font-weight: normal;
+}
+.dropbtn p{
+  float: left;
+  font-size: 14px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+.footertag p{
+  position: relative;
+   top: 10px;
+    opacity: 0.8;
+}
+
+.footertag img{
+  float: left;
+   padding: 5px;
+}
