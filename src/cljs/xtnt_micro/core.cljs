@@ -3,6 +3,92 @@
             [chord.client :refer [ws-ch]]
             [cljs.core.async :as async :include-macros true]))
 
+;; Clojurescript syntax pointers
+
+;; There are several syntax forms in clojurescript to access properties.
+;; The dot form, thread first/last formats increase readability of the code.
+;; The property must always be preceded by a hyphen: -{property}
+;; On the other hand, a function invocation should not be preceded by a hyphen.
+
+;; Accessing property, for example getting the title property on the document.
+
+;; For example -
+;; JS Code: document.title
+;; Cljs Code standard: (.-title js/document)
+;; Cljs Code dot form: (. js/document -title)
+;; Cljs Code in thread first format: (-> js/document .-title)
+;; Cljs Code in thread last format: (->> js/document .-title)
+
+;; Obtaining nested properties, for example location.href property
+
+;; For example -
+;; Js Code: document.location.href
+;; Cljs Code standard: (.-href (.-location js/document))
+;; Cljs Code dot form: (. (. js/document -location) -href)
+;; Cljs Code in thread first format: (-> js/document .-location .-href)
+;; Cljs Code in thread last format: (->> js/document .-location .-href)
+
+;; Since nested dots also become difficult to read, the 'double-dot speacial form'
+;; is used to alleviate nesting.
+
+;; For example -
+;; Js Code: document.location.href.length
+;; Cljs Code standard: (.-length (.-href (.-location js/document)))
+;; Cljs Code dot form: (. (. (. js/document -location) -href) -length)
+;; Cljs double dot : (.. js/document -location -href -length)
+;; Cljs Code in thread first format: (-> js/document .-location .-href .-length)
+;; Cljs Code in thread last format: (->> js/document .-location .-href .-length)
+
+;; Clojurescript allows accessing Javascript object methods and invoking function calls
+;; Note that there's no hyphen (-) preceding method.
+
+;; Example 1 -
+
+;; Js Code: document.hasFocus()
+;; Cljs Code standard: (.hasFocus js/document)
+;; Cljs Code dot form: (. js/document hasFocus) or (. js/document (hasFocus))
+;; Cljs Code in thread first format: (-> js/document .hasFocus)
+;; Cljs Code in thread last format: (->> js/document .hasFocus)
+
+;; Example 2 -
+
+;; Js Code: document.getElementsByTagName("html")
+;; Cljs Code dot form: (. js/document getElementsByTagName "html")
+;;                  or (. js/document (getElementsByTagName "html"))
+;; Cljs Code in thread first format: (-> js/document (.getElementsByTagName "html"))
+
+;; The set! command is mostly used to set native javascript object properties to
+;; a value, equivalent of '=' operator in javascript.
+
+;; Example 1 -
+;; (set! (.-var1 scope) "Value")
+;; where scope is a js object.
+
+;; Example 2 -
+;; Js Code: window.location.search = "foo=bar"
+;;
+;; Cljs Code in thread first format: (set! (-> js/window .-location .-search) "foo=bar")
+;; Cljs Code in thread last format: (set! (->> js/window .-location .-search) "foo=bar")
+;; Cljs Code duouble-dot form: (set! (.. js/window -location -search) "foo=bar")
+
+;; The defonce command is used for our global state that enables
+;; us to perform hot reloading.
+;; The state is kept exactly as it is upon changing the code that
+;; provides instant feedback.
+
+;; For example -
+;; (defonce app-state (atom {:a 1
+;;                           :b 2}))
+
+;; An alternative to set! is using aset which is reserved
+;; exclusively for '(js-obj)' type javascript objects
+
+;; aset and aget are not intended for property access or assignment. They are
+;; explicitly for use with native Js arrays
+
+;; For example -
+;; (aset scope "var2" "Value")
+
 (goog-define ws-url "ws://localhost:9500/ws")
 
 (enable-console-print!)
