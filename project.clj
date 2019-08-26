@@ -9,6 +9,7 @@
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.10.439"]
                  [org.clojure/core.async  "0.4.490"]
+                 [ring "1.7.1"]
                  [compojure "1.6.1"]
                  [jarohen/chord "0.8.1"]
                  [reagent "0.8.1"]
