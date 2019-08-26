@@ -11,7 +11,7 @@
 (defn feedfunc
 	[request]
 	(html5
-   [:head (include-css "newfeed.css")(include-css "skeleton2.css")(include-css "normalize2.css")]
+   [:head (include-css "css/newsfeed.css" "css/skeleton2.css" "css/normalize2.css")]
    [:body
     [:div.wrap
      [:div.sidenav {:class "three columns"}
