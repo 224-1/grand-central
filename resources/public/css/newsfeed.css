@@ -7,18 +7,17 @@
   z-index: -1;
   top: 0;
   left: 0;
-  border-right: 1px solid rgba(0,0,0,0.2);
+  border-right: 0.5px solid rgba(0,0,0,0.7);
   letter-spacing: 1.2px;
   overflow-x: hidden;
   overflow-y: hidden;
   padding-top: 35px;
- 
 }
 
 .sidenav a {
   padding: 6px 8px 6px 24px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 23px;
   color: #818181;
   display: block;
 }
@@ -62,7 +61,7 @@ top: 3.25px;
   border: none;
   border-radius: 10px;
   color: white;
-  padding: 10px;
+  padding: 8px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -85,15 +84,14 @@ top: 3.25px;
 .followbtn:hover{
   border-color:white;
   background-color:#27ae60;
-  color:white; 
+  color:white;
 }
+
   .container{
     position: relative;
     transform: translate(31.7%,0%);
-    border-right: 1px solid rgba(0,0,0,0.2); 
+    border-right: 0.5px solid rgba(0,0,0,0.8);
   }
-
-
 
 @media screen and (max-width: 1204px) {
 
@@ -150,7 +148,6 @@ top: 3.25px;
   border:1px solid rgba(0,0,0,0.2); 
   margin: 0%;
 }
-
 }
 
 .backarrow{
@@ -165,13 +162,14 @@ top: 3.25px;
   top:0;
   background-color: white;
   width: 100%;
-  height: 50px; 
+  height: 50px;
   overflow: hidden;
 }
 
 .feedheader h4{
-  font-weight: bold;
+
   position: relative;
+  left:5px;
   bottom: 5px;
 }
 
@@ -184,9 +182,9 @@ top: 3.25px;
 .feedheader p{
   position: relative;
   top: 13px;
-  right: 155px;
-
+  right: 140px;
 }
+
 .storyimg{
   position:relative;
   top:50px; 
@@ -212,7 +210,7 @@ top: 3.25px;
   padding: 10px;
 }
 
-.heading h2{
+.heading h3{
   margin: 0;
 }
 
@@ -232,14 +230,18 @@ top: 3.25px;
 
 #storyicons{
   float: left;
-   border-radius: 100%; 
+   border-radius: 100%;
    position: relative;
-    top: 7px; 
-    left: 5px; 
+    top: 7px;
+    left: 5px;
     border:1px solid black;
 }
 
-.inlinks { 
+.storyimgicon img{
+    padding-right:10px;
+}
+
+.inlinks {
   float: left;
 }
 
@@ -285,13 +287,12 @@ top: 3.25px;
 }
 
 #underlisthr{
-margin: 1px;
+margin: 0;
 }
 
 .newsfeeder{
-  margin-bottom: 20px;  
+  margin-bottom: 20px;
   width: 100%;
-  
 }
 
 .feeds{
@@ -300,8 +301,10 @@ margin: 1px;
   margin-top: 1px;
   height: 600px;
 }
+
 #feedlinker{
-  padding: 10px; padding-left: 15px;
+    padding: 10px;
+    padding-left: 15px;
   float: left;
   display: inline;
 }
@@ -349,6 +352,8 @@ left: 290px
 }
 
 #underfeedhr{
+    float:left;
+    width:90%;
   margin: 30px;
 }
 
@@ -368,13 +373,13 @@ left: 290px
   padding-bottom: 5px;
 }
 
-.searchbar input{
+#searchinput{
   background-image: url(https://i.imgur.com/2eH46DS.png);
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: 7px 7px;
+  background-position: 7px 12px;
   background-width:30px;
-  background-size: 22px;  
+  background-size: 22px;
   padding-left: 35px;
   position: relative;
   top:5px;
@@ -382,10 +387,10 @@ left: 290px
   background-color: #f7f9f9;
   border-color:white;
   border-radius: 5px;
-  width: 95%; 
+  width: 77%;
 }
 
-.searchbar input:focus{
+#searchinput:focus{
   border-color: #95a5a6;
   background-color: #ecf0f1;
   color:black;
@@ -398,21 +403,21 @@ left: 290px
     background-color: #f7f9f9;
     border-radius: 10px;
     width: 90%;
-    height: 290px; 
+    height: 290px;
     overflow-y: scroll;
 }
 
 .trending::-webkit-scrollbar { width: 0 !important }
 
 .trendcontent{
-  padding:0.5px;
+  padding:5px;
   float: left;
 }
 
 #trendheader h4{
 text-align: center;
- margin: 10px; 
- font-size: 31px;
+ margin: 10px;
+ font-size: 24px;
   font-weight: normal;
 }
 
@@ -420,24 +425,24 @@ text-align: center;
   margin: 0;
   padding: 1.5px;
   padding-left: 10px;
-  font-size: 16px;
+  font-size: 14px;
   display: block;
 }
 
 .trendcontent label{
   font-weight: bold;
   color: #27ae60;
-  font-size: 20px
+  font-size: 18px
 }
 
 #trendhr{
   margin:0;
   width: 100%;
-  display: block; 
+  display: block;
   height: 1px;
-  border: 0; 
+  border: 0;
   border-top: 1px solid #e1e7e9;
-  padding: 0; 
+  padding: 0;
 }
 
 #showmore a{
@@ -447,10 +452,10 @@ text-decoration: none;
 }
 
 #showmore label{
-  font-size: 19px;
-   font-weight: normal; 
-   padding-left: 75px; 
-   padding-top: 5px;
+  font-size: 17px;
+   font-weight: normal;
+   padding-left: 75px;
+   padding-top: 7px;
 }
 
 .mightlike{
@@ -467,14 +472,15 @@ text-decoration: none;
 .mightlike h3{
  text-align: center;
  font-weight: normal;
- font-size: 31px; 
+ font-size: 24px; 
  margin: 10px;
 }
 
 .mlikecontent{
-  margin: 0;
+    margin: 0;
+    padding:5px;
   padding-left: 10px;
-  font-size: 16px;
+  font-size: 14px;
   margin: 10px;
 }
 
@@ -490,7 +496,8 @@ text-decoration: none;
 
 }
 .mlikecontent p{
-  width: 50%;
+    width: 50%;
+    padding-bottom:5px;
   margin: 0;
   float: left;
 }

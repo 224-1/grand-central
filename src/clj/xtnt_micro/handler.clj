@@ -55,7 +55,7 @@
 (defroutes app
   (GET "/ws" [] ws-handler)
   (GET "/" [] (resp/resource-response "index.html" {:root "public"}))
-  (GET "/newsfeed" []  news/feedfunc)
+  (GET "/newsfeed" [] news/feedfunc)
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 

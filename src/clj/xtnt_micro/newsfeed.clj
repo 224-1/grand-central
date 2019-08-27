@@ -1,9 +1,9 @@
 (ns xtnt-micro.newsfeed
   (:use
-   [ring.adapter.jetty     :as jetty]
+   [ring.adapter.jetty :as jetty]
    [hiccup.core :refer :all]
    [hiccup.page :refer :all]
-   [compojure.core         :refer [defroutes GET]]
+   [compojure.core :refer [defroutes GET]]
    [compojure.route  :refer [resources]]
    [ring.adapter.jetty :as jetty]
    [ring.middleware.reload :refer [wrap-reload]]))
@@ -11,7 +11,10 @@
 (defn feedfunc
 	[request]
 	(html5
-   [:head (include-css "newfeed.css")(include-css "skeleton2.css")(include-css "normalize2.css")]
+   [:head (include-css "css/newsfeed.css" "css/skeleton2.css" "css/normalize2.css")
+    [:title "NEWSFEED"]
+    [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
+    ]
    [:body
     [:div.wrap
      [:div.sidenav {:class "three columns"}
@@ -43,7 +46,7 @@
       [:div.storyinfo
        [:br]
        [:div.heading
-        [:h2 "Xtnt-Micro"]
+        [:h3 "Xtnt-Micro"]
         [:p "@xtntmicro"]
         [:p [:a {:href "#"} "#xtntindia"]]
         [:br]
@@ -72,8 +75,8 @@
      [:div.newsfeeder
       [:div.feeds
        [:img#feedlinker {:src "https://i.imgur.com/LnXkPt6.png"}]
-       [:h2#feedsh2 {:id "feedlinker"} "Xtnt-Micro"]
-       [:p#feedsp1 "Auh 15"]
+       [:h3 {:id "feedsh2"} "Xtnt-Micro"]
+       [:p#feedsp1 "Aug 15"]
        [:p#feedsp2 "Code Jam, our longest-running coding competition, just wrapped its 16th season in San Francisco. Congrats to all finalists, especially Gennady Korotkevich on his 6th consecutive #CodeJam win. 🎉 (link: http://xtnt.in/codejam) xtnt.in/codejam"]
        [:img {:src "https://i.imgur.com/byPM9aZ.png" :width "35px" :id "expandimage" }]
        [:img#feedstoryimage {:src "https://i.imgur.com/uDj7mnk.jpg"}]
@@ -85,22 +88,24 @@
         ];;feedattach end
        ];;feeds end
       [:br]
-      [:hr#underfeederhr]
+      [:hr { :id "underfeedhr"}]
       ];;newsfeeder end
      ];;container end
     [:div.rightcontainer
-     [:div.searchbar
-      [:input {:type "search" :placeholder "Search Xtnt"}]
+     [:div.searchbar {:id "searchbar1"}
+      [:input#searchinput {:type "search" :placeholder "Search Xtnt"}]
       ];;searchbar end
      [:div.trending
       [:div#trendheader [:h4 "Trending Now"]]
-      [:hr#trendhr]
+
+      [:hr {:id "trendhr"}]
+
       [:div.trendcontent
        [:p "Trending in India"]
        [:label "#ThePradaSong"]
        [:p "1,422 Upvotes"]
        ];;trendcontent end
-      [:hr#tendhr]
+      [:hr#trendhr]
       [:div.trendcontent
        [:p "Trending in India"]
        [:label "#ElonMusk"]
@@ -110,6 +115,7 @@
       [:div#showmore
        [:a {:href "#"} [:label "Show More"]]
        ];;showmore end
+
       ];;trending end
      [:div.mightlike
       [:div [:h3 "You Might Like"]]
