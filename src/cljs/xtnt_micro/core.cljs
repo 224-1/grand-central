@@ -127,4 +127,3 @@
 
 (reagent/render-component [app-container]
                           (. js/document (getElementById "app")))
-
