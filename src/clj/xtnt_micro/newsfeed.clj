@@ -22,7 +22,8 @@
       [:a.listlogo {:href "#"} [:img {:src "https://img.icons8.com/ios-filled/50/000000/home.png" :width "25px"} "Home"]]
       [:a.listlogo {:href "#"} [:img {:src "https://img.icons8.com/ios-filled/48/000000/hashtag.png" :width "25px"} "Explore"]]
       [:a.listlogo {:href "#"} [:img {:src "https://img.icons8.com/ios-filled/64/000000/appointment-reminders.png" :width "25px"} "Notifications"]]
-      [:a.listlogo {:href "#"} [:img {:src "https://img.icons8.com/ios-filled/100/000000/envelope-number.png" :width "25px"} "Messages"]]
+      [:a.listlogo {:href "#"} [:img {:src "https://img.icons8.com/ios-filled/10
+0/000000/envelope-number.png" :width "25px"} "Messages"]]
       [:a.listlogo {:href "#"} [:img {:src "https://img.icons8.com/ios-filled/64/000000/bookmark-ribbon.png" :width "25px"} "Bookmarks"]]
       [:a.listlogo {:href "#"} [:img {:src "https://img.icons8.com/ios-filled/64/000000/list.png" :width "25px"} "Lists"]]
       [:a.listlogo {:href "#"} [:img {:src "https://img.icons8.com/ios-filled/64/000000/contract-job.png" :width "25px"} "Profile"]]
