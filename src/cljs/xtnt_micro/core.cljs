@@ -3,7 +3,7 @@
             [chord.client :refer [ws-ch]]
             [cljs.core.async :as async :include-macros true]))
 
-(goog-define ws-url "ws://localhost:8000/ws")
+(goog-define ws-url "ws://localhost:9500/ws")
 
 (enable-console-print!)
 
@@ -127,4 +127,3 @@
 
 (reagent/render-component [app-container]
                           (. js/document (getElementById "app")))
-
