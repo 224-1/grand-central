@@ -11,10 +11,9 @@
 (defn feedfunc
 	[request]
 	(html5
-   [:head (include-css "css/newsfeed.css" "css/skeleton2.css" "css/normalize2.css")
-    [:title "NEWSFEED"]
-    [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
-    ]
+[:head (include-css "css/newsfeed.css" "css/skeleton2.css" "css/normalize2.css")
+ [:title "NEWSFEED"]
+ [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]]
    [:body
     [:div.wrap
      [:div.sidenav {:class "three columns"}
