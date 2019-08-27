@@ -1,0 +1,299 @@
+* A brief explaination about core.async and the function used in websocket.
+*Core.async* provides mechanisms to manage asynchronous tasks using lightweight threads called “go-blocks” and queue-like channels. 
+
+*go-blocks* need a way to pass data between each other. This is done by interacting with channels.
+
+By default a channel is unbuffered. This means that if the channel contains an item, 
+no further items can be written to the channel, until the channel is read from.
+ If a channel is full, go-routines that try to write more data to the channel will “park”. 
+This corresponds to “blocking” in a threaded environment. 
+
+
+There are two varieties of waiting: *Parking* and *Blocking*. 
+
+
+In *Blocking* thread stops execution until a task is complete. 
+Usually this happens when you’re doing some kind of I/O operation. 
+The thread remains alive but doesn’t do any work, so you have to create a 
+new thread if you want your program to continue working. \\
+*Parking* frees up the thread so it can keep doing work. 
+Let’s say you have one thread and two processes, Process A and Process B. 
+Process A is running on the thread and then waits for a put or take. 
+Clojure moves Process A off the thread and moves Process B onto the thread.
+ If Process B starts waiting and Process A’s put or take has finished, then 
+Clojure will move Process B off the thread and put Process A back on it. 
+Parking allows the instructions from multiple processes to interleave on a single thread, 
+similar to the way that using multiple threads allows interleaving on a single core.
+ The implementation of parking isn’t important; suffice it to say that it’s only
+ possible within go blocks, and it’s only possible when you use >! and <!, or
+ parking put and parking take. >!! and <!! are blocking put and blocking take.
+
+
+Buffered channels can easily be created to allow a certain amount of items to buffer. 
+When the buffer is full, attempts to add an additional item to the channel will result in the go-routine parking.
+#+BEGIN_SRC
+(def mychan (chan)) ; Unbuffered channel
+(def buffered-chan (chan 5)) ; channel with buffer of size '5'
+
+; Use '!>' to put an item on a channel within a go-routine
+; Use '!<' to take an item on a channel within a go-routine
+
+(go
+  (!> my-chan "hello")
+  (!> my-chan "world")) ; This go-block will park
+
+; Print hello world infinitely
+
+(defn loop-1
+  []
+  (go-loop
+    (!> my-chan "hello")
+    (!> my-chan "world")
+    (recur)))
+
+(defn loop-2
+  []
+  (go-loop
+    (println (!< my-chan)
+    (recur)))
+
+(loop-1)
+(loop-2)
+#+END_SRC
+Handling concurrency with *alt!* and *mult*.
+
+Core.async provides a killer feature with the *alt!* function, which allows your program to park 
+on multiple channels.
+
+The *alt!* function accepts a sequence of clauses. Each clause consists of a channel to take from,
+ and a result expression to run when there is data in the channel.
+#+BEGIN_SRC
+(alt!
+  my-chan ([message]
+            (println "Message from unbuffered-chan" message))
+  buffered-chan ([message)]
+            (println "Message from buffered-chan" message))
+#+END_SRC
+In the above example when alt! is invoked, it will park until one of the channels has data available.
+
+*mult*- Creates and returns a mult(iple) of the supplied channel. Channels
+containing copies of the channel can be created with 'tap', and
+detached with 'untap'.
+ Each item is distributed to all taps in parallel and synchronously,
+i.e. each tap must accept before the next item is distributed. Use
+buffering/windowing to prevent slow taps from holding up the mult.
+ Items received when there are no taps get dropped. \\
+*tap*- Copies the mult source onto the supplied channel.
+
+
+ If a tap puts to a closed channel, it will be removed from the mult.
+Using *mult* and *tap* we can create a multiplexer from the channel we want multiple clients to read from. 
+With this multiplexer, we can then create taps, from the multiplexer to new channels. 
+This allows each client to have its own channel to read from, without read-race contention. 
+A good pattern to follow is to have all the clients write to the same channel, 
+and and all the clients read from their own private tapped channels.
+#+BEGIN_SRC
+(def main-channel (chan))
+(def main-multiplexer (mult main-channel))
+(def reader-channel (chan))
+(tap main-multiplexer reader-channel)
+
+(go
+  (>! main-channel "Hello World")
+  (println (<! reader-channel)))
+#+END_SRC
+
+* Documentation of Websocket.
+To implement our chatroom we will use *Chord* to create a core.async channel abstractions on top of websockets.
+Chord is a lightweight Clojure/ClojureScript library designed to bridge the gap between the triad of CLJ/CLJS, web-sockets and core.async.
+It provides a single macro, with-channel. This macro gives us a channel for the websocket that 
+is setup when a client connects to our websocket endpoint. We setup a main-channel, 
+from which all connected clients will receive messages through a tap that is setup for
+ each connected client. When we receive a message on the client’s websocket, we will read 
+the message from the websocket channel and write it to our main chatroom channel. 
+This will result in all the client’s receiving the new message on their tapped channels. 
+When the taps receive a channel, we read from the tapped channel, and write the message to the websocket channel.
+
+All messages will have a unique id, we will create the main channel with a transducer. 
+The transducer will modify every new message on the channel with the mapping function.
+
+**** Server code - ~handler.clj~
+#+BEGIN_SRC
+(ns xtnt-micro.handler
+  (:require
+    [org.httpkit.server :as hk]
+    [chord.http-kit :refer [with-channel]]
+    [compojure.core :refer :all]
+    [compojure.route :as route]
+    [clojure.core.async :as a]
+    [medley.core :refer [random-uuid]]))
+
+; Use a transducer to append a unique id to each message
+; To use a transducer on a channel, you must specify the channel buffer size
+(defonce main-chan (a/chan 1 (map #(assoc % :id (random-uuid)))))
+
+(defonce main-mult (a/mult main-chan))
+
+(def users (atom {}))
+
+(defn ws-handler
+  [req]
+  (with-channel req ws-ch
+    (let [client-tap (a/chan)
+          client-id (random-uuid)]
+      (a/tap main-mult client-tap)
+      (a/go-loop []
+        (a/alt!
+          client-tap ([message]
+                      (if message
+                        (do
+                          (a/>! ws-ch message)
+                          (recur))
+                        (a/close! ws-ch)))
+          ws-ch ([{:keys [message]}]
+                  (if message
+                    (let [{:keys [msg m-type]} message]
+                      (do
+                        (when (= m-type :new-user)
+                          (swap! users assoc client-id msg)
+                          (a/>! ws-ch  {:id (random-uuid)
+                                        :msg (set (vals @users))
+                                        :m-type :init-users}))
+                        (a/>! main-chan message)
+                        (recur)))
+                    (do
+                      (a/untap main-mult client-tap)
+                      (a/>! main-chan {:m-type :user-left
+                                      :msg (get @users client-id)})
+                      (swap! users dissoc client-id)))))))))
+
+(defroutes app
+  (GET "/ws" [] ws-handler))
+#+END_SRC
+On the client side, we only need to handle establishing a websocket connection,
+ sending new messages to the server, and reading from our websocket channel to show new messages to the user.
+
+Chord only provides one function for clojurescript, ~chord.client/ws-ch~. 
+This function establishes a websocket and abstracts it as a core.async channel.
+
+**** ~core.cljs~
+#+BEGIN_SRC
+(ns xtnt-micro.core
+  (:require [reagent.core :as reagent :refer [atom]]
+            [chord.client :refer [ws-ch]]
+            [cljs.core.async :as a :refer [>! <! put!]])
+  (:require-macros [cljs.core.async.macros :refer [go go-loop]]))
+
+(defonce msg-list (atom []))
+(defonce users-set (atom #{}))
+(defonce send-chan (a/chan))
+
+(defn setup-websockets! []
+  (go
+    (let [{:keys [ws-channel error]} (<! (ws-ch "ws://localhost:9500/ws"))]
+      (if error
+        (println "Something went wrong with the websocket")
+        (do
+          (send-msg {:m-type :new-user
+                      :msg (:user @app-state)})
+          (send-msgs ws-channel)
+          (receive-msgs ws-channel))))))
+#+END_SRC
+To send messages to the server, we will use the asynchronous put! function,
+ which does not block further code execution after being called.  
+We will put! the new message on the send-chan channel. 
+Separately, we will run a go-block that reads from send-chan and 
+sends them to our websocket as they become available.
+#+BEGIN_SRC
+(defn send-msg
+  [msg]
+  (put! send-chan msg))
+
+(defn send-msgs
+  [svr-chan]
+  (go-loop []
+    (when-let [msg (<! send-chan)]
+      (>! svr-chan msg)
+      (recur))))
+
+(defn chat-input []
+  (let [v (atom nil)]
+    (fn []
+      [:div {:class "textinput"}
+        [:form
+        {:on-submit (fn [x]
+                      (.preventDefault x)
+                      (when-let [msg @v] (send-msg {:msg msg
+                                                    :user (:user @app-state)
+                                                    :m-type :chat})))}
+        [:input {:type "text"
+                  :value @v
+                  :placeholder "Type a message to send to the chatroom"
+                  :on-change #(reset! v (-> % .-target .-value))}]
+        [:br]
+        [:button {:type "submit"} "Send"]]])))
+#+END_SRC
+For our client to actually receive message, we simply read from our websocket in a go-block and
+ append messages to the global application state. Reagent takes care of re-rendering our view when the messages change.
+#+BEGIN_SRC
+(defn receive-msgs
+  [svr-chan]
+  (go-loop []
+    (if-let [msg (<! svr-chan)]
+      (let [new-msg (:message msg)]
+        (do
+          (case (:m-type new-msg)
+            :init-users (reset! users-set (:msg new-msg))
+            :chat (swap! msg-list #(conj %1 (dissoc %2 :m-type)) new-msg)
+            :new-user (swap! users-set #(conj %1 (:msg %2)) new-msg)
+            :user-left (swap! users-set #(disj %1 (:msg %2)) new-msg))
+          (recur)))
+      (println "Websocket closed"))))
+#+END_SRC
+**** ~project.clj~
+For figwheel integretion please refer to the *Documentation of implementing cljs figwheel-main to an existing project* _cljs-implementation.org_
+**** Uberjar
+Two ways to run the server *lein run* and *uberjar*.
+lein is the direct interface with JVM.
+~lein run~ is a portable way of running the server.
+The other is via ~uberjar~  which is useful in production.
+During coding, you use the repl.
+For dev server/testing and for testing in different environments you use lein run,
+For final deployment on production server you use uberjar, immutant, docker etc.
+Difference for dev server between lein and uberjar is that uberjar is a compiled jar file, its static. 
+Lein run compiles are runs but recompiles main code. Its not as flexible as the repl though, its inbetween.
+With lein run, compojure routes if changed wont recompile, but if you change hiccup in a route it will recompile for instance. So for dev server, testing etc, its important.
+
+ #+BEGIN_SRC
+  :uberjar-name "xtnt-micro-standalone.jar"
+  :profiles
+    {:dev
+      :uberjar {:prep-tasks ["compile" ["cljsbuild" "once" "min"]]
+               :aot :all
+               :main xtnt-micro.handler
+               :cljsbuild
+                {:builds {:min
+                          {:source-paths ["src/cljs"]
+                           :compiler
+                            {:output-to "resources/public/cljs-out/dev-main.js"
+                             :asset-path "cljs-out/dev"
+                             :output-dir "resources/public/cljs-out/dev"
+                             :main xtnt-micro.core
+                             :optimizations :advanced
+                             :pretty-print false }}}}})
+
+ #+END_SRC
+
+**** How you run a clj + cljs project that has websockets:
+
+**** Start the http-kit webserver by
+a) Using lein run : this should work automatically, but any edits to the routes wont have effect. \\
+b) Using cider-jack-in : When you start the repl, all the code has loaded, but the server hasnt started yet, in order to start the server you have to go into the repl and run (-main) or whatever the main function is in your program that starts the app server. After this it works just like lein run, except when you change routing etc, it will update.
+**** Compiling clojurescript
+Start figwheel cider-jack-in-cljs :  this will compile your clojurescript code into js. The javascript goes into your output folder. While the clojurescript server is running, using figwheel you will be able to auto update. Even after you close the fighweel repl though the application will continue to work, this is because the last compiled js is still there in the output folder. You dont NEED the clojurescript server running in order for the application to work .. you need it running in order to continue to make edits on your front end. But the clojurescript code NEEDS lein run or the cider-jack-in method above to work first, because without that there is no running websocket server.
+
+
+**** More examples of mult, tap, core.async respectively
+
+[[https://clojuredocs.org/clojure.core.async/mult][Mult]], [[https://clojuredocs.org/clojure.core.async/tap][Tap]], [[https://www.braveclojure.com/core-async/][Core-async]]
+ 
