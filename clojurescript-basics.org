@@ -1,0 +1,233 @@
+**Clojurescript syntax pointers**
+
+There are several syntax forms in clojurescript to access properties.
+The dot form, thread first/last formats increase readability of the code.
+The property must always be preceded by a hyphen: -{property}
+On the other hand, a function invocation should not be preceded by a hyphen.
+
+*** Accessing property, for example getting the title property on the document.
+
+For example -
+
+**** JS Code: 
+
+#+BEGIN_SRC javascript
+document.title
+#+END_SRC
+
+**** Cljs Code standard: 
+
+#+BEGIN_SRC clojure
+(.-title js/document)
+#+END_SRC
+
+**** Cljs Code dot form: 
+
+#+BEGIN_SRC clojure
+(. js/document -title)
+#+END_SRC
+
+**** Cljs Code in thread first format: 
+
+#+BEGIN_SRC clojure
+(-> js/document .-title)
+#+END_SRC
+
+**** Cljs Code in thread last format: 
+
+#+BEGIN_SRC clojure
+(->> js/document .-title)
+#+END_SRC
+
+*** Obtaining nested properties, for example location.href property
+
+For example -
+
+**** Js Code: 
+
+#+BEGIN_SRC javascript
+document.location.href
+#+END_SRC
+
+**** Cljs Code standard: 
+
+#+BEGIN_SRC clojure
+(.-href (.-location js/document))
+#+END_SRC
+
+**** Cljs Code dot form: 
+
+#+BEGIN_SRC clojure
+(. (. js/document -location) -href)
+#+END_SRC
+
+**** Cljs Code in thread first format: 
+
+#+BEGIN_SRC clojure
+(-> js/document .-location .-href)
+#+END_SRC
+
+**** Cljs Code in thread last format: 
+
+#+BEGIN_SRC clojure
+(->> js/document .-location .-href)
+#+END_SRC
+
+*** Since nested dots also become difficult to read, the 'double-dot speacial form' is used to alleviate nesting.
+
+For example -
+
+**** Js Code: 
+
+#+BEGIN_SRC javascript
+document.location.href.length
+#+END_SRC
+
+**** Cljs Code standard: 
+
+#+BEGIN_SRC clojure
+(.-length (.-href (.-location js/document)))
+#+END_SRC
+
+**** Cljs Code dot form: 
+
+#+BEGIN_SRC clojure
+(. (. (. js/document -location) -href) -length)
+#+END_SRC
+
+**** Cljs double dot: 
+
+#+BEGIN_SRC clojure
+(.. js/document -location -href -length)
+#+END_SRC
+
+**** Cljs Code in thread first format: 
+
+#+BEGIN_SRC clojure
+(-> js/document .-location .-href .-length)
+#+END_SRC
+
+**** Cljs Code in thread last format: 
+
+#+BEGIN_SRC clojure
+(->> js/document .-location .-href .-length)
+#+END_SRC
+
+*** Clojurescript allows accessing Javascript object methods and invoking function calls
+Note that there's no hyphen (-) preceding method.
+
+Example 1 -
+
+**** Js Code: 
+
+#+BEGIN_SRC javascript
+document.hasFocus()
+#+END_SRC 
+
+**** Cljs Code standard: 
+
+#+BEGIN_SRC clojure
+(.hasFocus js/document)
+#+END_SRC
+
+
+**** Cljs Code dot form: 
+
+#+BEGIN_SRC clojure
+(. js/document hasFocus) or (. js/document (hasFocus))
+#+END_SRC
+
+**** Cljs Code in thread first format: 
+
+#+BEGIN_SRC clojure
+(-> js/document .hasFocus)
+#+END_SRC
+
+**** Cljs Code in thread last format: 
+
+#+BEGIN_SRC clojure
+(->> js/document .hasFocus)
+#+END_SRC
+
+Example 2 -
+
+**** Js Code: 
+
+#+BEGIN_SRC javascript
+document.getElementsByTagName("html")
+#+END_SRC
+
+**** Cljs Code dot form: 
+
+#+BEGIN_SRC clojure
+(. js/document getElementsByTagName "html")
+#+END_SRC
+
+                  or
+
+#+BEGIN_SRC clojure
+(. js/document (getElementsByTagName "html"))
+#+END_SRC
+
+**** Cljs Code in thread first format: 
+
+#+BEGIN_SRC clojure
+(-> js/document (.getElementsByTagName "html"))
+#+END_SRC
+
+*** The set! command is mostly used to set native javascript object properties to a value 
+Equivalent of '=' operator in javascript.
+
+Example 1 -
+
+#+BEGIN_SRC clojure
+(set! (.-var1 scope) "Value")
+#+END_SRC
+
+where scope is a js object.
+
+Example 2 -
+
+**** Js Code: 
+
+#+BEGIN_SRC javscript
+window.location.search = "foo=bar"
+#+END_SRC
+
+**** Cljs Code in thread first format: 
+
+#+BEGIN_SRC clojure
+(set! (-> js/window .-location .-search) "foo=bar")
+#+END_SRC
+
+**** Cljs Code in thread last format: 
+
+#+BEGIN_SRC clojure
+(set! (->> js/window .-location .-search) "foo=bar")
+#+END_SRC
+
+**** Cljs Code duouble-dot form: 
+
+#+BEGIN_SRC clojure
+(set! (.. js/window -location -search) "foo=bar")
+#+END_SRC
+
+*** The defonce command is used for our global state that enables us to perform hot reloading.
+The state is kept exactly as it is upon changing the code that provides instant feedback.
+
+For example -
+
+#+BEGIN_SRC clojure
+(defonce app-state (atom {:a 1
+                          :b 2}))
+#+END_SRC
+
+*** An alternative to set! is using aset which is reserved exclusively for '(js-obj)' type javascript objects
+*** aset and aget are not intended for property access or assignment. 
+They are explicitly for use with native Js arrays
+
+For example -
+
+#+BEGIN_SRC clojure
+(aset scope "var2" "Value")
+#+END_SRC
