@@ -1,10 +1,21 @@
+;; Main clojurescript configuration file - project.cljs
+;; Configuration of clojure dependencies and compilation targets
+;; Plugin used to auto-compile clojurescript code to javascript called cljs-build
+;; Beyond basic compiler support, Lein-cljsbuild has built-in support for launching clojurescript REPLs
+;; -> lein trampoline cljsbuild-repl-rhino
+;; lein cljsbuild auto command watches for changes in your source files and automatically rebuilds them
+
+;; Main difference between Figwheel and cljsbuild is that figwheel features hotloading allowing interactive programming
+
 (defproject xtnt-micro "0.1.0-SNAPSHOT"
   :description "FIXME: write this!"
   :url "http://example.com/FIXME"
+
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :min-lein-version "2.7.1"
+
 
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.10.439"]
@@ -48,6 +59,7 @@
      ;; need to add the compliled assets to the :clean-targets
      :clean-targets ^{:protect false} ["resources/public/cljs-out"
                                        :target-path]}
+
 
     :uberjar {:prep-tasks ["compile" ["cljsbuild" "once" "min"]]
               :aot :all
