@@ -27,40 +27,41 @@
       [:a.listlogo {:href "#"} [:img {:src "https://img.icons8.com/ios-filled/64/000000/list.png" :width "25px"} "Lists"]]
       [:a.listlogo {:href "#"} [:img {:src "https://img.icons8.com/ios-filled/64/000000/contract-job.png" :width "25px"} "Profile"]]
       [:a.listlogo {:href "#"} [:img {:src "https://img.icons8.com/ios-filled/50/000000/more.png" :width "25px"} "More"]]
-      [:button.button2 [:img {:src "https://i.imgur.com/CSx4pOj.png" :width "15px"}] "Create feed"]
+      [:button.button2 "New feed"]
       ]
      ]
     [:div.container {:class "seven columns"}
      [:div.feedheader
-      [:img.backarrow {:src "https://i.imgur.com/Q3upGH7.png" :width "30px"}]
+      [:img.backarrow {:src "https://i.imgur.com/4Nl0VnV.png" :width "40px"}]
       [:h4.lol "Xtnt-Micro"]
       [:p "1 Million Followers"]
+      [:button.followbtn2 {:class "blocks"} "Follow"]
       ]
      [:div.feedstory
       [:div.storyimg
        [:img {:src "https://i.imgur.com/cJ8nJ6y.jpg" :width "100%" :height "320px"}]
        [:button.followbtn {:class "blocks"} "Follow"]
-       [:a {:href "#"} [:img#threedots {:src "https://i.imgur.com/9Qk9L2X.png" :width "40px"}]]
+       [:a {:href "#"} [:img#threedots {:src "https://i.imgur.com/9Qk9L2X.png" :width "35px"}]]
        ]
       [:br]
       [:div.storyinfo
        [:br]
        [:div.heading
-        [:h3 "Xtnt-Micro"]
+        [:h4 "Xtnt-Micro"]
         [:p "@xtntmicro"]
         [:p [:a {:href "#"} "#xtntindia"]]
         [:br]
-        [:label#storylabel "221 Following"]
-        [:label#storylabel "1M  Followers"]
-        [:hr {:align "left" :id "storyhr"}]
+        [:p#storylabel "221 Following"]
+        [:p#storylabel "1M  Followers"]
+        [:br]
         [:p.inlinks {:class "storyimgicon"} [:img {:src "https://img.icons8.com/ios-filled/24/000000/marker.png"}]"2nd main, Indranagar"]
         [:p.inlinks {:class "storyimgicon"} [:img {:src "https://img.icons8.com/ios-filled/24/000000/link.png"}]"about.xtnt"]
         [:p.inlinks {:class "storyimgicon"} [:img {:src "https://img.icons8.com/ios-filled/24/000000/calendar.png"}]"Established 2018"]
         [:div.understory
-         [:img {:src "https://i.imgur.com/rNo8zhD.jpg" :id "storyicons" :width "25px" :height "25px"}]
-         [:img {:src "https://i.imgur.com/TC1PdNM.png" :id "storyicons" :width "25px" :height "25px"}]
-         [:img {:src "https://i.imgur.com/q0V6HGg.jpg" :id "storyicons" :width "25px" :height "25px"}]
-         [:p "Followed by Parikshith M and Rupam Maz"]
+         [:img {:src "https://i.imgur.com/rNo8zhD.jpg" :id "storyicons" :width "15px" :height "15px"}]
+         [:img {:src "https://i.imgur.com/TC1PdNM.png" :id "storyicons" :width "15px" :height "15px"}]
+         [:img {:src "https://i.imgur.com/q0V6HGg.jpg" :id "storyicons" :width "15px" :height "15px"}]
+         [:p#underpara "Followed by Parikshith M and Rupam Maz"]
          ];;understory end
         ];;heading end
        ];;storyinfo end
@@ -74,7 +75,7 @@
      [:hr#underlisthr {:align "center" :width "100%"}]
      [:div.newsfeeder
       [:div.feeds
-       [:img#feedlinker {:src "https://i.imgur.com/LnXkPt6.png"}]
+       [:img#feedlinker {:src "https://i.imgur.com/LnXkPt6.png" :width "90px"}]
        [:h3 {:id "feedsh2"} "Xtnt-Micro"]
        [:p#feedsp1 "Aug 15"]
        [:p#feedsp2 "Code Jam, our longest-running coding competition, just wrapped its 16th season in San Francisco. Congrats to all finalists, especially Gennady Korotkevich on his 6th consecutive #CodeJam win. 🎉 (link: http://xtnt.in/codejam) xtnt.in/codejam"]
@@ -102,23 +103,23 @@
 
       [:div.trendcontent
        [:p "Trending in India"]
-       [:label "#ThePradaSong"]
+       [:h4 "#ThePradaSong"]
        [:p "1,422 Upvotes"]
        ];;trendcontent end
       [:hr#trendhr]
       [:div.trendcontent
        [:p "Trending in India"]
-       [:label "#ElonMusk"]
+       [:h4 "#ElonMusk"]
        [:p "10,000 Upvotes"]
        ];;trendcontent end
       [:hr#trendhr]
       [:div#showmore
-       [:a {:href "#"} [:label "Show More"]]
+       [:a {:href "#"} [:p "Show More"]]
        ];;showmore end
 
       ];;trending end
      [:div.mightlike
-      [:div [:h3 "You Might Like"]]
+      [:div [:h4 "You Might Like"]]
       [:hr#trendhr]
       [:div.mlikecontent
        [:a {:href ""} [:img {:src "https://img.icons8.com/color/48/000000/devpost.png"}]]
@@ -133,7 +134,7 @@
        ];;mlikecontent end
       [:hr#trendhr]
       [:div#showmore
-       [:a {:href "#"} [:label "Show More"]]
+       [:a {:href "#"} [:p "Show More"]]
        ];;showmore end
       ];;mightlike end
      [:hr#separatorhr]

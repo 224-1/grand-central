@@ -1,8 +1,20 @@
+body p{
+    font-size:14px !important;
+}
+body h4{
+    font-size:20px !important;
+    font-weight:700 !important;
+}
+
+body{
+    text-decoration:none !important;
+}
 
 .sidenav {
-  background-color: #f7f9f9 ;
+    background-color: #f7f9f9 ;
+    padding:20px;
+    padding-left:50px;
   height: 100%;
-  width: 230px;
   position: fixed;
   z-index: -1;
   top: 0;
@@ -11,13 +23,13 @@
   letter-spacing: 1.2px;
   overflow-x: hidden;
   overflow-y: hidden;
-  padding-top: 35px;
+  padding-top: 5px;
 }
 
 .sidenav a {
   position:relative;
   display:block;
-  padding: 3px 8px 3px 60px;
+  padding: 13px 8px 7px 70px;
   text-decoration: none;
   font-size: 20px;
   font-weight:700;
@@ -36,7 +48,7 @@
     left:25px;
     width:20px;
     height:auto;
-    top:10px;
+    top:17.5px;
 }
 
 /*
@@ -67,27 +79,25 @@ top: 3.25px;
 }
 
 .button2 {
+    font-size: 15px;
+    font-weight:700;
+    letter-spacing:-0.03em;
   position: relative;
-  margin: 0 auto;
-  left:60px;
+  left:20px;
   top: 30px; 
   border: none;
-  border-radius: 10px;
+  border-radius: 60px;
   color: white;
-  padding: 8px;
+  padding: 10px 60px 35px 60px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 17px;
   background-color: #27ae60;
 }
 
-.button2 img{
-  float: left; 
-  padding: 5px;
-}
 
 .followbtn{
+    font-size:13px;
   float: right;
   margin: 0px 10px 0px 10px;
   border-color: #27ae60;
@@ -98,6 +108,20 @@ top: 3.25px;
   border-color:white;
   background-color:#27ae60;
   color:white;
+}
+
+.followbtn2 {
+    visibility:hidden;
+    float: right;
+    margin: 5px 10px 0px 10px;
+    border-color: #27ae60;
+    color: #27ae60;
+}
+
+.followbtn2:hover{
+    border-color:white;
+    background-color:#27ae60;
+    color:white;
 }
 
   .container{
@@ -166,7 +190,8 @@ top: 3.25px;
 .backarrow{
   position: relative;
   top:5px;
-  left: 10px;
+  left: 15px;
+  padding-right:15px;
   display: inline-block;
 }
 .feedheader{
@@ -180,22 +205,19 @@ top: 3.25px;
 }
 
 .feedheader h4{
-
   position: relative;
-  left:5px;
-  bottom: 5px;
+  bottom:17px;
 }
 
-.feedheader .lol{ 
-  padding:0;
-  margin-left: 10px;
+.feedheader .lol{
+  margin-left: 15px;
   display: inline-block;
 }
 
 .feedheader p{
   position: relative;
-  top: 13px;
-  right: 140px;
+  top: 2px;
+  right: 105px;
 }
 
 .storyimg{
@@ -223,12 +245,8 @@ top: 3.25px;
   padding: 10px;
 }
 
-.heading h3{
+.heading h4{
   margin: 0;
-}
-
-#storylabel{
-  float: left;
 }
 
 #storyhr{
@@ -236,18 +254,16 @@ top: 3.25px;
   margin:15px;
 }
 
-.understory p{
-  float: left;
-   padding-left: 15px;
+#underpara{
+    padding-left:20px;
 }
 
 #storyicons{
-  float: left;
+   float: left;
    border-radius: 100%;
    position: relative;
-    top: 7px;
-    left: 5px;
-    border:1px solid black;
+   top: 7px;
+   left: 5px;
 }
 
 .storyimgicon img{
@@ -334,8 +350,8 @@ margin: 0;
 
 #feedsp2 {
   float: left;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 58px;
+  padding-right: 60px;
 }
 
 #expandimage{ 
@@ -345,21 +361,29 @@ left: 290px
 }
 
 #feedstoryimage{
-  display: block; position: relative; top: 5%; right: 10%; float: right; width: 75%; margin: 0; border-radius: 10px;
+    display: block;
+    position: relative;
+    top: 2%;
+    left:8%;
+    width: 75%;
+    margin: 0 auto;
+    border-radius: 10px;
 }
 
 .feedattach {
-    float: left;
+    display:inline-block;
     position: relative;
-    top: 33px;
+    top: 13px;
     opacity: 0.8;
 }
 
 .feedattach a{
+    float:left;
   color: #666666;
 }
 
 .feedattach label {
+    text-decoration:none !important;
   padding: 10px;
   padding-left: 60px;
 }
@@ -386,11 +410,15 @@ left: 290px
   padding-bottom: 5px;
 }
 
+ ::placeholder{
+    color:black;
+}
+
 #searchinput{
   background-image: url(https://i.imgur.com/2eH46DS.png);
   background-repeat: no-repeat;
   background-attachment: scroll;
-  background-position: 7px 12px;
+  background-position: 7px 9px;
   background-width:30px;
   background-size: 22px;
   padding-left: 35px;
@@ -406,7 +434,6 @@ left: 290px
 #searchinput:focus{
   border-color: #95a5a6;
   background-color: #ecf0f1;
-  color:black;
 }
 
 .trending{
@@ -417,36 +444,34 @@ left: 290px
     border-radius: 10px;
     width: 90%;
     height: 290px;
-    overflow-y: scroll;
+    overflow-y: hidden;
 }
 
 .trending::-webkit-scrollbar { width: 0 !important }
 
 .trendcontent{
-  padding:5px;
-  float: left;
+    position:relative;
+    left:6px;
+  padding:6px;
 }
 
 #trendheader h4{
-text-align: center;
  margin: 10px;
  font-size: 24px;
   font-weight: normal;
 }
 
-.trendcontent p,label{
+.trendcontent h4{
+    margin:0;
+}
+
+.trendcontent p,h4{
   margin: 0;
   padding: 1.5px;
-  padding-left: 10px;
   font-size: 14px;
   display: block;
 }
 
-.trendcontent label{
-  font-weight: bold;
-  color: #27ae60;
-  font-size: 18px
-}
 
 #trendhr{
   margin:0;
@@ -459,15 +484,13 @@ text-align: center;
 }
 
 #showmore a{
+    position:relative;
+    left:6px;
 text-decoration: none;
  color: black;
- cursor: pointer;
 }
 
-#showmore label{
-  font-size: 17px;
-   font-weight: normal;
-   padding-left: 75px;
+#showmore p{
    padding-top: 7px;
 }
 
@@ -479,25 +502,26 @@ text-decoration: none;
  border-radius: 10px;
  width: 90%;
  height: 235px;
- overflow-y: scroll; 
+ overflow-y: hidden; 
 }
 
-.mightlike h3{
- text-align: center;
- font-weight: normal;
- font-size: 24px; 
+.mightlike h4{
  margin: 10px;
 }
 
 .mlikecontent{
+    position:relative;
+    right:8px;
     margin: 0;
     padding:5px;
-  padding-left: 10px;
-  font-size: 14px;
-  margin: 10px;
+    margin: 10px;
 }
 
-.mightlike img,label{
+.mlikecontent a:hover{
+    color:black;
+}
+
+.mightlike img{
   float: left;
 }
 
