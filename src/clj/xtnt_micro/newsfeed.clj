@@ -35,13 +35,12 @@
       [:img.backarrow {:src "https://i.imgur.com/4Nl0VnV.png" :width "40px"}]
       [:h4.lol "Xtnt-Micro"]
       [:p "1 Million Followers"]
-      [:button.followbtn2 {:class "blocks"} "Follow"]
       ]
      [:div.feedstory
       [:div.storyimg
        [:img {:src "https://i.imgur.com/cJ8nJ6y.jpg" :width "100%" :height "320px"}]
        [:button.followbtn {:class "blocks"} "Follow"]
-       [:a {:href "#"} [:img#threedots {:src "https://i.imgur.com/9Qk9L2X.png" :width "35px"}]]
+       [:a {:href "#"} [:img#threedots {:src "https://i.imgur.com/CD3yfjO.png" :width "38px"}]]
        ]
       [:br]
       [:div.storyinfo
@@ -50,13 +49,14 @@
         [:h4 "Xtnt-Micro"]
         [:p "@xtntmicro"]
         [:p [:a {:href "#"} "#xtntindia"]]
+        [:p "A refreshing, eclectic mix of news and developments from around the globe. Follow us for all the latest trends in Home, Lifestyle, Travel, Fashion & Technology."]
         [:br]
         [:p#storylabel "221 Following"]
         [:p#storylabel "1M  Followers"]
         [:br]
-        [:p.inlinks {:class "storyimgicon"} [:img {:src "https://img.icons8.com/ios-filled/24/000000/marker.png"}]"2nd main, Indranagar"]
-        [:p.inlinks {:class "storyimgicon"} [:img {:src "https://img.icons8.com/ios-filled/24/000000/link.png"}]"about.xtnt"]
-        [:p.inlinks {:class "storyimgicon"} [:img {:src "https://img.icons8.com/ios-filled/24/000000/calendar.png"}]"Established 2018"]
+        [:p.inlinks {:class "storyimgicon"} [:img {:src "https://img.icons8.com/ios-filled/24/000000/marker.png" :width "17px"}]"2nd main, Indranagar"]
+        [:p.inlinks {:class "storyimgicon"} [:img {:src "https://img.icons8.com/ios-filled/24/000000/link.png" :width "17px"}]"about.xtnt"]
+        [:p.inlinks {:class "storyimgicon"} [:img {:src "https://img.icons8.com/ios-filled/24/000000/calendar.png" :width "17px"}]"Established 2018"]
         [:div.understory
          [:img {:src "https://i.imgur.com/rNo8zhD.jpg" :id "storyicons" :width "15px" :height "15px"}]
          [:img {:src "https://i.imgur.com/TC1PdNM.png" :id "storyicons" :width "15px" :height "15px"}]
@@ -84,8 +84,7 @@
        [:div.feedattach
         [:a {:href "#"} [:label [:img {:src "https://i.imgur.com/fI3DJHg.png" :width "30px"}] "66"]]
         [:a {:href "#"} [:label [:img {:src "https://i.imgur.com/mmr5p1J.png" :width "30px"}] "59"]]
-        [:a {:href "#"} [:label [:img {:src "https://i.imgur.com/4tF2HPt.png" :width "30px"}] "700"]]
-        [:a {:href "#"} [:label [:img {:src "https://i.imgur.com/wmvqVum.png" :width "30px"}] ""]]
+        [:a {:href "#"} [:label [:img {:src "https://i.imgur.com/4tF2HPt.png" :width "30px"}] "700"]]        [:a {:href "#"} [:label [:img {:src "https://i.imgur.com/wmvqVum.png" :width "30px"}] ""]]
         ];;feedattach end
        ];;feeds end
       [:br]
@@ -97,10 +96,9 @@
       [:input#searchinput {:type "search" :placeholder "Search Xtnt"}]
       ];;searchbar end
      [:div.trending
-      [:div#trendheader [:h4 "Trending Now"]]
-
+      [:div#trendheader [:h4 "Trending Now"[:img {:src "https://i.imgur.com/abfHau1.png" :width "25px"}]]
+       ]
       [:hr {:id "trendhr"}]
-
       [:div.trendcontent
        [:p "Trending in India"]
        [:h4 "#ThePradaSong"]
@@ -119,17 +117,18 @@
 
       ];;trending end
      [:div.mightlike
-      [:div [:h4 "You Might Like"]]
+      [:div#mightlikeheader [:h4 "You Might Like" [:img {:src "https://i.imgur.com/abfHau1.png" :width "25px"}]]]
       [:hr#trendhr]
       [:div.mlikecontent
        [:a {:href ""} [:img {:src "https://img.icons8.com/color/48/000000/devpost.png"}]]
-       [:a {:href ""} [:label "Deftone"]]
+       [:a {:href ""} [:label "Deftone"] [:button.mfollowbtn "Follow" ]]
        [:p "@deftone_xtnt"]
        ];;mlikecontent end
       [:hr#trendhr]
       [:div.mlikecontent
        [:a {:href ""} [:img {:src "https://img.icons8.com/ios/50/000000/circled-v.png"}]]
-       [:a {:href ""} [:label "Vamos Digital"]]
+       [:a {:href ""} [:label "Vamos Digital"] [:button.mfollowbtn "Follow" ]]
+
        [:p "@vamosllp"]
        ];;mlikecontent end
       [:hr#trendhr]

@@ -60,5 +60,5 @@
   (route/not-found "<h1>Page not found</h1>"))
 
 (defn -main []
-    (hk/run-server (wrap-reload #'app) {:port 8000})
+  (hk/run-server  (wrap-reload #'app) {:port 8000})
     (println (str "Server is running on port 8000")))
