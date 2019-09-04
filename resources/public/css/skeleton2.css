@@ -51,7 +51,6 @@
 
 /* For devices larger than 550px */
 @media (min-width: 550px) {
-  
   .column,
   .columns {
     margin-left: 4%; }
@@ -62,11 +61,11 @@
   .one.column,
   .one.columns                    { width: 4.66666666667%; }
   .two.columns                    { width: 13.3333333333%; }
-  .three.columns                  { width: 22%;            }
+  .three.columns                  { width: 23.5%;            }
   .four.columns                   { width: 30.6666666667%; }
   .five.columns                   { width: 39.3333333333%; }
   .six.columns                    { width: 48%;            }
-  .seven.columns                  { width: 56.6666666667%; }
+  .seven.columns                  { width: 45.6666666667%; }
   .eight.columns                  { width: 65.3333333333%; }
   .nine.columns                   { width: 74.0%;          }
   .ten.columns                    { width: 82.6666666667%; }
@@ -143,6 +142,7 @@ h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
 
 /* Larger than phablet */
 @media (min-width: 550px) {
+    
   h1 { font-size: 5.0rem; }
   h2 { font-size: 4.2rem; }
   h3 { font-size: 3.6rem; }

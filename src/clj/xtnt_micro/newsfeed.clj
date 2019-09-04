@@ -13,7 +13,9 @@
 	(html5
 [:head (include-css "css/newsfeed.css" "css/skeleton2.css" "css/normalize2.css")
  [:title "NEWSFEED"]
- [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]]
+ [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
+ [:link {:href "https://fonts.googleapis.com/css?family=Ubuntu&display=swap" :rel "stylesheet"}]
+ ]
    [:body
     [:div.wrap
      [:div.sidenav {:class "three columns"}
@@ -44,7 +46,6 @@
        ]
       [:br]
       [:div.storyinfo
-       [:br]
        [:div.heading
         [:h4 "Xtnt-Micro"]
         [:p "@xtntmicro"]
@@ -75,11 +76,11 @@
      [:hr#underlisthr {:align "center" :width "100%"}]
      [:div.newsfeeder
       [:div.feeds
-       [:img#feedlinker {:src "https://i.imgur.com/LnXkPt6.png" :width "90px"}]
-       [:h3 {:id "feedsh2"} "Xtnt-Micro"]
+       [:img#feedlinker {:src "https://i.imgur.com/LnXkPt6.png" :width "55px"}]
+       [:h4 {:id "feedsh2"} "Xtnt-Micro"]
        [:p#feedsp1 "Aug 15"]
-       [:p#feedsp2 "Code Jam, our longest-running coding competition, just wrapped its 16th season in San Francisco. Congrats to all finalists, especially Gennady Korotkevich on his 6th consecutive #CodeJam win. 🎉 (link: http://xtnt.in/codejam) xtnt.in/codejam"]
        [:img {:src "https://i.imgur.com/byPM9aZ.png" :width "35px" :id "expandimage" }]
+       [:p#feedsp2 "Code Jam, our longest-running coding competition, just wrapped its 16th season in San Francisco. Congrats to all finalists, especially Gennady Korotkevich on his 6th consecutive #CodeJam win. 🎉 (link: http://xtnt.in/codejam) xtnt.in/codejam"]
        [:img#feedstoryimage {:src "https://i.imgur.com/uDj7mnk.jpg"}]
        [:div.feedattach
         [:a {:href "#"} [:label [:img {:src "https://i.imgur.com/fI3DJHg.png" :width "30px"}] "66"]]
@@ -87,7 +88,6 @@
         [:a {:href "#"} [:label [:img {:src "https://i.imgur.com/4tF2HPt.png" :width "30px"}] "700"]]        [:a {:href "#"} [:label [:img {:src "https://i.imgur.com/wmvqVum.png" :width "30px"}] ""]]
         ];;feedattach end
        ];;feeds end
-      [:br]
       [:hr { :id "underfeedhr"}]
       ];;newsfeeder end
      ];;container end
@@ -100,17 +100,22 @@
        ]
       [:hr {:id "trendhr"}]
       [:div.trendcontent
-       [:p "Trending in India"]
-       [:h4 "#ThePradaSong"]
-       [:p "1,422 Upvotes"]
+       [:h5 "#ThePradaSong"]
        ];;trendcontent end
       [:hr#trendhr]
       [:div.trendcontent
-       [:p "Trending in India"]
-       [:h4 "#ElonMusk"]
-       [:p "10,000 Upvotes"]
+       [:h5 "#ElonMusk"]
        ];;trendcontent end
       [:hr#trendhr]
+      [:div.trendcontent
+       [:h5 "#NewTrafficRules"]
+       ];;trendcontent end
+      [:hr#trendhr]
+      [:div.trendcontent
+       [:h5 "#amityuniversity"]
+       ];;trendcontent end
+      [:hr#trendhr]
+
       [:div#showmore
        [:a {:href "#"} [:p "Show More"]]
        ];;showmore end
@@ -136,7 +141,6 @@
        [:a {:href "#"} [:p "Show More"]]
        ];;showmore end
       ];;mightlike end
-     [:hr#separatorhr]
      [:div.terms
       [:ul
        [:a {:href ""} [:li "Terms"]]
@@ -144,15 +148,6 @@
        [:a {:href ""} [:li "Cookies"]]
        [:a {:href ""} [:li "Ads Info"]]
        ]
-      [:div.dropdown
-       [:button.dropbtn [:p "More"] [:img {:src "https://img.icons8.com/ios/30/000000/expand-arrow--v2.png" :width "20px"}]]
-       [:div.dropdown-content
-        [:a {:href "#"} "Link 1"]
-        [:a {:href "#"} "Link 2"]
-        [:a {:href "#"} "Link 3"]
-        ];;dropdown-content end
-       ];;dropdown end
-      [:br]
       ];;terms end
      [:div.footertag
       [:p [:img {:src "https://img.icons8.com/material-outlined/30/000000/copyright.png" :width "15px"}] "2018 Xtnt, llc."]
