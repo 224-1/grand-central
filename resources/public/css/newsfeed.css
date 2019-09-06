@@ -1,17 +1,25 @@
+.trending h4{
+    font-weight:500 !important;
+}
+
+.mightlike h4,label{
+    font-weight:500 !important;
+}
+
 body p{
     font-size:14.5px !important;
     font-family: 'Ubuntu', sans-serif;
 }
 body h4{
     font-size:21.5px !important;
-    font-weight:700 !important;
+    font-weight:600 !important;
 }
 
 body h5{
     margin:1px;
     padding:1px;
     font-size:17px !important;
-    font-weight:600 !important; 
+    font-weight:500 !important; 
 }
 
 body{
@@ -70,6 +78,7 @@ top: 3.25px;
   padding-left: 50px;
 }
 */
+
 #sidehr{
   width: 70%;
   margin: 10px auto;
@@ -110,6 +119,7 @@ top: 3.25px;
     float: right;
     padding:10px 50px 20px 50px;
   margin: 0px 10px 0px 10px;
+
   border-radius:20px;
   border-color: #27ae60;
   color: #27ae60;
@@ -399,7 +409,6 @@ float:right;
     position: relative;
     left:20px;
     top:-40px;
-    opacity: 0.8;
 }
 
 .feedattach a{
@@ -433,7 +442,8 @@ float:right;
   padding-bottom: 5px;
 }
 
- ::placeholder{
+::placeholder{
+    font-weight:500;
     color:black;
 }
 
@@ -469,6 +479,7 @@ float:right;
     height: 280px;
     overflow-y: hidden;
 }
+
 
 .trending::-webkit-scrollbar { width: 0 !important }
 
@@ -561,8 +572,9 @@ float:right;
   float: left;
 }
 
+
 .mlikecontent label,p{
-  margin: 0;
+    margin: 0;
   padding: 1px;
   display: inline-block;
   padding-left: 10px;
@@ -611,5 +623,6 @@ float:right;
 
 .footertag img{
     float: left;
-    padding-top:2px;
+    padding-right:2px;
+    padding-top:0.25em;
 }

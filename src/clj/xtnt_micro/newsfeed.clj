@@ -15,6 +15,8 @@
  [:title "NEWSFEED"]
  [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
  [:link {:href "https://fonts.googleapis.com/css?family=Ubuntu&display=swap" :rel "stylesheet"}]
+ [:link {:href "https://fonts.googleapis.com/css?family=Quicksand&display=swap" :rel "stylesheet"}]
+ 
  ]
    [:body
     [:div.wrap
@@ -125,16 +127,16 @@
       [:div#mightlikeheader [:h4 "You Might Like" [:img {:src "https://i.imgur.com/abfHau1.png" :width "25px"}]]]
       [:hr#trendhr]
       [:div.mlikecontent
-       [:a {:href ""} [:img {:src "https://img.icons8.com/color/48/000000/devpost.png"}]]
-       [:a {:href ""} [:label "Deftone"] [:button.mfollowbtn "Follow" ]]
-       [:p "@deftone_xtnt"]
+       [:a.mc
+        {:href ""} [:img {:src "https://img.icons8.com/color/48/000000/devpost.png"}]]
+       [:a.mc {:href ""} [:label "Deftone"] [:button.mfollowbtn "Follow" ]]
+       [:p.mc "@deftone_xtnt"]
        ];;mlikecontent end
       [:hr#trendhr]
       [:div.mlikecontent
-       [:a {:href ""} [:img {:src "https://img.icons8.com/ios/50/000000/circled-v.png"}]]
-       [:a {:href ""} [:label "Vamos Digital"] [:button.mfollowbtn "Follow" ]]
-
-       [:p "@vamosllp"]
+       [:a.mc {:href ""} [:img {:src "https://img.icons8.com/ios/50/000000/circled-v.png"}]]
+       [:a.mc {:href ""} [:label "Vamos Digital"] [:button.mfollowbtn "Follow" ]]
+       [:p.mc "@vamosllp"]
        ];;mlikecontent end
       [:hr#trendhr]
       [:div#showmore
