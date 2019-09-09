@@ -1,19 +1,23 @@
 (ns xtnt-micro.handler
   (:require
+   [ring.adapter.jetty     :as jetty]
+   [compojure.core         :refer [defroutes GET]]
+   [compojure.route        :refer [not-found resources]]
+   [hiccup.core            :refer :all]
+   [hiccup.page            :refer :all]
    [org.httpkit.server :as hk]
    [chord.http-kit :refer [with-channel]]
-   [compojure.core :refer :all]
    [compojure.route :as route]
    [clojure.core.async :as async]
    [ring.util.response :as resp]
    [medley.core :refer [random-uuid]]
-   [ring.middleware.reload :refer [wrap-reload]]))
+   [ring.middleware.reload :refer [wrap-reload]]
+   [xtnt-micro.newsfeed :as news]
+   ))
 
 ; Use a transducer to append a unique id to each message
 (defonce main-chan (async/chan 1 (map #(assoc % :id (random-uuid)))))
-
 (defonce main-mult (async/mult main-chan))
-
 (def users (atom {}))
 
 (defn ws-handler
@@ -51,6 +55,7 @@
 (defroutes app
   (GET "/ws" [] ws-handler)
   (GET "/" [] (resp/resource-response "index.html" {:root "public"}))
+  (GET "/newsfeed" [] news/feedfunc)
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 
