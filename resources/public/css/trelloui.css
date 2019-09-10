@@ -1,0 +1,175 @@
+button,p{
+    font-weight:600 !important;
+}
+
+html{
+    overflow-x:hidden;
+}
+
+body{
+    background-image: url('https://i.imgur.com/NQblVDp.jpg');
+    background-size:cover;
+    background-position: center;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    height:100%;
+}
+
+.header{
+    width:100%;
+    margin:0;
+    padding:4px;
+}
+#login{
+    border-radius:100%;
+    margin-right: 8px !important
+}
+
+ button,input{
+    margin-right:5px !important;
+}
+
+ .header{
+     background-color:rgba(0,0,0,0.1);
+     height:38px;
+ }
+
+  .headtext img{
+     padding-top:5px;
+     padding-right:3px;
+ }
+
+ .header  h4{
+    transform:translate(280%,0%);
+    text-align:center !important;
+    margin:0 auto !important;
+}
+
+.header button,h4,input{
+    float:left;
+}
+
+.boards img,label{
+    padding:2px;
+    float:left;
+}
+
+.boards img{
+    padding-top:3px;
+}
+
+.teamvisible img{
+    float:left;
+}
+
+.teamvisible label{
+    position:relative;
+    bottom:4px;
+}
+
+.boards img,label{
+    position:relative;
+    bottom:4px;
+}
+
+#plus,#info,#notification,#login{
+    float:right;
+}
+
+body button{
+    border:none;
+    background-color:#ecf0f1;
+}
+
+.teams{
+    margin:5px;
+    margin-bottom:0;
+    width:100%;
+    height:45px;
+    float:left;
+    display:block;
+}
+
+.teams h5,h6,p,button{
+    padding-top:2px;
+    display:block;
+    padding-right:5px;
+    float:left;
+}
+
+.teams #teamhead{
+    padding-top:3px;
+    font-weight:700 !important;
+    font-size: 20px;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+#private{
+    padding-top:5px;
+}
+
+
+.vr{
+    padding-top:5px;
+}
+
+
+.teamlogo{
+    font-size:13px;
+    position:relative;
+    top:3px;
+    font-weight:600;
+    width:30px;
+    height:30px;
+    margin:0 !important;
+    padding: 0;
+    border-radius:100%;
+    border:none;
+}
+
+#tls {
+    margin-right:5px !important;
+    background-color:#bdc3c7;
+}
+
+#searchbar {
+    background-image: url(https://i.imgur.com/2eH46DS.png);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 147px 7px;
+    background-width:30px;
+    background-size: 22px;
+}
+
+.invite{
+    font-weight:600;
+}
+
+.showmenu{
+    position:relative;
+    right:4px;
+    float:right;
+}
+
+.showmenu img{
+    float:left;
+}
+
+.lists{
+    width:100%;
+    margin:0 !important;
+}
+
+.addlist{
+    margin-left:10px;
+}
+
+.addlist{
+    padding:9px 180px 0 15px;
+}
+
+.addlist img{
+    padding-top:1.5px;
+    float:left;
+}

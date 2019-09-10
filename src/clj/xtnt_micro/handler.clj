@@ -13,6 +13,7 @@
    [medley.core :refer [random-uuid]]
    [ring.middleware.reload :refer [wrap-reload]]
    [xtnt-micro.newsfeed :as news]
+   [xtnt-micro.trelloui :as trlo]
    ))
 
 ; Use a transducer to append a unique id to each message
@@ -56,6 +57,7 @@
   (GET "/ws" [] ws-handler)
   (GET "/" [] (resp/resource-response "index.html" {:root "public"}))
   (GET "/newsfeed" [] news/feedfunc)
+  (GET "/trelloui" [] trlo/header)
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 
