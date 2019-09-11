@@ -1,5 +1,14 @@
-button,p{
+body{
+    font-family: 'Lato', sans-serif !important;
+}
+
+ h4{
+    font-family: 'Lato', sans-serif !important;
+}
+
+button,p,label{
     font-weight:600 !important;
+    font-size:14px;
 }
 
 html{
@@ -39,11 +48,18 @@ body{
      padding-right:3px;
  }
 
- .header  h4{
-    transform:translate(280%,0%);
-    text-align:center !important;
+  .header  h4{
+      font-weight:400;
+      font-style:italic;
+      font-size:25px;
+    transform:translate(400%,0%);
     margin:0 auto !important;
 }
+
+  #headimage{
+      position:relative;
+      top:2px;
+  }
 
 .header button,h4,input{
     float:left;
@@ -76,6 +92,10 @@ body{
     float:right;
 }
 
+#notification{
+    background-color:#e74c3c;
+}
+
 body button{
     border:none;
     background-color:#ecf0f1;
@@ -100,7 +120,7 @@ body button{
 .teams #teamhead{
     padding-top:3px;
     font-weight:700 !important;
-    font-size: 20px;
+    font-size: 18px;
     padding-left:20px;
     padding-right:20px;
 }
@@ -137,12 +157,13 @@ body button{
     background-image: url(https://i.imgur.com/2eH46DS.png);
     background-repeat: no-repeat;
     background-attachment: scroll;
-    background-position: 147px 7px;
+    background-position: 140px 7px;
     background-width:30px;
     background-size: 22px;
 }
 
 .invite{
+    padding-top:3px;
     font-weight:600;
 }
 
@@ -150,6 +171,11 @@ body button{
     position:relative;
     right:4px;
     float:right;
+}
+
+.showmenu label{
+    position:relative;
+    bottom:3px;
 }
 
 .showmenu img{
@@ -171,5 +197,83 @@ body button{
 
 .addlist img{
     padding-top:1.5px;
+    padding-right:4px;
     float:left;
+}
+
+.addcard{
+    background-color:#ecf0f1;
+    border-radius:4px;
+    margin-left:10px;
+    float:left;
+    display:inline-block;
+    width:300px;
+    height:155px;
+}
+
+.cards1{
+    margin-top:20px !important;
+    margin:0 auto;
+    background-color:white;
+    border-radius:4px;
+    width:95%;
+    height:35px;
+    border-bottom:0.5px solid rgba(0,0,0,0.2);
+}
+
+.cards{
+    margin-top:7px !important;
+    margin:0 auto;
+    background-color:white;
+    border-radius:4px;
+    width:95%;
+    height:35px;
+    border-bottom:0.5px solid rgba(0,0,0,0.2);
+}
+
+.cardhead{
+    padding:10px;
+}
+
+.cardhead img{
+    float:right;
+}
+
+.cardhead label{
+    padding-left:10px;
+}
+
+.newcard{
+    padding-top:4px;
+    padding-left:10px;
+    opacity:0.6;
+}
+
+.newcard img{
+    position:relative;
+    top:6px;
+    float:left;
+    padding-right:5px;
+}
+
+.newcard p{
+    font-weight:500 !important;
+}
+
+.cards1 p{
+    float:left;
+}
+.cards1 .cardcontent{
+    position:relative;
+    right:20.5%;
+    padding:0 !important;
+    margin:8px !important;
+    font-weight:400 !important;
+    opacity:0.85 !important;
+}
+ .cardcontent{
+    padding:0 !important;
+    margin:8px !important;
+    font-weight:400 !important;
+    opacity:0.85 !important;
 }

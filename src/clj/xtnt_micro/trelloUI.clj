@@ -14,13 +14,14 @@
    [:head (include-css "css/trelloui.css" "css/skeleton31.css" "css/normalize31.css")
     [:title "TRELLO-UI"]
     [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
+    [:link {:href "https://fonts.googleapis.com/css?family=Lato&display=swap" :rel "stylesheet"}]
     ]
    [:body
     [:div.header
      [:button.home [:img {:src "https://i.imgur.com/XXI76iG.png" :width "20px"}]]
      [:button.boards [:img {:src "https://i.imgur.com/2g4jyx5.png" :width "20px"}] [:label "Boards"]]
      [:input#searchbar {:type "search"}]
-     [:h4.headtext [:img {:src "https://i.imgur.com/2g4jyx5.png" :width "25px"}]  "Trello"]
+     [:h4.headtext [:img#headimage {:src "https://i.imgur.com/2g4jyx5.png" :width "25px"}]  "Trello"]
      [:button#login  "P"]
      [:button#notification [:img {:src "https://i.imgur.com/tRhMR7B.png" :width "20px"}]]
      [:button#info [:img {:src "https://i.imgur.com/b6rSiOO.png" :width "20px"}]]
@@ -44,7 +45,23 @@
      [:button.showmenu [:img {:src "https://i.imgur.com/ZtVjj4S.png" :width "20px"}]  [:label "Show Menu"]]
      ]
     [:div.lists
-     [:button.addlist [:img {:src "https://i.imgur.com/eA0Kqb9.png" :width "14px"}] [:label "Add List"]]
+     [:div.addcard
+      [:div.cardhead
+       [:label "Team 1"]
+       [:img#expand {:src "https://i.imgur.com/ZtVjj4S.png" :width "20px"}]
+       ]
+      [:div.cards1
+       [:p.cardcontent "Bomb Diffuser : RP"]
+       ]
+      [:div.cards
+       [:p.cardcontent "Diffusal Squad : PM, SM, SJ, SK"]
+       ]
+      [:div.newcard
+       [:img {:src "https://i.imgur.com/eA0Kqb9.png" :width "13px"}]
+       [:p "Add another card"]
+       ]
+      ]
+     [:button.addlist [:img {:src "https://i.imgur.com/eA0Kqb9.png" :width "13px"}] [:label "Add List"]]
      ]
     ]
    )
