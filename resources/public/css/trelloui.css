@@ -1,14 +1,18 @@
 body{
-    font-family: 'Lato', sans-serif !important;
+    font-family: 'Segoe UI', sans-serif !important;
+    letter-spacing:0em;
 }
 
- h4{
-    font-family: 'Lato', sans-serif !important;
+h4{
+    font-size:22px !important;
+     font-family:'Segoe UI', sans-serif !important;
 }
 
-button,p,label{
-    font-weight:600 !important;
-    font-size:14px;
+
+
+ button,p,label{
+     font-weight:600 !important;
+     font-size:14px !important;
 }
 
 html{
@@ -30,6 +34,8 @@ body{
     padding:4px;
 }
 #login{
+    font-weight:700 !important;
+    padding:2px 7px 2px 7px !important;
     border-radius:100%;
     margin-right: 8px !important
 }
@@ -40,11 +46,10 @@ body{
 
  .header{
      background-color:rgba(0,0,0,0.1);
-     height:38px;
+     height:34px;
  }
 
   .headtext img{
-     padding-top:5px;
      padding-right:3px;
  }
 
@@ -58,7 +63,7 @@ body{
 
   #headimage{
       position:relative;
-      top:2px;
+      top:4px;
   }
 
 .header button,h4,input{
@@ -70,17 +75,32 @@ body{
     float:left;
 }
 
+.boards label{
+    font-weight:700 !important;
+    position:relative;
+    top:-1px;
+}
+
 .boards img{
-    padding-top:3px;
+    padding-right:7px;
+    padding-top:6px;
+}
+
+.teamvisible button{
+    padding-left:10px;
+    padding-right:10px;
 }
 
 .teamvisible img{
+    padding-right:5px;
+    position:relative;
+    top:5px;
     float:left;
 }
 
 .teamvisible label{
     position:relative;
-    bottom:4px;
+    top:0px;
 }
 
 .boards img,label{
@@ -126,14 +146,20 @@ body button{
 }
 
 #private{
-    padding-top:5px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:7px;
 }
 
 
 .vr{
-    padding-top:5px;
+    font-size:16px;
+    padding-top:4px;
 }
 
+#teamlogo1{
+    margin-left:5px !important;
+}
 
 .teamlogo{
     font-size:13px;
@@ -149,7 +175,7 @@ body button{
 }
 
 #tls {
-    margin-right:5px !important;
+    margin-right:10px !important;
     background-color:#bdc3c7;
 }
 
@@ -157,13 +183,16 @@ body button{
     background-image: url(https://i.imgur.com/2eH46DS.png);
     background-repeat: no-repeat;
     background-attachment: scroll;
-    background-position: 140px 7px;
+    background-position: 146px 7px;
     background-width:30px;
-    background-size: 22px;
+    background-size: 19px;
+    height:34px;
 }
 
 .invite{
-    padding-top:3px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:0;
     font-weight:600;
 }
 
@@ -175,10 +204,13 @@ body button{
 
 .showmenu label{
     position:relative;
-    bottom:3px;
+    bottom:1px;
 }
 
 .showmenu img{
+    padding-right:5px;
+    position:relative;
+    top:4px;
     float:left;
 }
 
@@ -192,7 +224,7 @@ body button{
 }
 
 .addlist{
-    padding:9px 180px 0 15px;
+    padding:9px 120px 0 15px;
 }
 
 .addlist img{
@@ -265,13 +297,16 @@ body button{
 }
 .cards1 .cardcontent{
     position:relative;
+    bottom:3px;
     right:20.5%;
     padding:0 !important;
     margin:8px !important;
     font-weight:400 !important;
     opacity:0.85 !important;
 }
- .cardcontent{
+.cardcontent{
+    position:relative;
+    bottom:3px;
     padding:0 !important;
     margin:8px !important;
     font-weight:400 !important;
