@@ -1,0 +1,314 @@
+body{
+    font-family: 'Segoe UI', sans-serif !important;
+    letter-spacing:0em;
+}
+
+h4{
+    font-size:22px !important;
+     font-family:'Segoe UI', sans-serif !important;
+}
+
+
+
+ button,p,label{
+     font-weight:600 !important;
+     font-size:14px !important;
+}
+
+html{
+    overflow-x:hidden;
+}
+
+body{
+    background-image: url('https://i.imgur.com/NQblVDp.jpg');
+    background-size:cover;
+    background-position: center;
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+    height:100%;
+}
+
+.header{
+    width:100%;
+    margin:0;
+    padding:4px;
+}
+#login{
+    font-weight:700 !important;
+    padding:2px 7px 2px 7px !important;
+    border-radius:100%;
+    margin-right: 8px !important
+}
+
+ button,input{
+    margin-right:5px !important;
+}
+
+ .header{
+     background-color:rgba(0,0,0,0.1);
+     height:34px;
+ }
+
+  .headtext img{
+     padding-right:3px;
+ }
+
+  .header  h4{
+      font-weight:400;
+      font-style:italic;
+      font-size:25px;
+    transform:translate(400%,0%);
+    margin:0 auto !important;
+}
+
+  #headimage{
+      position:relative;
+      top:4px;
+  }
+
+.header button,h4,input{
+    float:left;
+}
+
+.boards img,label{
+    padding:2px;
+    float:left;
+}
+
+.boards label{
+    font-weight:700 !important;
+    position:relative;
+    top:-1px;
+}
+
+.boards img{
+    padding-right:7px;
+    padding-top:6px;
+}
+
+.teamvisible button{
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.teamvisible img{
+    padding-right:5px;
+    position:relative;
+    top:5px;
+    float:left;
+}
+
+.teamvisible label{
+    position:relative;
+    top:0px;
+}
+
+.boards img,label{
+    position:relative;
+    bottom:4px;
+}
+
+#plus,#info,#notification,#login{
+    float:right;
+}
+
+#notification{
+    background-color:#e74c3c;
+}
+
+body button{
+    border:none;
+    background-color:#ecf0f1;
+}
+
+.teams{
+    margin:5px;
+    margin-bottom:0;
+    width:100%;
+    height:45px;
+    float:left;
+    display:block;
+}
+
+.teams h5,h6,p,button{
+    padding-top:2px;
+    display:block;
+    padding-right:5px;
+    float:left;
+}
+
+.teams #teamhead{
+    padding-top:4px;
+    font-weight:700 !important;
+    font-size: 18px;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+#private{
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:7px;
+}
+
+
+.vr{
+    font-size:16px;
+    padding-top:4px;
+}
+
+#teamlogo1{
+    margin-left:5px !important;
+}
+
+.teamlogo{
+    font-size:13px;
+    position:relative;
+    top:3px;
+    font-weight:600;
+    width:30px;
+    height:30px;
+    padding-bottom:2.5px !important;
+    margin:0 !important;
+    padding: 0;
+    border-radius:100%;
+    border:none;
+}
+
+#tls {
+    letter-spacing:0.5px;
+    font-weight:800 !important;
+    color:white;
+    font-size:13px !important;
+    margin-right:10px !important;
+    background-color:#95a5a6;
+}
+
+#searchbar {
+    background-image: url(https://i.imgur.com/2eH46DS.png);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 146px 7px;
+    background-width:30px;
+    background-size: 19px;
+    height:34px;
+}
+
+.invite{
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:0;
+    font-weight:600;
+}
+
+.showmenu{
+    position:relative;
+    right:4px;
+    float:right;
+}
+
+.showmenu label{
+    position:relative;
+    bottom:1px;
+}
+
+.showmenu img{
+    padding-right:5px;
+    position:relative;
+    top:4px;
+    float:left;
+}
+
+.list
+s{
+    width:100%;
+    margin:0 !important;
+}
+
+.addlist{
+    margin-left:10px;
+}
+
+.addlist{
+    padding:9px 120px 0 15px;
+}
+
+.addlist img{
+    padding-top:1.5px;
+    padding-right:4px;
+    float:left;
+}
+
+.addcard{
+    background-color:#ecf0f1;
+    border-radius:4px;
+    margin-left:10px;
+    float:left;
+    display:inline-block;
+    width:300px;
+    height:155px;
+}
+
+.cards1{
+    margin-top:20px !important;
+    margin:0 auto;
+    background-color:white;
+    border-radius:4px;
+    width:95%;
+    height:35px;
+    border-bottom:0.5px solid rgba(0,0,0,0.2);
+}
+
+.cards{
+    margin-top:7px !important;
+    margin:0 auto;
+    background-color:white;
+    border-radius:4px;
+    width:95%;
+    height:35px;
+    border-bottom:0.5px solid rgba(0,0,0,0.2);
+}
+
+.cardhead{
+    padding:10px;
+    margin-bottom:20px;
+}
+
+.cardhead img{
+    float:right;
+}
+
+.cardhead label{
+    padding-left:7px;
+}
+
+.newcard{
+    padding-top:4px;
+    padding-left:10px;
+    opacity:0.6;
+}
+
+.newcard img{
+    position:relative;
+    top:6px;
+    float:left;
+    padding-right:5px;
+}
+
+.newcard p{
+    font-weight:500 !important;
+}
+
+.cards1 p{
+    float:left;
+}
+
+
+.cardcontent{
+    position:relative;
+    bottom:3px;
+    padding:0 !important;
+    margin:8px !important;
+    font-weight:400 !important;
+    opacity:0.85 !important;
+}
