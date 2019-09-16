@@ -57,7 +57,7 @@
   (GET "/ws" [] ws-handler)
   (GET "/" [] (resp/resource-response "index.html" {:root "public"}))
   (GET "/newsfeed" [] news/feedfunc)
-  (GET "/trelloui" [] trlo/header)
+  (GET "/trelloui" [] trlo/trello_ui)
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 
