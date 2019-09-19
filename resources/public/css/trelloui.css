@@ -1,181 +1,363 @@
-body{
+/* GLOBAL STYLES */
+
+html,body{
     font-family: 'Segoe UI', sans-serif !important;
     letter-spacing:0em;
-}
-
-h4{
-    font-size:22px !important;
-     font-family:'Segoe UI', sans-serif !important;
-}
-
-
-
- button,p,label{
-     font-weight:600 !important;
-     font-size:14px !important;
-}
-
-html{
-    overflow-x:hidden;
-}
-
-body{
     background-image: url('https://i.imgur.com/NQblVDp.jpg');
     background-size:cover;
     background-position: center;
     background-attachment:fixed;
     background-repeat:no-repeat;
     height:100%;
+    overflow:hidden;
 }
 
+@media (max-width:375px){
+    html,body{
+        background-size:1100px 1000px;
+        background-position:right;
+    }
+}
+
+h4{
+    font-size:22px !important;
+    font-family:'Segoe UI', sans-serif !important;
+}
+
+button,p,label{
+    font-weight:600 !important;
+    font-size:14px !important;
+}
+
+div, h1,h2,h3,h4,h5,h6,a,p{
+    box-sizing: border-box;
+}
+
+span{
+    font-size:14px;
+}
+
+/* HEADER */
+
 .header{
+    position:relative;
     width:100%;
     margin:0;
+    margin-bottom:10px;
     padding:4px;
+    background-color:rgba(0,0,0,0.1); 
+    height:36px;
+}
+
+.block{
+    position:relative;
+    bottom:1.5px;
+    margin:3px;
+    background-color:#ecf0f1;
+    display:inline-block;
+    border-radius:4px;
+    text-align:center;
+    padding:3px 5px 3px 5px;
+}
+
+.block img{
+    height:22px;
+    width:auto;
+    vertical-align:-5px;
+}
+
+#home{
+    position:relative;
+    bottom:4px;
+    right:4px;
+}
+
+#boards{
+    position:relative;
+    bottom:4px;
+    right:5px;
+}
+
+#boards img{
+    padding-right:5px;
+}
+
+#boards span{
+    font-weight:700;
+    position:relative;
+    bottom:1px;
+}
+
+@media (max-width: 375px){
+    #boards span{
+        display:none;
+    }
+
+    #boards{
+        padding-right:0;
+    }
+}
+
+#searchbar {
+    position:relative;
+    bottom:4px;
+    right:3px;
+    background-image: url(https://i.imgur.com/2eH46DS.png);
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 167px 5px;
+    background-width:30px;
+    background-size: 19px;
+    height:17.1px;
+}
+
+@media (max-width:375px){
+    #searchbar{
+        width:3%;
+        background-position:5px 5px;
+        background-image:url(https://i.imgur.com/oHLdP4G.png);
+        background-color:#ecf0f1;
+        border:none;
+    }
+}
+
+.headtext{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    font-weight:500 !important;
+    font-style:italic;
+    font-size:25px;
+    text-align:center;
+    z-index:0
+}
+
+@media (max-width: 375px){
+    .headtext{
+        position:absolute;
+        left:-24px;
+            }
+}
+
+#headimage{
+    position:relative;
+    top:4px;
+    padding-right:3px;
+}
+
+.menu{
+    position:absolute;
+    right:0px;
+    top:1px;
+
 }
 #login{
     font-weight:700 !important;
-    padding:2px 7px 2px 7px !important;
+    padding:3px 4px 3px 4px !important;
     border-radius:100%;
     margin-right: 8px !important
-}
-
- button,input{
-    margin-right:5px !important;
-}
-
- .header{
-     background-color:rgba(0,0,0,0.1);
-     height:34px;
- }
-
-  .headtext img{
-     padding-right:3px;
- }
-
-  .header  h4{
-      font-weight:400;
-      font-style:italic;
-      font-size:25px;
-    transform:translate(400%,0%);
-    margin:0 auto !important;
-}
-
-  #headimage{
-      position:relative;
-      top:4px;
-  }
-
-.header button,h4,input{
-    float:left;
-}
-
-.boards img,label{
-    padding:2px;
-    float:left;
-}
-
-.boards label{
-    font-weight:700 !important;
-    position:relative;
-    top:-1px;
-}
-
-.boards img{
-    padding-right:7px;
-    padding-top:6px;
-}
-
-.teamvisible button{
-    padding-left:10px;
-    padding-right:10px;
-}
-
-.teamvisible img{
-    padding-right:5px;
-    position:relative;
-    top:5px;
-    float:left;
-}
-
-.teamvisible label{
-    position:relative;
-    top:0px;
-}
-
-.boards img,label{
-    position:relative;
-    bottom:4px;
-}
-
-#plus,#info,#notification,#login{
-    float:right;
 }
 
 #notification{
     background-color:#e74c3c;
 }
 
-body button{
-    border:none;
-    background-color:#ecf0f1;
-}
+/* TEAMS PANEL */
 
 .teams{
-    margin:5px;
+    position:relative;
+    margin-top:5px !important;
+    margin:0;
     margin-bottom:0;
     width:100%;
     height:45px;
-    float:left;
-    display:block;
+}
+
+@media (max-width:375px){
+    .teams{
+        width:96%;
+        margin-left:10px;
+        height:110px;
+        display:block;
+    }
 }
 
 .teams h5,h6,p,button{
     padding-top:2px;
-    display:block;
+    display:inline-block;
     padding-right:5px;
-    float:left;
+
 }
 
 .teams #teamhead{
+    display:inline-block;
     padding-top:4px;
     font-weight:700 !important;
     font-size: 18px;
     padding-left:20px;
     padding-right:20px;
+    position:relative;
+    top:-2px;
 }
 
+@media (max-width:375px){
+    #teamhead{
+        position:relative;
+        top:-2px;
+        margin-bottom:0;
+        display:block;
+    }
+}
+
+.board_title{
+    height:30px;
+    display:inline-block;
+}
+
+#star{
+    position:relative;
+    bottom:3px;
+}
+
+#star img{
+    padding:1px 3px 1px 3px !important;
+    position:relative;
+    top:-2px;
+    width:16px;
+    height:16px;
+}
+
+.block2{
+    position:relative;
+    bottom:1.5px;
+    margin:3px;
+    display:inline-block;
+    border-radius:4px;
+    text-align:center;
+    padding:3px 5px 3px 5px;
+}
+
+@media (max-width:375px){
+    .block2{
+        display:inline-block;
+    }
+}
+
+.team_buttons{
+    display:inline-block;
+}
+
+@media (max-width:375px){
+    .team_buttons{
+        display:block;
+    }
+}
 #private{
     padding-left:10px;
     padding-right:10px;
     padding-top:7px;
+    margin:0;
+}
+
+@media (max-width:375px){
+    #private{
+        padding:0;
+        margin:0 !important;
+    }
+}
+
+.teamvisible{
+    display:inline-block;
+    margin-right:20px !important;
+}
+
+.teamvisible img{
+    padding-right:5px;
+    position:relative;
+    top:-2px;
+    width:16px;
+    height:16px;
+}
+
+.teamvisible span{
+    font-weight:600;
+    padding-right:5px;
+  }
+
+@media (max-width:375px){
+    .teamvisible{
+
+    }
+}
+
+.left-border{
+    position:relative;
+    margin-left:15px;
+}
+
+.left-border::before{
+    display:block;
+    content:"";
+    height:17px;
+    width:1px;
+    position:absolute;
+    left:-10px;
+    margin:auto;
+    top:0;
+    bottom:0;
+    background:rgba(60,60,60,0.5);
 }
 
 
-.vr{
-    font-size:16px;
-    padding-top:4px;
+.right-border{
+    position:relative;
+    margin-right:15px;
 }
 
-#teamlogo1{
-    margin-left:5px !important;
+.right-border::after{
+    display:block;
+    content:"";
+    height:17px;
+    width:1px;
+    position:absolute;
+    right:-10px;
+    margin:auto;
+    top:0;
+    bottom:0;
+    background:rgba(60,60,60,0.5);
+}
+
+.playerlogo{
+    display:inline-block;
+    position:relative;
+    bottom:3px;
+}
+
+@media (max-width: 375px){
+    .playerlogo{
+        margin-left:3px;
+        margin-top:10px;
+    }
 }
 
 .teamlogo{
+    padding:4px 8px 5px 8px !important;
+    background-color:#ecf0f1;
+    display:inline-block;
     font-size:13px;
     position:relative;
-    top:3px;
     font-weight:600;
     width:30px;
     height:30px;
-    padding-bottom:2.5px !important;
     margin:0 !important;
-    padding: 0;
     border-radius:100%;
     border:none;
 }
 
 #tls {
+    padding:4px 8px 4px 6px !important;
     letter-spacing:0.5px;
     font-weight:800 !important;
     color:white;
@@ -184,70 +366,57 @@ body button{
     background-color:#95a5a6;
 }
 
-#searchbar {
-    background-image: url(https://i.imgur.com/2eH46DS.png);
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: 146px 7px;
-    background-width:30px;
-    background-size: 19px;
-    height:34px;
-}
 
 .invite{
     padding-left:10px;
     padding-right:10px;
-    padding-top:0;
+    padding-top:5px;
     font-weight:600;
+    font-size:14px;
 }
 
-.showmenu{
-    position:relative;
-    right:4px;
+.board_opts{ 
     float:right;
+    display:inline-block;
+    margin-right:10px;
 }
 
-.showmenu label{
-    position:relative;
-    bottom:1px;
+@media (max-width:375px){
+    .board_opts{
+        position:relative;
+        top:5px;
+    }
+}
+
+.showmenu span{
+    font-weight:600;
+    padding-right:7px;
 }
 
 .showmenu img{
+    width:20px;
     padding-right:5px;
     position:relative;
-    top:4px;
-    float:left;
+    top:1px;
 }
 
-.list
-s{
-    width:100%;
-    margin:0 !important;
-}
+/* BOARDS */
 
-.addlist{
-    margin-left:10px;
-}
-
-.addlist{
-    padding:9px 120px 0 15px;
-}
-
-.addlist img{
-    padding-top:1.5px;
-    padding-right:4px;
-    float:left;
+.boards img,label{
+    position:relative;
+    bottom:4px;
 }
 
 .addcard{
     background-color:#ecf0f1;
     border-radius:4px;
     margin-left:10px;
-    float:left;
     display:inline-block;
     width:300px;
     height:155px;
+    margin-bottom:7px;
 }
+
 
 .cards1{
     margin-top:20px !important;
@@ -271,15 +440,18 @@ s{
 
 .cardhead{
     padding:10px;
-    margin-bottom:20px;
+    height:35px;
 }
 
-.cardhead img{
-    float:right;
-}
 
 .cardhead label{
-    padding-left:7px;
+    padding-top:5px;
+}
+
+#expand{
+    position:relative;
+    bottom:30px;
+    left:265px;
 }
 
 .newcard{
@@ -290,19 +462,13 @@ s{
 
 .newcard img{
     position:relative;
-    top:6px;
-    float:left;
+    top:1px;
     padding-right:5px;
 }
 
 .newcard p{
     font-weight:500 !important;
 }
-
-.cards1 p{
-    float:left;
-}
-
 
 .cardcontent{
     position:relative;
@@ -311,4 +477,40 @@ s{
     margin:8px !important;
     font-weight:400 !important;
     opacity:0.85 !important;
+}
+
+.list-container{
+    height:100%;
+    width:100%;
+    overflow-x:auto;
+}
+
+.lists{
+    position:relative;
+    display:block;
+    width:100%;
+}
+
+.addlist{
+    position:relative;
+    vertical-align:top;
+    margin-left:10px;
+    background-color:#ecf0f1;
+    border-radius:4px;
+    height:42px;
+    width:300px;
+    display:inline-block;
+    padding:4px;
+}
+
+.addlist p{
+    position:relative;
+    top:5px;
+}
+
+.addlist img{
+    position:relative;
+    top:6px;
+    padding-left:5px;
+    padding-right:5px;
 }
