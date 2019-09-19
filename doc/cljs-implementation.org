@@ -87,7 +87,7 @@ The following is some example HTML to help you get started.
 The trickly part is the path to the ClojureScript bootstrap file. 
 The default output path is available at cljs-out/[build-id]-main.js. 
 
-So in this case it will be: cljs-out/dev-main.js
+So in this case it will be: cljs-out/dev-main.js. This cljs-out folder will be in ~xtnt-micro/target/public/cljs-out/~ after running ~cider-jack-in-cljs~
 
 #+ATTR_HTML: :textarea t :width 40
 #+BEGIN_EXAMPLE
@@ -103,7 +103,7 @@ So in this case it will be: cljs-out/dev-main.js
 #+END_EXAMPLE
 
 You can place CSS and other static assets in the resources/public directory.
-After implementing above all now we can run ~cider-jack-in-cljs~.
+After implementing above all now we can run ~lein run~ for the server followed by ~cider-jack-in-cljs~ for cljs-repl.
 Then we need to choose ~figwheel-main~ from the given list.
 Enter ~dev in mini-buffer~ when asked.
 
