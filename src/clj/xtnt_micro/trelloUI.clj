@@ -29,47 +29,47 @@
                                      :msg "Card Message 2"}}}))
 
 (defn head []
-  [:head (include-css "css/trelloui.css" "css/skeleton31.css" "css/normalize31.css")
+  [:head (include-css "css/trelloui.css" "css/skeleton.css" "css/normalize.css")
    [:title "TRELLO-UI"]
    [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
    [:link {:href "https://fonts.googleapis.com/css?family=Lato&display=swap" :rel "stylesheet"}]])
 
 (defn header []
   [:div.header
-   [:button.home [:img {:src "https://i.imgur.com/XXI76iG.png" :width "20px"}]]
-   [:button.boards [:img {:src "https://i.imgur.com/2g4jyx5.png" :width "20px"}] [:label "Boards"]]
+   [:div#home.block [:img {:src "https://i.imgur.com/XXI76iG.png" :width "20px"}]]
+   [:div#boards.block [:img {:src "https://i.imgur.com/2g4jyx5.png" :width "20px"}] [:span "Boards"]]
    [:input#searchbar {:type "search"}]
-   [:h4.headtext [:img#headimage {:src "https://i.imgur.com/2g4jyx5.png" :width "25px"}]  "Trello"]
-   [:button#login  "PM"]
-   [:button#notification [:img {:src "https://i.imgur.com/tRhMR7B.png" :width "20px"}]]
-   [:button#info [:img {:src "https://i.imgur.com/b6rSiOO.png" :width "20px"}]]
-   [:button#plus [:img {:src "https://i.imgur.com/eA0Kqb9.png" :width "20px"}]]])
+   [:h4.headtext
+    [:img#headimage {:src "https://i.imgur.com/2g4jyx5.png" :width "25px"}]  "Trello"]
+   [:div.menu
+    [:div#plus.block [:img {:src "https://i.imgur.com/eA0Kqb9.png" :width "20px"}]]
+    [:div#info.block [:img {:src "https://i.imgur.com/b6rSiOO.png" :width "20px"}]]
+    [:div#notification.block [:img {:src "https://i.imgur.com/tRhMR7B.png" :width "20px"}]]
+    [:div#login.block  "PM"]]])
 
 ;; board dom - remove vr, use border right instead
 (defn board_title []
   [:div.board_title
-  [:h5#teamhead (:board @state)]
-  [:button#star [:img {:src "https://i.imgur.com/XKQEePC.png" :width "16px"}]]
-  [:h6.vr "|"]
-  [:p#private "Private Team"]
-  [:h6.vr "|"]
-  [:button.teamvisible [:img {:src "https://i.imgur.com/xKYMuLH.png" :width "16px"}]  [:label "Team Visible"]]
-  [:h6.vr "|"]])
+   [:h5#teamhead (:board @state)]
+   [:div#star.block [:img {:src "https://i.imgur.com/XKQEePC.png" :width "16px"}]]
+   [:div.team_buttons
+    [:div.block2.right-border.left-border [:p#private "Private Team"]]
+    [:div.block.teamvisible.right-border [:img {:src "https://i.imgur.com/xKYMuLH.png" :width "16px"}]  [:span "Team Visible"]]]])
 
 (defn players []
-  (map #(identity [:button.teamlogo %]) (-> @state :team :players)))
+  (map #(identity [:div.teamlogo %]) (-> @state :team :players)))
 
 (defn board_opts []
-  [:div.board_opts 
-  [:button.invite "Invite"]
-  [:button.showmenu [:img {:src "https://i.imgur.com/ZtVjj4S.png" :width "16px"}]  [:label "Show Menu"]]])
+  [:div.board_opts
+  [:div.block.showmenu [:img {:src "https://i.imgur.com/ZtVjj4S.png" :width "16px"}]  [:span "Show Menu"]]])
 
 (defn team []
   [:div.teams {}
    (board_title)
+   [:div.playerlogo
    (players)
-   [:button.teamlogo {:id "tls"} "+1
-"]
+    [:div.teamlogo {:id "tls"} "+1"]]
+   [:div.block.invite "Invite"]
    (board_opts)])
 
 (defn card [ob]
@@ -97,18 +97,27 @@
 (defn all-lists []
   (map list (-> @state :lists keys)))
 
+(defn board-width []
+  (->> @state :lists count inc (* 310)))
+
 (defn board []
-  [:div.lists
+  [:div.lists {:style (str "width:" (board-width) "px")}
    (all-lists)
+   [:div.addlist
+    [:div [:img {:src "https://i.imgur.com/eA0Kqb9.png" :width "13px"}]
+     [:p "Add another list"]]]])
 
+(defn trello_head []
+  [:head (head)])
 
-   [:button.addlist [:img {:src "https://i.imgur.com/eA0Kqb9.png" :width "13px"}]
-    [:label "Add another list"]]])
+(defn trello_body []
+  [:body
+   (header)
+   (team)
+   [:div.list-container (board)]])
 
 (defn trello_ui [request]
   (html5
-   [:body
-    (head)
-    (header)
-    (team)
-    (board)]))
+   [:html
+    (trello_head)
+    (trello_body)]))
