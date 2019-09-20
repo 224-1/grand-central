@@ -57,7 +57,7 @@
 
      :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
      ;; need to add the compliled assets to the :clean-targets
-     :clean-targets ^{:protect false} ["resources/public/cljs-out"
+     :clean-targets ^{:protect false} ["target/public/cljs-out"
                                        :target-path]}
 
 
