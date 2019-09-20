@@ -59,7 +59,7 @@ lein build-dev
 #+BEGIN_SRC
 :profiles
   {:dev
-   {:dependencies [[com.bhauman/figwheel-main "0.1.4"]
+   {:dependencies [[com.bhauman/figwheel-main "0.2.3"]
                    [com.bhauman/rebel-readline-cljs "0.1.4"]]}}
 #+END_SRC
 
