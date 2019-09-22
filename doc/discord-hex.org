@@ -1,0 +1,22 @@
+main-logo-outer-color: #36393F
+main-logo-inner-color/container2_words_selected: #DCDDDE
+container1_background: #202225
+icons_header_footer : #B9BBBE
+container1_icons : #43B581
+container2_background: #2F3136
+container2_words: #8E9297
+container3/header_background: #36393F
+container4: 
+footer-background:#292b2f
+searchbar: #202225
+messagebar:#40444B
+user_gray: #747F8D
+user_red: #F04747
+user_green: #43B581
+user_yellow: #FAA61A
+user_purple: #7289DA
+user_gray_offline: #444850
+user_red_offline: #69383B
+user_green_offline: #35584C
+user_yellow_offline: #6B542E
+user_purple_offline: #434B67
