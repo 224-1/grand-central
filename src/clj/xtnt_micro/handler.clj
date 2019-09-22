@@ -14,6 +14,7 @@
    [ring.middleware.reload :refer [wrap-reload]]
    [xtnt-micro.newsfeed :as news]
    [xtnt-micro.trelloui :as trlo]
+   [xtnt-micro.discordui :as dscrd]
    ))
 
 ; Use a transducer to append a unique id to each message
@@ -58,6 +59,7 @@
   (GET "/" [] (resp/resource-response "index.html" {:root "public"}))
   (GET "/newsfeed" [] news/feedfunc)
   (GET "/trelloui" [] trlo/trello_ui)
+  (GET "/discordui" [] dscrd/discord_ui)
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 
