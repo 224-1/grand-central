@@ -42,33 +42,27 @@
   [:head (include-css "css/discordui.css" "css/skeleton.css" "css/normalize.css")
    [:title "DISCORD-UI"]
    [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
-   [:link {:href "https://fonts.googleapis.com/css?family=Lato&display=swap" :rel "stylesheet"}]
-   ])
+   [:link {:href "https://fonts.googleapis.com/css?family=Lato&display=swap" :rel "stylesheet"}]])
 
 (defn home []
-  [:div.home.c1_ele [:img {:src "https://i.imgur.com/YD8cAku.png" :width "51px"}]]
-  )
+  [:div#home.c1_ele [:img {:src "https://i.imgur.com/YD8cAku.png" :width "51px"}]])
 
 (defn container_1 []
   [:div.container_1
    (home)
    [:hr.c1_hr ]
-   [:div.forge_channel.c1_ele [:img {:src "https://i.imgur.com/yFtFAQv.png" :width "51px"}]]
-   [:div.xtnt_channel.c1_ele [:img {:src "https://i.imgur.com/X95RxwR.png" :width "51px"}]]
-   [:div.plus_c1.c1_ele.c1_op [:img {:src "https://i.imgur.com/L0oSuHh.png" :width "22px"}]]
-   [:div.search_c1.c1_ele.c1_op [:img {:src "https://i.imgur.com/bBN1Xwg.png" :width "22px"}]]
+   [:div#forge_channel.c1_ele [:img {:src "https://i.imgur.com/5Nddaj9.png" :width "51px"}]]
+   [:div#xtnt_channel.c1_ele.left-border [:img {:src "https://i.imgur.com/5qpZZMo.png" :width "51px" :style "border-radius:15px;"}]]
+   [:div#plus_c1.c1_ele.c1_op [:img {:src "https://i.imgur.com/L0oSuHh.png" :width "22px"}]]
+   [:div#search_c1.c1_ele.c1_op [:img {:src "https://i.imgur.com/bBN1Xwg.png" :width "22px"}]]
    [:hr.c1_hr]
-   [:div.download_c1.c1_ele.c1_op [:img {:src "https://i.imgur.com/phXJURZ.png" :width "22px"}]]
-   ])
+   [:div#download_c1.c1_ele.c1_op [:img {:src "https://i.imgur.com/phXJURZ.png" :width "22px"}]]])
 
 (defn container_2_head []
   [:div.container_2_head
    [:div.c2_head
     [:p (-> @state :channel :xtnt :name)]
-    [:img#c2_expand {:src "https://i.imgur.com/Nzf1e1i.png" :width "24px"}]
-    ]
-   ]
-  )
+    [:img#c2_expand {:src "https://i.imgur.com/Nzf1e1i.png" :width "24px"}]]])
 
 (defn container_2_rooms []
   (map #(identity [:div.c2_rooms
@@ -91,9 +85,9 @@
     [:p#c2_username (:user_name @state)]
     [:p#c2_userid (:user_id @state) ]
     ]
-   [:div.settings.c2_footer_icon [:img {:src "https://i.imgur.com/eBKL08g.png" :width "19px"}]]
-   [:div.headphones.c2_footer_icon [:img {:src "https://i.imgur.com/BMf07ds.png" :width "19px"}]]
-   [:div.mic.c2_footer_icon [:img {:src "https://i.imgur.com/aSmfWmk.png" :width "19px"}]]
+   [:div#settings.c2_footer_icon [:img {:src "https://i.imgur.com/eBKL08g.png" :width "19px"}]]
+   [:div#headphones.c2_footer_icon [:img {:src "https://i.imgur.com/BMf07ds.png" :width "19px"}]]
+   [:div#mic.c2_footer_icon [:img {:src "https://i.imgur.com/aSmfWmk.png" :width "19px"}]]
    ])
 
 (defn container_2 []
@@ -117,12 +111,12 @@
    [:img#mh_hash.mh_text {:src "https://i.imgur.com/N0zt5ji.png" :width "26px"}
      [:p#mh_p.mh_text (-> @state :channel :xtnt :room first)]]
    [:div.main_header_icons
-    [:div.help.mh_right_icon [:img {:src "https://i.imgur.com/OeBFn9V.png" :width "22px"}]]
-    [:div.mentions.mh_right_icon [:img {:src "https://i.imgur.com/PxV9PsS.png" :width "21px"}]]
-    [:input.searchbar.mh_right_icon {:type "search" :placeholder "Search"}]
-    [:div.members.mh_right_icon [:img {:src "https://i.imgur.com/FaMlvnI.png" :width "24px"}]]
-   [:div.pinned.mh_right_icon [:img {:src "https://i.imgur.com/xOeGTTW.png" :width "24px"}]]
-   [:div.notification.mh_right_icon [:img {:src "https://i.imgur.com/WFH5qXj.png" :width "24px"}]]]])
+    [:div#help.mh_right_icon [:img {:src "https://i.imgur.com/OeBFn9V.png" :width "22px"}]]
+    [:div#mentions.mh_right_icon [:img {:src "https://i.imgur.com/PxV9PsS.png" :width "21px"}]]
+    [:input#searchbar.mh_right_icon {:type "search" :placeholder "Search"}]
+    [:div#members.mh_right_icon [:img {:src "https://i.imgur.com/FaMlvnI.png" :width "24px"}]]
+   [:div#pinned.mh_right_icon [:img {:src "https://i.imgur.com/xOeGTTW.png" :width "24px"}]]
+   [:div#notification.mh_right_icon [:img {:src "https://i.imgur.com/WFH5qXj.png" :width "24px"}]]]])
 
 (defn chat_holder []
   [:div.chat_holder
@@ -133,7 +127,7 @@
    [:div.chat_received
     [:div.chat_received_head
      [:img#chat_userlogo {:src "https://i.imgur.com/APLLPNU.png" :width "25px"}]
-     [:p#chat_username "Parikshith"]
+     [:p#chat_username (:user_name @state)]
      [:p#chat_content_head "[224-1/xtnt-micro] New comment on issue #35: Migrate trello page from clojure to clojurescript"]
      [:div#chat_content
      [:p "@azureus89 tried with trampoline also,followed the steps cider-jack-in-cljs -->figwheel-main later dev,Error"]
@@ -154,11 +148,11 @@ Don't know how to create ISeq from: clojure.lang.Keyword"]
     (chat_holder)
     ]
    [:div.messaging
-    [:div.plus_c3 [:img {:src "https://i.imgur.com/KNUm5uW.png" :width "24px"}]]
-    [:div.type_message [:input {:type "text" :placeholder "Message #xtnt-micro"}]]
-    [:div.smiley_c3.messaging_right_icon [:img {:src "https://i.imgur.com/jYWODeK.png" :width "24px"}]]
-    [:div.gif_c3.messaging_right_icon [:img {:src "https://i.imgur.com/FKFEuzz.png" :width "40px"}]]
-    [:div.gift_c3.messaging_right_icon [:img {:src "https://i.imgur.com/ZOUVr8g.png" :width "23px"}]]]])
+    [:div#plus_c3 [:img {:src "https://i.imgur.com/KNUm5uW.png" :width "24px"}]]
+    [:div#type_message [:input {:type "text" :placeholder "Message #xtnt-micro"}]]
+    [:div#smiley_c3.messaging_right_icon [:img {:src "https://i.imgur.com/jYWODeK.png" :width "24px"}]]
+    [:div#gif_c3.messaging_right_icon [:img {:src "https://i.imgur.com/FKFEuzz.png" :width "40px"}]]
+    [:div#gift_c3.messaging_right_icon [:img {:src "https://i.imgur.com/ZOUVr8g.png" :width "23px"}]]]])
 
 (defn rand-logo []
   (rand-nth (-> @state :logos)))

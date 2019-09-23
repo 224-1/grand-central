@@ -42,6 +42,25 @@ p{
     padding:14px 2px 2px 14px
 }
 
+.left-border{
+    position:relative;
+    margin-left:0;
+}
+
+.left-border::before{
+    display:block;
+    content:"";
+    height:38px;
+    width:5px;
+    position:absolute;
+    left:-12px;
+    margin:auto;
+    top:0;
+    border-radius:15px;
+    bottom:8px;
+    background:#fcfcfc;
+}
+
 .container_2 {
     position:absolute;
     top:0;
@@ -59,16 +78,11 @@ p{
 }
 
 .c2_channels{
-    height:100%;
+    height:85%;
     overflow-y:auto;
 }
 
 .c2_channels::-webkit-scrollbar { width: 0 !important}
-
-.voice_channel{
-    position:relative;
-    bottom:6px;
-}
 
 .container_2_footer{
     position:absolute;
@@ -94,7 +108,6 @@ p{
 
 .c2_ir_head{
     text-transform: uppercase;
-    display:inlin-block !important;
     color:#8E9297 !important;
     margin:5px !important;
     margin-top:18px !important;
@@ -112,6 +125,16 @@ p{
     position:absolute;
     left:17px;
     word-spacing:1px;
+}
+
+.interaction_room p{
+    position:reltive !important;
+    top:66px;
+}
+
+.voice_channel{
+    position:relative;
+    bottom:6px;
 }
 
 .c2_rooms {
@@ -136,7 +159,6 @@ p{
     font-weight:600 !important;
     padding:0;
 }
-
 
 .c2_footer_icon{
     float:right;
@@ -196,23 +218,22 @@ p{
     z-index:1;
 }
 
-
 .mh_right_icon{
     padding:10px 17px 0px 0;
     display:inline-block !important;
     float:right;
 }
 
-.help{
+#help{
     position:relative;
     top:2px;
 }
 
-.mentions{
+#mentions{
     padding-top:12px;
 }
 
-.searchbar{
+#searchbar{
     font-size:13px;
     font-weight:600 !important;
     position:relative;
@@ -230,11 +251,10 @@ p{
     width:123px;
 }
 
-.searchbar::placeholder{
+#searchbar::placeholder{
     position:relative;
     right:5px;
 }
-
 
 .mh_text{
     z-index:-1;
@@ -314,6 +334,9 @@ p{
     margin-left:58px;
     height:290px;
     border-left:5px solid #e68d60;
+    border-top:1px solid #313338;
+    border-right:1px solid #313338;
+    border-bottom:1px solid #313338;
     border-radius:4px;
     background-color:#34363c;
 }
@@ -366,7 +389,7 @@ p{
     border:none;
 }
 
-.plus_c3{
+#plus_c3{
     height:33px;
     display:inline-block !important;
     padding-top:10px;
@@ -375,7 +398,7 @@ p{
     border-right:1px solid #36393f;
 }
 
-.type_message{
+#type_message{
     display:inline-block;
     vertical-align:top;
     margin-top:3px;
@@ -384,7 +407,7 @@ p{
     border:none;
 }
 
-.type_message input{
+#type_message input{
     width:550px;
     background-color:#40444b !important;
     border:none !important;
@@ -399,7 +422,7 @@ p{
     margin-right:10px;
 }
 
-.gif_c3{
+#gif_c3{
     position:relative;
     bottom:8px;
 }
