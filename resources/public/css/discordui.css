@@ -106,20 +106,20 @@ p{
     top:11px;
 }
 
-.c2_ir_head{
+.c2_channel_heads{
     text-transform: uppercase;
     color:#8E9297 !important;
     margin:5px !important;
     margin-top:18px !important;
 }
 
-.c2_ir_head img{
+.c2_channel_heads img{
     position:relative;
     right:3px;
     bottom:1px;
 }
 
-.c2_ir_head p{
+.c2_channel_heads p{
     display:inline-block;
     font-size:12px !important;
     position:absolute;
@@ -256,7 +256,7 @@ p{
     right:5px;
 }
 
-.mh_text{
+.mh_channel_name{
     z-index:-1;
     position:absolute;
     left:327px;

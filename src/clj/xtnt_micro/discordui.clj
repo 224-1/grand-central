@@ -12,7 +12,6 @@
             {:user_name "Parikshith"
              :user_id "#6228"
              :user_logo "https://i.imgur.com/6SRX0td.png"
-             :home "Home"
              :channel {:xtnt{:name "XTNT"
                              :room ["xtnt-micro","horizon","horizon-system-t","horizon-t19","dev-support","lounge","forge-music","forge-controller"]
                              :voice
@@ -67,15 +66,13 @@
 (defn container_2_rooms []
   (map #(identity [:div.c2_rooms
                    [:img {:src "https://i.imgur.com/N0zt5ji.png" :width "23px"} [:ul [:li %]]]
-                   [:br]
-                   ])
+                   [:br]])
        (-> @state :channel :xtnt :room)))
 
 (defn container_2_voices []
   (map #(identity [:div.c2_rooms
                    [:img {:src "https://i.imgur.com/wpabDPl.png" :width "23px"} [:ul [:li %]]]
-                   [:br]
-                   ])
+                   [:br]])
        (-> @state :channel :xtnt :voice)))
 
 (defn container_2_footer []
@@ -83,8 +80,7 @@
    [:div.user_details
     [:img#c2_userlogo {:src (:user_logo @state) :width "35px"}]
     [:p#c2_username (:user_name @state)]
-    [:p#c2_userid (:user_id @state) ]
-    ]
+    [:p#c2_userid (:user_id @state)]]
    [:div#settings.c2_footer_icon [:img {:src "https://i.imgur.com/eBKL08g.png" :width "19px"}]]
    [:div#headphones.c2_footer_icon [:img {:src "https://i.imgur.com/BMf07ds.png" :width "19px"}]]
    [:div#mic.c2_footer_icon [:img {:src "https://i.imgur.com/aSmfWmk.png" :width "19px"}]]
@@ -95,12 +91,12 @@
    (container_2_head)
    [:div.c2_channels
     [:div.interaction_room
-     [:div.c2_ir_head
+     [:div.c2_channel_heads
       [:img {:src "https://i.imgur.com/oRG1PtF.png" :width "14px"}]
       [:p "interaction room"]]
      (container_2_rooms)]
     [:div.voice_channel
-     [:div.c2_vc_head.c2_ir_head
+     [:div.c2_channel_heads
       [:img {:src "https://i.imgur.com/oRG1PtF.png" :width "14px"}]
       [:p "voice channels"]]
      (container_2_voices)]]
@@ -108,8 +104,8 @@
 
 (defn main_header []
   [:div.main_header
-   [:img#mh_hash.mh_text {:src "https://i.imgur.com/N0zt5ji.png" :width "26px"}
-     [:p#mh_p.mh_text (-> @state :channel :xtnt :room first)]]
+   [:img#mh_hash.mh_channel_name {:src "https://i.imgur.com/N0zt5ji.png" :width "26px"}
+     [:p#mh_p.mh_channel_name (-> @state :channel :xtnt :room first)]]
    [:div.main_header_icons
     [:div#help.mh_right_icon [:img {:src "https://i.imgur.com/OeBFn9V.png" :width "22px"}]]
     [:div#mentions.mh_right_icon [:img {:src "https://i.imgur.com/PxV9PsS.png" :width "21px"}]]
