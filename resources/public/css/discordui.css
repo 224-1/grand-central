@@ -20,6 +20,14 @@ p{
     background-color:#202225;
 }
 
+#home{
+    width:51px;
+    height:58px;
+    background-image:url(https://i.imgur.com/YD8cAku.png);
+    background-size:51px;
+    background-repeat: no-repeat;
+}
+
 .c1_hr{
     margin-top: 0px !important;
     margin-bottom: 0.6rem !important;
@@ -28,19 +36,24 @@ p{
     opacity:0.1;
 }
 
-.c1_op{
-    display:block;
-    width:50px;
-    height:50px;
-    border:none;
-    border-radius:100%;
-    background-color: #36393F;
-    margin-bottom:10px;
+#forge_channel{
+    width:51px;
+    height:58px;
+    background-image:url(https://i.imgur.com/5Nddaj9.png);
+    background-size:51px;
+    background-repeat:no-repeat;
 }
 
-.c1_op img{
-    padding:14px 2px 2px 14px
+#xtnt_channel{
+    width:51px;
+    height:47px;
+    margin-bottom:9px;
+    background-image:url(https://i.imgur.com/5qpZZMo.png);
+    background-size:51px;
+    background-repeat:no-repeat;
+    border-radius:16px;
 }
+
 
 .left-border{
     position:relative;
@@ -51,14 +64,43 @@ p{
     display:block;
     content:"";
     height:38px;
-    width:5px;
+    width:6px;
     position:absolute;
     left:-12px;
     margin:auto;
-    top:0;
+    top:6px;
     border-radius:15px;
     bottom:8px;
     background:#fcfcfc;
+}
+
+.c1_op{
+    display:block;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:100%;
+    background-color: #36393F;
+    margin-bottom:10px;
+    background-position:14px 14px;
+    background-size:22px;
+    background-repeat:no-repeat;
+}
+
+.c1_op img{
+    padding:14px 2px 2px 14px
+}
+
+#plus_c1{
+    background-image:url(https://i.imgur.com/L0oSuHh.png);
+}
+
+#search_c1{
+    background-image:url(https://i.imgur.com/bBN1Xwg.png);
+}
+
+#download_c1{
+    background-image:url(https://i.imgur.com/phXJURZ.png);
 }
 
 .container_2 {
@@ -92,6 +134,7 @@ p{
     background-color:#292b2f;
 }
 
+
 .c2_head p{
     font-size:16px !important;
     color:#fcfcfc;
@@ -104,16 +147,28 @@ p{
     position:absolute;
     right:13px;
     top:11px;
+    background-image:url(https://i.imgur.com/YXBOGBm.png);
+    background-size:24px;
+    width:24px;
+    height:24px;
+    background-attachment:scroll;
+    background-repeat:no-repeat;
 }
 
 .c2_channel_heads{
     text-transform: uppercase;
     color:#8E9297 !important;
     margin:5px !important;
-    margin-top:18px !important;
+    margin-top:21px !important;
+    margin-bottom:14px !important;
 }
 
-.c2_channel_heads img{
+#channel_expand{
+    background-image:url(https://i.imgur.com/oRG1PtF.png);
+    background-size:14px;
+    width:14px;
+    height:14px;
+    background-repeat:no-repeat;
     position:relative;
     right:3px;
     bottom:1px;
@@ -137,6 +192,10 @@ p{
     bottom:6px;
 }
 
+.voice_channel p{
+    top:-2.5px;
+}
+
 .c2_rooms {
     display:inline;
 }
@@ -148,6 +207,7 @@ p{
 .c2_rooms ul{
     display:inline;
     margin:0;
+    margin-bottom:10px;
 }
 
 .c2_rooms li{
@@ -160,9 +220,31 @@ p{
     padding:0;
 }
 
+#channel_logo{
+    width:23px;
+}
+
 .c2_footer_icon{
     float:right;
     padding:17px 15px 0 0;
+    position:relative;
+    top:16px;
+    background-repeat:no-repeat;
+    width:19px;
+    height:19px;
+    background-size:19px;
+}
+
+#settings{
+    background-image:url(https://i.imgur.com/eBKL08g.png);
+}
+
+#headphones{
+    background-image:url(https://i.imgur.com/BMf07ds.png);
+}
+
+#mic{
+    background-image:url(https://i.imgur.com/aSmfWmk.png);
 }
 
 .user_details{
@@ -173,6 +255,7 @@ p{
 }
 
 #c2_userlogo{
+    width:35px;
     position:absolute;
     left:10px;
     top:3px;
@@ -209,6 +292,11 @@ p{
     height:48px;
 }
 
+#mh_hash{
+    width:26px;
+    height:26px;
+}
+
 .main_header_icons{
     float:right;
     background-color: #36393F;
@@ -222,14 +310,25 @@ p{
     padding:10px 17px 0px 0;
     display:inline-block !important;
     float:right;
+    background-repeat:no-repeat;
 }
 
 #help{
+    background-image:url(https://i.imgur.com/OeBFn9V.png);
+    background-size:22px;
+    background-position:0px 9px;
+    width:22px;
+    height:22px;
     position:relative;
     top:2px;
 }
 
 #mentions{
+    background-image:url(https://i.imgur.com/PxV9PsS.png);
+    background-size:21px;
+    background-position:0px 12px;
+    width:21px;
+    height:21px;
     padding-top:12px;
 }
 
@@ -254,6 +353,30 @@ p{
 #searchbar::placeholder{
     position:relative;
     right:5px;
+}
+
+#members{
+    background-image:url(https://i.imgur.com/FaMlvnI.png);
+    background-size:24px;
+    background-position:0px 10px;
+    width:24px;
+    height:24px;
+}
+
+#pinned{
+    background-image:url(https://i.imgur.com/xOeGTTW.png);
+    background-size:24px;
+    background-position:0px 10px;
+    width:24px;
+    height:24px;
+}
+
+#notification{
+    background-image:url(https://i.imgur.com/WFH5qXj.png);
+    background-size:24px;
+    background-position:0px 10px;
+    width:24px;
+    height:24px;
 }
 
 .mh_channel_name{
@@ -300,17 +423,31 @@ p{
 }
 
 #github_img{
+    background-image:url(https://i.imgur.com/QCHNgYc.png);
+    background-size:40px;
+    background-repeat:no-repeat;
+    width:40px;
+    height:40px;
     position:relative;
     top:21px;
 }
 
 #github_tag{
     position:relative;
+    top:6px;
+}
+
+#github_tag p{
+    position:relative;
     right:628px;
     top:-30px;
     color:#fcfcfc;
     font-size:16px !important;
     font-weight:800 !important;
+}
+
+#github_tag img{
+    width:30px;
 }
 
 #github_head img{
@@ -325,12 +462,13 @@ p{
     color:#8E9297;
     position:relative;
     right:420px;
-    top:-25px;
+    top:-19px;
 }
 
 .chat_received{
     width:68%;
     position:relative;
+    top:6px;
     margin-left:58px;
     height:290px;
     border-left:5px solid #e68d60;
@@ -342,6 +480,11 @@ p{
 }
 
 #chat_userlogo{
+    background-image:url(https://i.imgur.com/APLLPNU.png);
+    background-repeat:no-repeat;
+    background-size:25px;
+    height:25px;
+    width:25px;
     position:relative;
     top:10px;
     left:10px;
@@ -390,6 +533,11 @@ p{
 }
 
 #plus_c3{
+    background-image:url(https://i.imgur.com/KNUm5uW.png);
+    background-size:24px;
+    background-repeat:no-repeat;
+    background-position:0px 9px;
+    width:24px;
     height:33px;
     display:inline-block !important;
     padding-top:10px;
@@ -422,9 +570,30 @@ p{
     margin-right:10px;
 }
 
+#smiley_c3{
+    background-image:url(https://i.imgur.com/jYWODeK.png);
+    background-size:24px;
+    background-repeat:no-repeat;
+    width:24px;
+    height:24px;
+}
+
 #gif_c3{
+    background-image:url(https://i.imgur.com/FKFEuzz.png);
+    background-size:40px;
+    background-repeat:no-repeat;
+    width:40px;
+    height:33px;
     position:relative;
     bottom:8px;
+}
+
+#gift_c3{
+    background-image:url(https://i.imgur.com/ZOUVr8g.png);
+    background-size:23px;
+    background-repeat:no-repeat;
+    width:23px;
+    height:33px;
 }
 
 .container_4{
@@ -441,120 +610,54 @@ p{
 
 .container_4::-webkit-scrollbar { width: 0 !important}
 
-
 .c4_header{
-    overflow-y:auto;
     position:absolute;
     left:14px;
     color:#8E9297;
     font-size:12px !important;
     text-transform: uppercase;
-    display:inlin-block !important;
     margin:5px !important;
     margin-top:22px !important;
     font-weight:900 !important;
 }
 
-.product_members{
+#member_logo{
+    width:35px;
+}
+
+.members_list{
+    width:100%;
+    height:1px solid 
+}
+
+.members_content{
     position:relative;
     top:45px;
     padding-top:2px;
+    display:inline;
 }
 
-.product_members img{
+.members_content img{
     position:relative;
-    left:17px;
-}
+    left:17px;}
 
-.product_members p{
+.members_content p{
     display:inline-block;
     position:absolute;
     left:64px;
     text-decoration:none;
     font-size:15px !important;
     font-weight:600 !important;
-    padding-top:4px;
-}
+    padding-top:4px;}
 
-.dev_c4{
-    display:inline-block;
-}
+.product{
+    height:125px;}
 
-#dev_p{
-    margin-top:64px !important;
-}
+.dev{
+    height:210px;}
 
-.dev_members{
-    position:relative;
-    top:64px;
-    padding-top:2px;
-}
+.intern{
+    height:170px;}
 
-.dev_members img{
-    position:relative;
-    left:17px;
-    top:23px;
-}
-
-.dev_members p{
-    display:inline-block;
-    position:absolute;
-    left:64px;
-    text-decoration:none;
-    font-size:15px !important;
-    font-weight:600 !important;
-    padding-top:27px;
-}
-
-#intern_p{
-    margin-top:102px !important;
-}
-
-.intern_members{
-    position:relative;
-    top:84px;
-    padding-top:2px;
-}
-
-.intern_members img{
-    position:relative;
-    left:17px;
-    top:43px;
-}
-
-.intern_members p{
-    display:inline-block;
-    position:absolute;
-    left:64px;
-    text-decoration:none;
-    font-size:15px !important;
-    font-weight:600 !important;
-    padding-top:47px;
-}
-
-#offline_p{
-    margin-top:142px !important;
-}
-
-.offline_members{
-    opacity:0.3;
-    position:relative;
-    top:104px;
-    padding-top:2px;
-}
-
-.offline_members img{
-    position:relative;
-    left:17px;
-    top:63px;
-}
-
-.offline_members p{
-    display:inline-block;
-    position:absolute;
-    left:64px;
-    text-decoration:none;
-    font-size:15px !important;
-    font-weight:600 !important;
-    padding-top:67px;
-}
+#offline{
+    opacity:0.3;}
