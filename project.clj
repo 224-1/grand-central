@@ -51,13 +51,13 @@
                          :compiler
                           {:main xtnt-micro.core
                            :asset-path "cljs-out/dev"
-                           :output-to "resources/public/cljs-out/dev-main.js"
-                           :output-dir "resources/public/cljs-out/dev"
+                           :output-to "target/public/cljs-out/dev-main.js"
+                           :output-dir "target/public/cljs-out/dev"
                            :source-map-timestamp true}}}}
 
      :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
      ;; need to add the compliled assets to the :clean-targets
-     :clean-targets ^{:protect false} ["resources/public/cljs-out"
+     :clean-targets ^{:protect false} ["target/public/cljs-out"
                                        :target-path]}
 
 
@@ -68,9 +68,9 @@
                {:builds {:min
                          {:source-paths ["src/cljs"]
                           :compiler
-                           {:output-to "resources/public/cljs-out/dev-main.js"
+                          {:output-to "target/public/cljs-out/dev-main.js"
                             :asset-path "cljs-out/dev"
-                            :output-dir "resources/public/cljs-out/dev"
+                           :output-dir "target/public/cljs-out/dev"
                             :main xtnt-micro.core
                             :optimizations :advanced
                             :pretty-print false }}}}}})
