@@ -1,8 +1,7 @@
 (ns xtnt-micro.core
   (:require [reagent.core :as reagent :refer [atom]]
             [chord.client :refer [ws-ch]]
-            [cljs.core.async :as async :include-macros true]
-            [xtnt-micro.trelloui :as trlo-rgnt]))
+            [cljs.core.async :as async :include-macros true]))
 
 (goog-define ws-url "ws://localhost:8000/ws")
 
@@ -129,4 +128,3 @@
 (reagent/render-component [app-container]
                           (. js/document (getElementById "app")))
 
-(trlo-rgnt/mount-app-element)

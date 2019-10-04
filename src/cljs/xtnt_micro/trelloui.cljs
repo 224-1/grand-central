@@ -3,7 +3,7 @@
             [reagent.core :as r :refer [atom]]))
 
 (defn hello []
-  (js/console.log "as"))
+  (js/alert "as"))
 
 (hello)
 
