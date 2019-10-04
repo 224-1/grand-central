@@ -8,56 +8,71 @@
             [ring.middleware.reload :refer [wrap-reload]]))
 
 (def active-server (atom :0))
-(defonce state (atom {:user_name "Parikshith"
-               :user_id "#6228"
-               :user_logo "https://i.imgur.com/6SRX0td.png"
-               :server {:0 {:name "XTNT"
-                            :rooms {:name "Interaction room"
-                                    :list {:0 "xtnt-micro"
-                                           :1 "horizon"
-                                           :2 "horizon-system-t"
-                                           :3 "horizon-t15"
-                                           :4 "dev-support"
-                                           :5 "lounge"
-                                           :6 "forge-music"
-                                           :7 "forge-controller"}
-                                    :active :0
-                                    :logo "https://i.imgur.com/N0zt5ji.png"}
-                            :voice {:name "voice channel"
-                                    :list {:0 "lounge"
-                                           :1 "support"
-                                           :2 "training"
-                                           :3 "dev"
-                                           :4 "r&d"
-                                           :5 "ui/ux"
-                                           :6 "backend & db"}
-                                    :active nil
-                                    :logo "https://i.imgur.com/wpabDPl.png"}}}
-               :members{:product ["azureus","hobbes"]
-                        :dev ["Parikshith","Vikram","kavya","baishakhi"]
-                        :intern ["Noobno1","cheesepopcorn99","vazir"]
-                        :offline ["Amadeus","GSD47","Vicaay","Sushil"]}
-               :logos {:azureus "https://i.imgur.com/zn6kLLT.png"
-                       :hobbes "https://i.imgur.com/0FBdAYu.png"
-                       :Parikshith "https://i.imgur.com/S1Tc0oi.png"
-                       :Vikram "https://i.imgur.com/NUNWrWP.png"
-                       :kavya "https://i.imgur.com/8A9JwAO.png"
-                       :baishakhi "https://i.imgur.com/zn6kLLT.png"
-                       :Noobno1 "https://i.imgur.com/0FBdAYu.png" 
-                       :cheesepopcorn99 "https://i.imgur.com/zn6kLLT.png"
-                       :vazir "https://i.imgur.com/zn6kLLT.png"
-                       :Amadeus "https://i.imgur.com/8A9JwAO.png"
-                       :GSD47 "https://i.imgur.com/NUNWrWP.png"
-                       :Vicaay "https://i.imgur.com/S1Tc0oi.png"
-                       :Sushil "https://i.imgur.com/0FBdAYu.png"}
-               :color ["#e01f63","#117e67","#8E9297","#9b59b6","#3397da"]}))
+(def state (atom {:user_name "Parikshith"
+                      :user_id "#6228"
+                      :user_logo "https://i.imgur.com/6SRX0td.png"
+                      :server {:0 {:name "XTNT"
+                                   :rooms {:name "Interaction room"
+                                           :list {:0 "xtnt-micro"
+                                                  :1 "horizon"
+                                                  :2 "horizon-system-t"
+                                                  :3 "horizon-t15"
+                                                  :4 "dev-support"
+                                                  :5 "lounge"
+                                                  :6 "forge-music"
+                                                  :7 "forge-controller"}
+                                           :active :0
+                                           :logo "https://i.imgur.com/N0zt5ji.png"}
+                                   :voice {:name "voice channel"
+                                           :list {:0 "lounge"
+                                                  :1 "support"
+                                                  :2 "training"
+                                                  :3 "dev"
+                                                  :4 "r&d"
+                                                  :5 "ui/ux"
+                                                  :6 "backend & db"}
+                                           :active nil
+                                           :logo "https://i.imgur.com/wpabDPl.png"}}}
+                      :members{:product ["azureus","hobbes"]
+                               :dev ["Parikshith","Vikram","kavya","baishakhi"]
+                               :intern ["Noobno1","cheesepopcorn99","vazir"]
+                               :offline ["Amadeus","GSD47","Vicaay","Sushil"]}
+                      :logos {:azureus "https://i.imgur.com/zn6kLLT.png"
+                              :hobbes "https://i.imgur.com/0FBdAYu.png"
+                              :Parikshith "https://i.imgur.com/S1Tc0oi.png"
+                              :Vikram "https://i.imgur.com/NUNWrWP.png"
+                              :kavya "https://i.imgur.com/8A9JwAO.png"
+                              :baishakhi "https://i.imgur.com/zn6kLLT.png"
+                              :Noobno1 "https://i.imgur.com/0FBdAYu.png" 
+                              :cheesepopcorn99 "https://i.imgur.com/zn6kLLT.png"
+                              :vazir "https://i.imgur.com/zn6kLLT.png"
+                              :Amadeus "https://i.imgur.com/8A9JwAO.png"
+                              :GSD47 "https://i.imgur.com/NUNWrWP.png"
+                              :Vicaay "https://i.imgur.com/S1Tc0oi.png"
+                              :Sushil "https://i.imgur.com/0FBdAYu.png"}
+                      :color ["#e01f63","#117e67","#8E9297","#9b59b6","#3397da"]}))
 
-(defonce messages (atom {:0 {:server 0
-                         :channel :0
-                         :sender "Parikshith"
-                         :subject "[224-1/xtnt-micro] New comment on issue #35: Migrate trello page from clojure to clojurescript"
-                         :content "Context: Trying to add multiple outputs/targets in project-cljsbuild Issue: while adding multiple targets,facing issue. Logs: Loading c:/Users/welcome/AppData/Roaming/.emacs.d/core/core-load-paths.el (source)...done Loading c:/Users/welcome/AppData/Roaming/.spacemacs...done Setting the font...  (Spacemacs) Warning: Cannot find any of the specified fonts (Source Code Pro)! Font settings may not be correct. PNG warning: Interlace handling should be turned on when using png_rea...(Spacemacs) Warning: Cannot find any of the specified fonts (Source Code Pro)! Font settings may not be correct. PNG warning: Interlace handling should be turned on when using png_rea..."
-                         :timestamp "Last Friday 11:39PM"}}))
+(def messages (atom {:0 {:chat0{
+                                :server 0
+                                :channel :0
+                                :sender "Parikshith"
+                                :sender_logo "https://i.imgur.com/6SRX0td.png"
+                                :type "bot"
+                                :host ["GitHub","https://i.imgur.com/mFNoGHB.png"]
+                                :subject "[224-1/xtnt-micro] New comment on issue #35: Migrate trello page from clojure to clojurescript"
+                                :content "Context: Trying to add multiple outputs/targets in project-cljsbuild Issue: while adding multiple targets,facing issue. Logs: Loading c:/Users/welcome/AppData/Roaming/.emacs.d/core/core-load-paths.el (source)...done Loading c:/Users/welcome/AppData/Roaming/.spacemacs...done Setting the font...  (Spacemacs) Warning: Cannot find any of the specified fonts (Source Code Pro)! Font settings may not be correct. PNG warning: Interlace handling should be turned on when using png_rea...(Spacemacs) Warning: Cannot find any of the specified fonts (Source Code Pro)! Font settings may not be correct. PNG warning: Interlace handling should be turned on when using png_rea..."
+                                :timestamp "Last Friday 11:39PM"
+                                }
+                         :chat1{
+                                :server 0
+                                :channel :0
+                                :sender "azureus"
+                                :sender_logo "https://i.imgur.com/zn6kLLT.png"
+                                :type "direct"
+                                :host ["direct","https://i.imgur.com/zn6kLLT.png"]
+                                :content "@Devs from time to time update packages so that we are working on the latest nrepl / cider etc versions ... also update leinegen etc .. these things dont update automatically"
+                                :timestamp "Today at 2:54 AM"
+                                }}}))
 
 ;; Logo getter 
 (defn get_logo [user]
@@ -143,27 +158,37 @@
    [:div#notification.mh_right_icon]]])
 
 ;;Middle section chat messages
-(defn chat_holder []
+(defn chat_bot []
   [:div.chat_holder
    [:div#github_img]
    [:div#github_head
     [:div#github_tag
-     [:p "GitHub"
-      [:img {:src "https://i.imgur.com/mFNoGHB.png"}]]]
-    [:p#github_date (-> @messages (@active-server) :timestamp)]]
+     [:p (-> @messages (@active-server) :chat0 :host first)
+      [:img {:src (-> @messages (@active-server) :chat0 :host second)}]]]
+    [:p#github_date (-> @messages (@active-server) :chat0 :timestamp)]]
    [:div.chat_received
     [:div.chat_received_head
      [:div#chat_userlogo]
-     [:p#chat_username (-> @messages (@active-server) :sender)]
-     [:p#chat_content_head (-> @messages (@active-server) :subject)]
-     [:div#chat_content [:p (-> @messages (@active-server) :content)]]]]])
+     [:p#chat_username (-> @messages (@active-server) :chat0 :sender)]
+     [:p#chat_content_head (-> @messages (@active-server) :chat0 :subject)]
+     [:div#chat_content [:p (-> @messages (@active-server) :chat0 :content)]]]]])
+
+(defn chat_direct []
+  [:div.chat_direct
+   [:div#direct_userlogo [:img {:src (-> @messages (@active-server) :chat1 :sender_logo)}]]
+   [:div#direct_username [:p {:style (str "color:" (rand-nth (-> @state :color))";")} (-> @messages (@active-server)  :chat1 :sender)]]
+   [:div#direct_timestamp [:p (-> @messages (@active-server) :chat1 :timestamp)]]
+   [:div#direct_message [:p (-> @messages (@active-server) :chat1 :content)]]])
+
+(defn chat_condition1 [] (if (= (-> @messages (@active-server) :chat0 :host first) "GitHub")  (chat_bot)))
+(defn chat_condition2 [] (if (= (-> @messages (@active-server) :chat1 :host first) "direct")  (chat_direct)))
 
 ;;Whole middle section with messages typing
 (defn container_3 []
   [:div.container_3
    [:div.c3_contents
-    (chat_holder)
-    (chat_holder)]
+    (chat_condition1)
+    (chat_condition2)]
    [:div.messaging
     [:div#plus_c3]
     [:div#type_message [:input {:type "text" :placeholder "Message #xtnt-micro"}]]

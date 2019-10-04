@@ -422,6 +422,49 @@ p{
     height:380px;
 }
 
+.chat_direct{
+    display:inline-block;
+    width:100%;
+    height:110px;
+    margin:0 auto;
+    border-bottom:1px solid #40444b;
+}
+
+#direct_username p{
+    display: inline-block;
+    position: relative;
+    right:645px;
+    bottom:35px;
+    font-size: 17px !important;
+    font-weight: 600 !important;
+}
+
+#direct_timestamp p{
+    display: inline-block;
+    position: relative;
+    right:485px;
+    bottom:29px;
+    font-size:12px !important;
+    font-weight:500 !important;
+    color:#8E9297;
+}
+
+#direct_userlogo img{
+    width:45px;
+    position:relative;
+    top:21px;
+}
+
+#direct_message p{
+    position:relative;
+    left:50px;
+    top:-55px;
+    width:90%;
+    color:#d2d9de;
+    font-size:14px !important;
+    font-weight:700 !important;
+}
+
 #github_img{
     background-image:url(https://i.imgur.com/QCHNgYc.png);
     background-size:40px;
