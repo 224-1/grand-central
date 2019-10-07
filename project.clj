@@ -46,22 +46,25 @@
 
      :main xtnt-micro.handler
      :cljsbuild
-         {:builds {:dev [{:source-paths ["src/cljs"]
+         {:builds {:dev [{:source-paths ["cljs-src"]
                           :figwheel true
                           :compiler
-                          {:main xtnt-micro.core
+                          {
+                           ;; :main xtnt-micro.core
                            :asset-path "cljs-out/dev"
                            :output-to "target/public/cljs-out/dev-main.js"
                            :output-dir "target/public/cljs-out/dev"
                            :source-map-timestamp true}}
-                         {:source-paths ["src/cljs"]
-                          :figwheel true
-                          :compiler
-                          {:main xtnt-micro.trelloui
-                           :asset-path "cljs-out/dev"
-                           :output-to "target/public/cljs-out/dev-trello.js"
-                           :output-dir "target/public/cljs-out/dev"
-                           :source-map-timestamp true}}]}}
+                         ;; {:source-paths ["src-cljs-trelloui"]
+                         ;;  :figwheel true
+                         ;;  :compiler
+                         ;;  {
+                         ;;   ;; :main xtnt-micro.trelloui
+                         ;;   :asset-path "cljs-out/dev"
+                         ;;   :output-to "target/public/cljs-out/dev-trello.js"
+                         ;;   :output-dir "target/public/cljs-out/dev"
+                         ;;   :source-map-timestamp true}}
+                         ]}}
 
      :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
      ;; need to add the compliled assets to the :clean-targets
@@ -80,13 +83,5 @@
                             :asset-path "cljs-out/dev"
                             :output-dir "target/public/cljs-out/dev"
                             :main xtnt-micro.core
-                            :optimizations :advanced
-                            :pretty-print false }}
-                          {:source-paths ["src/cljs"]
-                           :compiler
-                           {:output-to "target/public/cljs-out/dev-trello.js"
-                            :asset-path "cljs-out/dev"
-                            :output-dir "target/public/cljs-out/dev"
-                            :main xtnt-micro.trelloui
                             :optimizations :advanced
                             :pretty-print false }}]}}}})

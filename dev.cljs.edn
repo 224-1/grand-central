@@ -1,1 +1,4 @@
+^{:watch-dirs ["src/cljs"]
+  :extra-main-files {:src/cljs {:main xtnt-micro.trelloui}}}
 {:main xtnt-micro.core}
+
