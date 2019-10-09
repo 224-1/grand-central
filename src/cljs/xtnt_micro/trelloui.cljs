@@ -86,8 +86,6 @@
 (defn board-width []
   (->> @state :lists count inc (* 310)))
 
-(board-width)
-
 (defn board []
   [:div.lists
    ;; {:style
@@ -112,13 +110,6 @@
 (defn app-container []
   [:div#container
    {}
-   ;; (header)
-   ;; (board-title)
-   ;; (players)
-   ;; (board-opts)
-   ;; (team)
-   ;; (all-lists)
-   ;; (board)
    (trello-body)
    ])
 

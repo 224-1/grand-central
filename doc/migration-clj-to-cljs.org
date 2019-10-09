@@ -1,0 +1,59 @@
+* Migration of page from clj to cljs
+Hiccup elements can be migrated from clojure to clojurescript, and it is primarily done to use the reagent library, which is an interface 
+between react and clojurescript.
+
+This UI library allows us to define efficient components of complex UI's.
+
+Here, the trello UI elements were rendered using compojure, and all of the html elements were translated to the hiccup syntax, including 
+head elements, within which css stylesheets were linked.
+
+The html elements were rendered within handler.clj file by providing the necessary URL and calling the function to render all elements, 
+within defroutes.
+
+#+begin_src clojure
+(GET "/trelloui" [] trlo/trello_ui)
+#+end_src
+
+Here, localhost:8000/trelloui is the url which rendered the page and trlo is an alias used for trelloui.clj file containing the hiccup 
+elements.
+
+Now, in order to migrate to clojurescript, the following steps needed to be followed.
+
+**** Having a blank html page and adding the necessary 'head'
+     'head' elements were earlier added within the clojure file namely, trelloui.clj. However, functionalities like include-css are from 
+     hiccup.page library, which while using reagent cannot work. Hence we add external stylesheets from within the blank page. 
+
+**** Adding the js output file inside the head element
+     the cljs-out folder inside target contains the javascript file that is compiled to by running a clojurescript file  containing the 
+     reagent elements.
+
+     #+begin_src html
+     <script src="cljs-out/dev-main-cljs.js" type="text/javascript"></script>
+     #+end_src
+
+**** creating a route in core file, in this case handler.clj
+     This step is implemented within defroutes to point to the html file that is to be rendered, using ring.utils.resource library. 
+     This enables us to see the new page in the url mentioned above.
+
+     #+begin_src clojure
+     (GET "/trelloui" [] (resp/resource-response "trello.html" {:root "public"}))
+     #+end_src
+
+**** configure dev.cljs.edn file to include extra main files
+     Apart from compiling core.cljs which is ensured by adding the namespace to :main inside the dev.cljs.edn, we can create extra entry 
+     points for to the code base to run our cljs file to render hiccup elements using reagent.
+     This is done by adding the cljs files in the form of metadata within the configuration file.
+
+     #+begin_src clojure
+     ^{:watch-dirs ["src/cljs"]
+       :extra-main-files {:src/cljs {:main xtnt-micro.trelloui}}}
+     #+end_src
+
+**** Adding div element with id as 'app' inside body tag
+     This step ensures that the rendered elements using reagent are inside the 'app' element.
+
+**** The final step is to start moving hiccup elements to cljs
+     This is done one by one by adding the hiccup elements and rendering it using reagent's render-component function.
+     Note: inline styling is not supported in reagent.
+
+reference - https://figwheel.org/docs/extra_mains.html
