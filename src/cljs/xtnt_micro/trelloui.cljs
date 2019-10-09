@@ -88,14 +88,7 @@
 
 (defn board []
   [:div.lists
-   ;; {:style
-   ;;  ;; "width:620px"
-   ;;  (str
-   ;;   "width:"
-   ;;   ;; 620
-   ;;   (board-width)
-   ;;   "px")
-   ;;  }
+   {:style {:width (str (board-width) "px")}}
    (all-lists)
    [:div.addlist
     [:div [:img {:src "https://i.imgur.com/eA0Kqb9.png" :width "13px"}]
