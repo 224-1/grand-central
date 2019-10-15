@@ -12,8 +12,8 @@
 (def state (atom
                 {:team {:name "Forge Testers"
                         :players ["az","pk","gs","s9"]}
-                 :board "TRLO_Sample1"
-                 :board_id "random-hash"
+                 :board "TRLO-Sample1"
+                 :board-id "random-hash"
                  :lists {:listhash1 {:creator "pk"
                                      :timestamp "0000"
                                      :name "Bomb Diffusal"
@@ -48,29 +48,29 @@
     [:div#login.block  "PM"]]])
 
 ;; board dom - remove vr, use border right instead
-(defn board_title []
-  [:div.board_title
+(defn board-title []
+  [:div.board-title
    [:h5#teamhead (:board @state)]
    [:div#star.block [:img {:src "https://i.imgur.com/XKQEePC.png" :width "16px"}]]
-   [:div.team_buttons
+   [:div.team-buttons
     [:div.block2.right-border.left-border [:p#private "Private Team"]]
     [:div.block.teamvisible.right-border [:img {:src "https://i.imgur.com/xKYMuLH.png" :width "16px"}]  [:span "Team Visible"]]]])
 
 (defn players []
   (map #(identity [:div.teamlogo %]) (-> @state :team :players)))
 
-(defn board_opts []
-  [:div.board_opts
+(defn board-opts []
+  [:div.board-opts
   [:div.block.showmenu [:img {:src "https://i.imgur.com/ZtVjj4S.png" :width "16px"}]  [:span "Show Menu"]]])
 
 (defn team []
   [:div.teams {}
-   (board_title)
+   (board-title)
    [:div.playerlogo
    (players)
     [:div.teamlogo {:id "tls"} "+1"]]
    [:div.block.invite "Invite"]
-   (board_opts)])
+   (board-opts)])
 
 (defn card [ob]
   (let [card-id (keyword ob)]
@@ -107,17 +107,17 @@
     [:div [:img {:src "https://i.imgur.com/eA0Kqb9.png" :width "13px"}]
      [:p "Add another list"]]]])
 
-(defn trello_head []
+(defn trello-head []
   [:head (head)])
 
-(defn trello_body []
+(defn trello-body []
   [:body
    (header)
    (team)
    [:div.list-container (board)]])
 
-(defn trello_ui [request]
+(defn trello-ui [request]
   (html5
    [:html
-    (trello_head)
-    (trello_body)]))
+    (trello-head)
+    (trello-body)]))
