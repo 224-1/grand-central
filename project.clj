@@ -53,7 +53,16 @@
                            :asset-path "cljs-out/dev"
                            :output-to "target/public/cljs-out/dev-main.js"
                            :output-dir "target/public/cljs-out/dev"
-                           :source-map-timestamp true}}}}
+                           :source-map-timestamp true}}
+                   :trlo {:source-paths ["src/cljs"]
+                          :figwheel true
+                          :compiler
+                          {:main xtnt-micro.trelloui
+                           :asset-path "cljs-out/trlo"
+                           :output-to "target/public/cljs-out/trlo-main.js"
+                           :output-dir "target/public/cljs-out/trlo"
+                           :source-map-timestamp true}}
+          }}
 
      :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
      ;; need to add the compliled assets to the :clean-targets
