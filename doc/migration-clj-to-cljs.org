@@ -94,5 +94,5 @@ Now, in order to migrate to clojurescript, the following steps needed to be foll
 ***** When prompted to type the figwheel build, type the build name to display the trello UI using clojurescript namely ':trlo'
       This is displayed within the URL 'localhost.8000/trelloui' as well as 'localhost:9500/trelloui'
 
-reference - https://figwheel.org/docs/extra_mains.html 
-            https://figwheel.org/docs/create_a_build.html
+reference - https://figwheel.org/docs/create_a_build.html
+            https://figwheel.org/docs/your_own_page.html
