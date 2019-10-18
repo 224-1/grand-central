@@ -1,0 +1,85 @@
+* BASICS OF HICCUP:
+*** The <> brackets in html are replaced by [] brackets in hiccup.
+*** Each tag starts with a colon ':'.  Eg- [:div] , [:h1] , [:p]
+*** There is only one []bracket to start and end a tag.  Eg- [:h1 "Hello"] and not [:h1 "hello] [/:h1] like html which looks like this <h1></h1>
+*** Attributes of a tag also start with colon but are placed inside {} braces and their properties are written inside double quotes "" . Eg- [:input {:type "text"}] ....this in html looks like this <input type="text" placeholder="search">
+*** Classes can either be written as an attribute or can be represented with a dot '.' after any tag. Eg- [:div.container] or [:div {:class "container"}}]
+*** ID can either be written as an attribute or can be represented with a hash '#' after any tag. Eg- [:div#image1] or [:div {:class "image1"}]
+*** ID always comes before a class in the symbol format. Eg- [:div#image1.container] and not [:div.container#image1] ... The 2nd example will give u a syntax error 
+*** Can use multiple classes in both formats. Eg- [:div.container.element1.block1] or [:div {:class "container element1 block1"]
+*** Tags can be placed withing tags just like html. Eg- [:p [:img {:src "blah.com"}] "blah screw u"]
+
+* Functions 
+** head[]
+*** head tag has the way to add css in hiccup. The css files used are entered there. the files can be found in resources/public/css.  
+*** Also contains meta and link tag. Link tag connects to the font Lato on google fonts.
+
+** home[]
+*** Linked to the main discord logo at the top left corner inside container_1(Server Panel)
+
+** container_1[] (Server Panel)
+*** All the icons are separate divs and have no image tag.The images are displayed through css using backround-image property.
+*** Each div has appropriately named ID. can be found easily in css
+
+** container_2_head[] (Active server panel - name of the server)
+*** This is the topmost section in container2
+*** .c2_head is the name of the server you are on (for now its XTNT) 
+*** #c2_expand has the expand icon to the right of the server name
+
+** channel_list[]
+*** .c2_rooms has the whole list of both the interaction rooms and voice channels
+*** The img tag has a ul tag inside it. So the image of the hashtag/speaker logo is followed by the room name/voice channel.
+*** #channel_logo is the ID for both the img and ul-li tags
+
+** conainer_2_footer[] (User Details)
+*** Its the bottom most portion in container 2. It has the user's details like name,logo,ID and also three icons(headphones,mic,settings)
+*** ID names are appropriately named 
+*** user details are being fetched from the atom. Their properties can be changed in css, but the name,id,logo can only be changed through the atom
+*** the icons are divs with a background-images
+
+** container_2[]
+*** Container 2 is the whole 2nd column including container_2_head[], container_2_footer[] and the mid portion which has the rooms and voice channels  
+*** The head is called like this (container_2_head) and the footer is called like this (container_2_footer)
+*** .c2_channel has both the room names and the voice channels
+*** .interaction_room only holds the room 
+*** .c2_channel_heads holds the interaction room heading ("interaction room" and the expand button)
+*** #channel_exapnd is the expand button 
+*** (channel_list :rooms) calls the rooms list from the function channel_list[]
+*** (channel_list :voice) calls the voice channels list from the function channel_list[]
+
+** main_header[] 
+*** This this is the top bar in the mid portion of the application(part of container3)
+*** It contains the active server name and icons like bell,pin,members,searchbar,mentions and help
+*** All the IDs and classes are name appropriately
+
+** chat_bot[]
+*** This is the github message in container3 (messaging portion)
+*** IDs and classes are appropriately named
+
+** chat_direct[]
+*** This is rthe direct message in containe3 (messaging portion)
+*** IDs and classes are appropriately named
+*** for styling purposes the clojure parts can be ignored
+
+** container_3[]
+*** This function holds both the messages(bot and direct) and the messaing tab(where one can type the text) right at the bottom.
+*** c3_contents holds only chat_bot[] and chat_direct[]
+*** .messaging holds the messaging tab at the bottom including the various icons like(gift,gif and smiley)
+
+** members_list[]
+*** This is part of container4 
+*** It produces only member names and their respective logos
+*** the img tag also holds a :p tag. Both are styled using the #member_logo.  
+
+** member_counter[]
+*** logic to count the number of members in the group they are part of
+
+** container_4[]
+*** Has all the members. The rightmost panel
+*** Also holds member_list[].member_counter is called too.
+
+** discord_ui[]
+*** Its the main function of the application
+*** Holds all the sub main fucntions
+
+* TODO INSPECT ELEMENT ON EACH ELEMENT TO TEST OUT THE STYLING TEMPORARILY ON THE BROWSER AND ALSO TO FIND OUT WHAT THE ELEMENTS ID/CLASS NAME IS.  
