@@ -92,7 +92,7 @@ Now, in order to migrate to clojurescript, the following steps needed to be foll
 **** 'M-x cider-jack-in-cljs' is implemented to start the figwheel server
 ***** Upon being prompted to select the clojurescript REPL type, select 'figwheel-main'
 ***** When prompted to type the figwheel build, type the build name to display the trello UI using clojurescript namely ':trlo'
-      This is displayed within the URL 'localhost.8000/trelloui'
+      This is displayed within the URL 'localhost.8000/trelloui' as well as 'localhost:9500/trelloui'
 
 reference - https://figwheel.org/docs/extra_mains.html 
             https://figwheel.org/docs/create_a_build.html
