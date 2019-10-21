@@ -60,6 +60,7 @@
   (GET "/newsfeed" [] news/feedfunc)
   (GET "/trelloui" [] trlo/trello_ui)
   (GET "/discordui" [] dscrd/discord_ui)
+  ;;(GET "/trelloui" [] (resp/resource-response "trello.html" {:root "public"}))
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 

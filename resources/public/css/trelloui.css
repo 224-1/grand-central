@@ -211,7 +211,7 @@ span{
     }
 }
 
-.board_title{
+.board-title{
     height:30px;
     display:inline-block;
 }
@@ -245,12 +245,12 @@ span{
     }
 }
 
-.team_buttons{
+.team-buttons{
     display:inline-block;
 }
 
 @media (max-width:375px){
-    .team_buttons{
+    .team-buttons{
         display:block;
     }
 }
@@ -375,14 +375,14 @@ span{
     font-size:14px;
 }
 
-.board_opts{ 
+.board-opts{ 
     float:right;
     display:inline-block;
     margin-right:10px;
 }
 
 @media (max-width:375px){
-    .board_opts{
+    .board-opts{
         position:relative;
         top:5px;
     }
@@ -482,7 +482,7 @@ span{
 .list-container{
     height:100%;
     width:100%;
-    overflow-x:auto;
+    /* overflow-x:auto; */
 }
 
 .lists{

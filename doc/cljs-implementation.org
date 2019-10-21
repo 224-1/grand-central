@@ -1,8 +1,7 @@
-
 * Add clojurescript, figwheel, reagent / reframe to existing clojure project 
 
-** The first thing to change in order to accommodate Figwheel Main is my project.clj. 
-** A new version of ClojureScript is necessary:
+** The first thing to change in order to accommodate Figwheel Main is to add the following project.clj. 
+1)A new version of ClojureScript is necessary:
 
 #+BEGIN_SRC
 :dependencies
@@ -12,14 +11,14 @@
 ]
 #+END_SRC
 
-** Then, new values for :source-paths and :resource-paths:
+2)Then, new values for :source-paths and :resource-paths:
 
 #+BEGIN_SRC
 :source-paths ["src/clj" "src/cljs"]
 :resource-paths ["target" "resources"]
 #+END_SRC
 
-** As the Figwheel Main README suggests, let’s add a couple of useful aliases:
+3)As the Figwheel Main README suggests, let’s add a couple of useful aliases:
 
 #+BEGIN_SRC
  :aliases
@@ -27,45 +26,52 @@
      "build-dev" ["trampoline" "run" "-m" "figwheel.main" "-b" "dev" "-r"]}
 #+END_SRC
 
-*** If you want to run the command from shell or terminal:
+#+ATTR_HTML: :textarea t :width 40
+#+BEGIN_EXAMPLE
+(Note: These code can be run after implementing all the process)
+If you want to run the command from shell or terminal:
 
 #+BEGIN_SRC
 lein trampoline run -m figwheel.main -- -b dev -r
 #+END_SRC
 
-*** This will launch a REPL and start autobuilding and reloading the src directory so that any files you add or change in that directory will automatically be hot reloaded into the browser.
-*** The -b dev or --build dev flag option is indicating that Figwheel should read dev.cljs.edn for build configuration.
-*** The -r or --repl flag indicates that a REPL should be launched.
-*** using the aliases.
-**** You can invoke the above command using the fig alias like so:
+This will launch a REPL and start autobuilding and reloading the src directory so that any files you add 
+or change in that directory will automatically be hot reloaded into the browser. The -b dev or --build dev 
+flag option is indicating that Figwheel should read dev.cljs.edn for build configuration.The -r or --repl 
+flag indicates that a REPL should be launched. 
+
+using the aliases.
+You can invoke the above command using the fig alias like so:
 
 #+BEGIN_SRC
 lein fig -- -b dev -r
 #+END_SRC
 
-**** You can also just use the build-dev alias to get the same result:
+You can also just use the build-dev alias to get the same result:
+
 #+BEGIN_SRC
 lein build-dev
 #+END_SRC
+#+END_EXAMPLE
 
-** And the actual Figwheel Main dependencies:
+4)And the actual Figwheel Main dependencies:
 
 #+BEGIN_SRC
 :profiles
   {:dev
-   {:dependencies [[com.bhauman/figwheel-main "0.1.4"]
+   {:dependencies [[com.bhauman/figwheel-main "0.2.3"]
                    [com.bhauman/rebel-readline-cljs "0.1.4"]]}}
 #+END_SRC
 
-** With project.clj ready, I move to dev.cljs.edn. Create a file with name dev.cljs.edn. 
-*** This is what Figwheel Main needs to know the entry point of my application:
+** With project.clj ready, let's move to another part of the configuration. Here we need to create 2 files: 
+1)Create a file with name dev.cljs.edn in your root directory. This is what Figwheel Main needs to know the entry point of my application:
 
 #+BEGIN_SRC
 {:main example.core}
 ;;In xtnt-micro project case it is {:main xtnt-micro.core}
 #+END_SRC
 
-*** Create a file with name figwheel-main.edn:
+2)Create a file with name figwheel-main.edn in your root directory:
 
 #+BEGIN_SRC
 {:watch-dirs ["src/cljs"]
@@ -74,15 +80,17 @@ lein build-dev
 
 ** Using your own HTML to host your app
 
-*** If would prefer to use your own HTML page to host your application instead of the default page served by figwheel.main 
-*** You will first need to ensure that you have added resources to the :paths key in deps.edn, as demonstrated above.
-*** After that, you can place the index.html in resources/public/index.html so that it will mask the one served by the figwheel.main helper application.
-*** The following is some example HTML to help you get started. 
-*** The trickly part is the path to the ClojureScript bootstrap file. 
-*** The default output path is available at cljs-out/[build-id]-main.js. 
-*** So in this case it will be: cljs-out/dev-main.js
+If would prefer to use your own HTML page to host your application instead of the default page served by figwheel.main 
+You will first need to ensure that you have added resources to the :paths key in deps.edn(in project.clj point number 2), as demonstrated above.
+After that, you can place the ~index.html in resources/public/index.html~ so that it will mask the one served by the figwheel.main helper application.
+The following is some example HTML to help you get started. 
+The trickly part is the path to the ClojureScript bootstrap file. 
+The default output path is available at cljs-out/[build-id]-main.js. 
 
-#+BEGIN_EXPORT html
+So in this case it will be: cljs-out/dev-main.js. This cljs-out folder will be in ~xtnt-micro/target/public/cljs-out/~ after running ~cider-jack-in-cljs~
+
+#+ATTR_HTML: :textarea t :width 40
+#+BEGIN_EXAMPLE
 <!DOCTYPE html>
 <html>
   <head>
@@ -92,13 +100,12 @@ lein build-dev
     <script src="cljs-out/dev-main.js"></script>
   </body>
 </html>
-#+END_EXPORT
-*** You can place CSS and other static assets in the resources/public directory.
-    
+#+END_EXAMPLE
 
-** After implementing above all now we can run cider-jack-in-cljs.
-** Then we need to choose figwheel-main from the given list.
-** Enter dev in mini-buffer when asked.
+You can place CSS and other static assets in the resources/public directory.
+After implementing above all now we can run ~lein run~ for the server followed by ~cider-jack-in-cljs~ for cljs-repl.
+Then we need to choose ~figwheel-main~ from the given list.
+Enter ~dev in mini-buffer~ when asked.
 
 
 **** References
