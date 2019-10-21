@@ -20,8 +20,9 @@ elements.
 Now, in order to migrate to clojurescript, the following steps needed to be followed.
 
 **** Having a blank html page and adding the necessary 'head'
-     'head' elements were earlier added within the clojure file namely, trelloui.clj. However, functionalities like include-css are from 
-     hiccup.page library, which while using reagent cannot work. Hence we add external stylesheets from within the blank page. 
+     'head' elements were earlier added within the clojure file namely, trelloui.clj. However, functionalities like 'include-css' are from 
+     hiccup.page library, which while using reagent cannot work. Hence we add external stylesheets from within the blank page.
+     Make sure 'head' is added inside the html page instead of using hiccup.
 
 **** Adding the js output file inside the head element
      the cljs-out folder inside target contains the compiled javascript file, by running a clojurescript file  containing the 
@@ -33,6 +34,7 @@ Now, in order to migrate to clojurescript, the following steps needed to be foll
 
 **** Adding div element with id as 'app' inside body tag
      This step ensures that the rendered elements using reagent are inside the 'app' element.
+     Note: Make sure that the html file has both head and body tags and the reagent/hiccup file has only divs.
 
 **** creating a route in core file, in this case handler.clj
      This step is implemented within defroutes to point to the html file that is to be rendered, using ring.utils.resource library. 
@@ -74,15 +76,23 @@ Now, in order to migrate to clojurescript, the following steps needed to be foll
      {:main xtnt-micro.trelloui}
      #+end_src
 
-**** The final step is to start moving hiccup elements to cljs, starting with testing compilation the with an alert message
+**** The final step is to start moving hiccup elements to cljs, starting with testing compilation with an alert message
      Done one by one by adding the hiccup elements and rendering it using reagent's render-component function.    
+
+**** Redirect page of the build to appropriate URL of the file to be rendered, in this case as metadata in trlo.cljs.edn
+
+     #+begin_src clojure
+     ^{:open-url "http://localhost:[[server-port]]/trello.html"}
+     #+end_src
+     
+     where server-port by default is 9500.
 
 *** Implementation
 **** It's done by running 'lein run' command on the shell inside the project directory which starts the server on port 8000.
 **** 'M-x cider-jack-in-cljs' is implemented to start the figwheel server
 ***** Upon being prompted to select the clojurescript REPL type, select 'figwheel-main'
 ***** When prompted to type the figwheel build, type the build name to display the trello UI using clojurescript namely ':trlo'
-      This is displayed within the URL 'localhost.8000/trelloui'
+      This is displayed within the URL 'localhost.8000/trelloui' as well as 'localhost:9500/trelloui'
 
-reference - https://figwheel.org/docs/extra_mains.html 
-            https://figwheel.org/docs/create_a_build.html
+reference - https://figwheel.org/docs/create_a_build.html
+            https://figwheel.org/docs/your_own_page.html
