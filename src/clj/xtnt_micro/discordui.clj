@@ -8,9 +8,9 @@
             [ring.middleware.reload :refer [wrap-reload]]))
 
 (def active-server (atom :0))
-(def state (atom {:user_name "Parikshith"
-                      :user_id "#6228"
-                      :user_logo "https://i.imgur.com/6SRX0td.png"
+(def state (atom {:user-name "Parikshith"
+                      :user-id "#6228"
+                      :user-logo "https://i.imgur.com/6SRX0td.png"
                       :server {:0 {:name "XTNT"
                                    :rooms {:name "Interaction room"
                                            :list {:0 "xtnt-micro"
@@ -56,7 +56,7 @@
                                 :server 0
                                 :channel :0
                                 :sender "Parikshith"
-                                :sender_logo "https://i.imgur.com/6SRX0td.png"
+                                :sender-logo "https://i.imgur.com/6SRX0td.png"
                                 :type "bot"
                                 :host ["GitHub","https://i.imgur.com/mFNoGHB.png"]
                                 :subject "[224-1/xtnt-micro] New comment on issue #35: Migrate trello page from clojure to clojurescript"
@@ -67,7 +67,7 @@
                                 :server 0
                                 :channel :0
                                 :sender "azureus"
-                                :sender_logo "https://i.imgur.com/zn6kLLT.png"
+                                :sender-logo "https://i.imgur.com/zn6kLLT.png"
                                 :type "direct"
                                 :host ["direct","https://i.imgur.com/zn6kLLT.png"]
                                 :content "@Devs from time to time update packages so that we are working on the latest nrepl / cider etc versions ... also update leinegen etc .. these things dont update automatically"
@@ -75,7 +75,7 @@
                                 }}}))
 
 ;; Logo getter 
-(defn get_logo [user]
+(defn get-logo [user]
   (let [usr (keyword user)]
     (->> @state :logos usr)))
 
@@ -88,151 +88,152 @@
 
 ;; Discord Home button
 (defn home []
-  [:div#home.c1_ele])
+  [:div#home.c1-ele])
 
 ;; Server Panel
-(defn container_1 []
-  [:div.container_1
+(defn container-1 []
+  [:div.container-1
    (home)
-   [:hr.c1_hr ]
-   [:div#forge_channel.c1_ele]
-   [:div#xtnt_channel.c1_ele.left-border ]
-   [:div#plus_c1.c1_ele.c1_op ]
-   [:div#search_c1.c1_ele.c1_op]
-   [:hr.c1_hr]
-   [:div#download_c1.c1_ele.c1_op ]])
+   [:hr.c1-hr ]
+   [:div#forge-channel.c1-ele]
+   [:div#xtnt-channel.c1-ele.left-border ]
+   [:div#plus-c1.c1-ele.c1-op ]
+   [:div#search-c1.c1-ele.c1-op]
+   [:hr.c1-hr]
+   [:div#download-c1.c1-ele.c1-op ]])
 
 ;; Active Server
-(defn container_2_head []
-  [:div.container_2_head
-  [:div.c2_head
+(defn container-2-head []
+  [:div.container-2-head
+  [:div.c2-head
    [:p (-> @state :server (@active-server) :name)]
-   [:div#c2_expand]]])
+   [:div#c2-expand]]])
 
 ;;Channel lists and rooms organization function
-(defn channel_list [arg]
+(defn channel-list [arg]
   (let [current (-> @state :server (@active-server) arg)]
-    (map #(identity [:div.c2_rooms
-                     [:img#channel_logo {:src (:logo current)} [:ul [:li (val %)]]]
+    (map #(identity [:div.c2-rooms
+                     [:img#channel-logo {:src (:logo current)}
+                      [:ul [:li (val %)]]]
                      [:br]]) (-> current :list))))
 
 ;;User Details and options
-(defn container_2_footer []
-  [:div.container_2_footer
-   [:div.user_details
-    [:img#c2_userlogo {:src (:user_logo @state)}]
-    [:p#c2_username (:user_name @state)]
-    [:p#c2_userid (:user_id @state)]]
-   [:div#settings.c2_footer_icon]
-   [:div#headphones.c2_footer_icon]
-   [:div#mic.c2_footer_icon]])
+(defn container-2-footer []
+  [:div.container-2-footer
+   [:div.user-details
+    [:img#c2-userlogo {:src (:user-logo @state)}]
+    [:p#c2-username (:user-name @state)]
+    [:p#c2-userid (:user-id @state)]]
+   [:div#settings.c2-footer-icon]
+   [:div#headphones.c2-footer-icon]
+   [:div#mic.c2-footer-icon]])
 
 ;;Channel list & user details section
-(defn container_2 []
-  [:div.container_2
-   (container_2_head)
-   [:div.c2_channels
-    [:div.interaction_room
-     [:div.c2_channel_heads
-      [:div#channel_expand]
+(defn container-2 []
+  [:div.container-2
+   (container-2-head)
+   [:div.c2-channels
+    [:div.interaction-room
+     [:div.c2-channel-heads
+      [:div#channel-expand]
       [:p "interaction room"]]
-     (channel_list :rooms)]
-    [:div.voice_channel
-     [:div.c2_channel_heads
-      [:div#channel_expand]
+     (channel-list :rooms)]
+    [:div.voice-channel
+     [:div.c2-channel-heads
+      [:div#channel-expand]
       [:p "voice channels"]]
-     (channel_list :voice)]]
-   (container_2_footer)])
+     (channel-list :voice)]]
+   (container-2-footer)])
 
 ;;Top bar
-(defn main_header []
-  [:div.main_header
-   [:img#mh_hash.mh_channel_name {:src (-> @state :server (@active-server) :rooms :logo)}
-     [:p#mh_p.mh_channel_name (-> @state :server (@active-server) :rooms :list (@active-server))]]
-   [:div.main_header_icons
-    [:div#help.mh_right_icon]
-    [:div#mentions.mh_right_icon]
-    [:input#searchbar.mh_right_icon {:type "search" :placeholder "Search"}]
-    [:div#members.mh_right_icon]
-   [:div#pinned.mh_right_icon]
-   [:div#notification.mh_right_icon]]])
+(defn main-header []
+  [:div.main-header
+   [:div#mh-hash.mh-channel-name {:src (-> @state :server (@active-server) :rooms :logo)}
+     [:p#mh-p.mh-channel-name (-> @state :server (@active-server) :rooms :list (@active-server))]]
+   [:div.main-header-icons
+    [:div#help.mh-right-icon]
+    [:div#mentions.mh-right-icon]
+    [:input#searchbar.mh-right-icon {:type "search" :placeholder "Search"}]
+    [:div#members.mh-right-icon]
+   [:div#pinned.mh-right-icon]
+   [:div#notification.mh-right-icon]]])
 
 ;;Middle section chat messages
-(defn chat_bot []
-  [:div.chat_holder
-   [:div#github_img]
-   [:div#github_head
-    [:div#github_tag
+(defn chat-bot []
+  [:div.chat-holder
+   [:div#github-img]
+   [:div#github-head
+    [:div#github-tag
      [:p (-> @messages (@active-server) :chat0 :host first)
-      [:img {:src (-> @messages (@active-server) :chat0 :host second)}]]]
-    [:p#github_date (-> @messages (@active-server) :chat0 :timestamp)]]
-   [:div.chat_received
-    [:div.chat_received_head
-     [:div#chat_userlogo]
-     [:p#chat_username (-> @messages (@active-server) :chat0 :sender)]
-     [:p#chat_content_head (-> @messages (@active-server) :chat0 :subject)]
-     [:div#chat_content [:p (-> @messages (@active-server) :chat0 :content)]]]]])
+      [:div {:src (-> @messages (@active-server) :chat0 :host second)}]]]
+    [:p#github-date (-> @messages (@active-server) :chat0 :timestamp)]]
+   [:div.chat-received
+    [:div.chat-received-head
+     [:div#chat-userlogo]
+     [:p#chat-username (-> @messages (@active-server) :chat0 :sender)]
+     [:p#chat-content-head (-> @messages (@active-server) :chat0 :subject)]
+     [:div#chat-content [:p (-> @messages (@active-server) :chat0 :content)]]]]])
 
-(defn chat_direct []
-  [:div.chat_direct
-   [:div#direct_userlogo [:img {:src (-> @messages (@active-server) :chat1 :sender_logo)}]]
-   [:div#direct_username [:p {:style (str "color:" (rand-nth (-> @state :color))";")} (-> @messages (@active-server)  :chat1 :sender)]]
-   [:div#direct_timestamp [:p (-> @messages (@active-server) :chat1 :timestamp)]]
-   [:div#direct_message [:p (-> @messages (@active-server) :chat1 :content)]]])
+(defn chat-direct []
+  [:div.chat-direct
+   [:div#direct-userlogo [:img {:src (-> @messages (@active-server) :chat1 :sender-logo)}]]
+   [:div#direct-username [:p {:style (str "color:" (rand-nth (-> @state :color))";")} (-> @messages (@active-server)  :chat1 :sender)]]
+   [:div#direct-timestamp [:p (-> @messages (@active-server) :chat1 :timestamp)]]
+   [:div#direct-message [:p (-> @messages (@active-server) :chat1 :content)]]])
 
-(defn chat_condition1 [] (if (= (-> @messages (@active-server) :chat0 :host first) "GitHub")  (chat_bot)))
-(defn chat_condition2 [] (if (= (-> @messages (@active-server) :chat1 :host first) "direct")  (chat_direct)))
+(defn chat-condition1 [] (if (= (-> @messages (@active-server) :chat0 :host first) "GitHub")  (chat-bot)))
+(defn chat-condition2 [] (if (= (-> @messages (@active-server) :chat1 :host first) "direct")  (chat-direct)))
 
 ;;Whole middle section with messages typing
-(defn container_3 []
-  [:div.container_3
-   [:div.c3_contents
-    (chat_condition1)
-    (chat_condition2)]
+(defn container-3 []
+  [:div.container-3
+   [:div.c3-contents
+    (chat-condition1)
+    (chat-condition2)]
    [:div.messaging
-    [:div#plus_c3]
-    [:div#type_message [:input {:type "text" :placeholder "Message #xtnt-micro"}]]
-    [:div#smiley_c3.messaging_right_icon]
-    [:div#gif_c3.messaging_right_icon]
-    [:div#gift_c3.messaging_right_icon]]])
+    [:div#plus-c3]
+    [:div#type-message [:input {:type "text" :placeholder "Message #xtnt-micro"}]]
+    [:div#smiley-c3.messaging-right-icon]
+    [:div#gif-c3.messaging-right-icon]
+    [:div#gift-c3.messaging-right-icon]]])
 
 ;;Member list organization function
-(defn members_list [arg]
+(defn members-list [arg]
   (let [current (-> @state :members arg)]
-    [:div.members_list (map #(identity [:div.members_content
-                     [:img#member_logo {:src (get_logo %)} [:p {:style (str "color:" (rand-nth (-> @state :color))";")} %]]
+    [:div.members-list (map #(identity [:div.members-content
+                     [:img#member-logo {:src (get-logo %)} [:p {:style (str "color:" (rand-nth (-> @state :color))";")} %]]
                      [:br]]) (-> current))]))
 
 ;;Member counting function
-(defn member_counter [arg]
+(defn member-counter [arg]
   (let [counter (-> @state :members arg)]
     (str (count (-> counter)))))
 
 ;;All group member list-Right most container
-(defn container_4 []
-  [:div.container_4
+(defn container-4 []
+  [:div.container-4
    [:div
-    [:div.members_list_head.product
-     [:p.c4_header "Product- " (member_counter :product)]
-     (members_list :product)]
-    [:div.members_list_head.dev
-     [:p.c4_header "Dev- " (member_counter :dev)]
-     (members_list :dev)]
-    [:div.members_list_head.intern
-     [:p.c4_header "intern- " (member_counter :intern)]
-    (members_list :intern)]
-    [:div.members_list_head.offline
-     [:p.c4_header "Offline- " (member_counter :offline)]
-    [:div#offline(members_list :offline)]]]])
+    [:div.members-list-head.product
+     [:p.c4-header "Product- " (member-counter :product)]
+     (members-list :product)]
+    [:div.members-list-head.dev
+     [:p.c4-header "Dev- " (member-counter :dev)]
+     (members-list :dev)]
+    [:div.members-list-head.intern
+     [:p.c4-header "intern- " (member-counter :intern)]
+    (members-list :intern)]
+    [:div.members-list-head.offline
+     [:p.c4-header "Offline- " (member-counter :offline)]
+    [:div#offline(members-list :offline)]]]])
 
 ;;Main function
-(defn discord_ui
+(defn discord-ui
   [request]
   (html5
    [:html
     (head)
-    (container_1)
-    (container_2)
-    (main_header)
-    (container_3)
-    (container_4)]))
+    (container-1)
+    (container-2)
+    (main-header)
+    (container-3)
+    (container-4)]))

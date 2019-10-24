@@ -13,7 +13,7 @@ p{
     font-weight:800 !important;
 }
 
-.container_1{
+.container-1{
     padding:10px;
     display:inline-block !important;
     height:100%;
@@ -28,7 +28,7 @@ p{
     background-repeat: no-repeat;
 }
 
-.c1_hr{
+.c1-hr{
     margin-top: 0px !important;
     margin-bottom: 0.6rem !important;
     width: 30px;
@@ -36,7 +36,7 @@ p{
     opacity:0.1;
 }
 
-#forge_channel{
+#forge-channel{
     width:51px;
     height:58px;
     background-image:url(https://i.imgur.com/5Nddaj9.png);
@@ -44,7 +44,7 @@ p{
     background-repeat:no-repeat;
 }
 
-#xtnt_channel{
+#xtnt-channel{
     width:51px;
     height:47px;
     margin-bottom:9px;
@@ -74,7 +74,7 @@ p{
     background:#fcfcfc;
 }
 
-.c1_op{
+.c1-op{
     display:block;
     width:50px;
     height:50px;
@@ -87,23 +87,23 @@ p{
     background-repeat:no-repeat;
 }
 
-.c1_op img{
+.c1-op img{
     padding:14px 2px 2px 14px
 }
 
-#plus_c1{
+#plus-c1{
     background-image:url(https://i.imgur.com/L0oSuHh.png);
 }
 
-#search_c1{
+#search-c1{
     background-image:url(https://i.imgur.com/bBN1Xwg.png);
 }
 
-#download_c1{
+#download-c1{
     background-image:url(https://i.imgur.com/phXJURZ.png);
 }
 
-.container_2 {
+.container-2 {
     position:absolute;
     top:0;
     display:inline-block !important;
@@ -112,21 +112,21 @@ p{
     background-color:#2F3136;
 }
 
-.container_2_head{
+.container-2-head{
     width:100%;
     border-bottom:0.1px solid #202225;
     box-shadow: 0 0.5px 0px 0 rgba(32, 34, 37, 0.5), 0 0.5px 0px 0 rgba(32, 34, 37, 0.19);
     height:48px;
 }
 
-.c2_channels{
+.c2-channels{
     height:85%;
     overflow-y:auto;
 }
 
-.c2_channels::-webkit-scrollbar { width: 0 !important}
+.c2-channels::-webkit-scrollbar { width: 0 !important}
 
-.container_2_footer{
+.container-2-footer{
     position:absolute;
     bottom:0px;
     width:100%;
@@ -135,7 +135,7 @@ p{
 }
 
 
-.c2_head p{
+.c2-head p{
     font-size:16px !important;
     color:#fcfcfc;
     top:10px;
@@ -143,7 +143,7 @@ p{
     left:17px;
 }
 
-#c2_expand{
+#c2-expand{
     position:absolute;
     right:13px;
     top:11px;
@@ -155,7 +155,7 @@ p{
     background-repeat:no-repeat;
 }
 
-.c2_channel_heads{
+.c2-channel-heads{
     text-transform: uppercase;
     color:#8E9297 !important;
     margin:5px !important;
@@ -163,7 +163,7 @@ p{
     margin-bottom:14px !important;
 }
 
-#channel_expand{
+#channel-expand{
     background-image:url(https://i.imgur.com/oRG1PtF.png);
     background-size:14px;
     width:14px;
@@ -174,7 +174,7 @@ p{
     bottom:1px;
 }
 
-.c2_channel_heads p{
+.c2-channel-heads p{
     display:inline-block;
     font-size:12px !important;
     position:absolute;
@@ -182,35 +182,35 @@ p{
     word-spacing:1px;
 }
 
-.interaction_room p{
+.interaction-room p{
     position:reltive !important;
     top:66px;
 }
 
-.voice_channel{
+.voice-channel{
     position:relative;
     bottom:6px;
 }
 
-.voice_channel p{
+.voice-channel p{
     top:-2.5px;
 }
 
-.c2_rooms {
+.c2-rooms {
     display:inline;
 }
 
-.c2_rooms img{
+.c2-rooms img{
     padding:0 5px 2px 16px;
 }
 
-.c2_rooms ul{
+.c2-rooms ul{
     display:inline;
     margin:0;
     margin-bottom:10px;
 }
 
-.c2_rooms li{
+.c2-rooms li{
     display:inline-block;
     vertical-align:top;
     text-decoration:none;
@@ -220,11 +220,11 @@ p{
     padding:0;
 }
 
-#channel_logo{
+#channel-logo{
     width:23px;
 }
 
-.c2_footer_icon{
+.c2-footer-icon{
     float:right;
     padding:17px 15px 0 0;
     position:relative;
@@ -247,21 +247,21 @@ p{
     background-image:url(https://i.imgur.com/aSmfWmk.png);
 }
 
-.user_details{
+.user-details{
     position:absolute;
     display:inline-block;
     top:5px;
     color:#fcfcfc;
 }
 
-#c2_userlogo{
+#c2-userlogo{
     width:35px;
     position:absolute;
     left:10px;
     top:3px;
 }
 
-#c2_username{
+#c2-username{
     display:inline-block;
     margin:5px;
     vertical-align:bottom;
@@ -269,7 +269,7 @@ p{
     left:48px;
 }
 
-#c2_userid{
+#c2-userid{
     font-size:10px !important;
     color:#8E9297;
     position:absolute;
@@ -278,7 +278,7 @@ p{
     display:inline-block
 }
 
-.main_header{
+.main-header{
     display:inline-block !important;
     width:100%;
     background-color: #36393F;
@@ -292,12 +292,12 @@ p{
     height:48px;
 }
 
-#mh_hash{
+#mh-hash{
     width:26px;
     height:26px;
 }
 
-.main_header_icons{
+.main-header-icons{
     float:right;
     background-color: #36393F;
     padding:0;
@@ -306,7 +306,7 @@ p{
     z-index:1;
 }
 
-.mh_right_icon{
+.mh-right-icon{
     padding:10px 17px 0px 0;
     display:inline-block !important;
     float:right;
@@ -379,7 +379,7 @@ p{
     height:24px;
 }
 
-.mh_channel_name{
+.mh-channel-name{
     z-index:-1;
     position:absolute;
     left:327px;
@@ -387,13 +387,13 @@ p{
     top:11px;
 }
 
-#mh_p{
+#mh-p{
     font-size:15px !important;
     text-transform:lowercase !important;
     left:360px;
 }
 
-.container_3{
+.container-3{
     display:inline-block ;
     background-color:#36393F;
     position:absolute;
@@ -404,7 +404,7 @@ p{
     z-index:0;
 }
 
-.c3_contents{
+.c3-contents{
     margin:0 auto;
     width:95%;
     height:525px;
@@ -412,9 +412,9 @@ p{
     overflow-y:auto !important;
 }
 
-.c3_contents::-webkit-scrollbar { width: 0 !important}
+.c3-contents::-webkit-scrollbar { width: 0 !important}
 
-.chat_holder{
+.chat-holder{
     display:inline-block;
     border-bottom:1px solid #40444b;
     margin:0 auto;
@@ -422,7 +422,7 @@ p{
     height:380px;
 }
 
-.chat_direct{
+.chat-direct{
     display:inline-block;
     width:100%;
     height:110px;
@@ -430,7 +430,7 @@ p{
     border-bottom:1px solid #40444b;
 }
 
-#direct_username p{
+#direct-username p{
     display: inline-block;
     position: relative;
     right:645px;
@@ -439,7 +439,7 @@ p{
     font-weight: 600 !important;
 }
 
-#direct_timestamp p{
+#direct-timestamp p{
     display: inline-block;
     position: relative;
     right:485px;
@@ -449,13 +449,13 @@ p{
     color:#8E9297;
 }
 
-#direct_userlogo img{
+#direct-userlogo img{
     width:45px;
     position:relative;
     top:21px;
 }
 
-#direct_message p{
+#direct-message p{
     position:relative;
     left:50px;
     top:-55px;
@@ -465,7 +465,7 @@ p{
     font-weight:700 !important;
 }
 
-#github_img{
+#github-img{
     background-image:url(https://i.imgur.com/QCHNgYc.png);
     background-size:40px;
     background-repeat:no-repeat;
@@ -475,12 +475,12 @@ p{
     top:21px;
 }
 
-#github_tag{
+#github-tag{
     position:relative;
     top:6px;
 }
 
-#github_tag p{
+#github-tag p{
     position:relative;
     right:628px;
     top:-30px;
@@ -489,17 +489,17 @@ p{
     font-weight:800 !important;
 }
 
-#github_tag img{
+#github-tag img{
     width:30px;
 }
 
-#github_head img{
+#github-head img{
     position:relative;
     top:4px;
     padding-left:5px;
 }
 
-#github_date{
+#github-date{
     font-size:12px !important;
     font-weight:500 !important;
     color:#8E9297;
@@ -508,7 +508,7 @@ p{
     top:-19px;
 }
 
-.chat_received{
+.chat-received{
     width:68%;
     position:relative;
     top:6px;
@@ -522,7 +522,7 @@ p{
     background-color:#34363c;
 }
 
-#chat_userlogo{
+#chat-userlogo{
     background-image:url(https://i.imgur.com/APLLPNU.png);
     background-repeat:no-repeat;
     background-size:25px;
@@ -533,7 +533,7 @@ p{
     left:10px;
 }
 
-#chat_username{
+#chat-username{
     position:absolute;
     top:13px;
     left:45px;
@@ -541,7 +541,7 @@ p{
     font-weight:600 !important;
 }
 
-#chat_content_head{
+#chat-content-head{
     position:relative;
 
     left:10px;
@@ -549,7 +549,7 @@ p{
     font-weight:800 !important;
 }
 
-#chat_content{
+#chat-content{
     position:relative;
     bottom:20px;
     color:#8E9297;
@@ -557,7 +557,7 @@ p{
     margin-left:10px;
 }
 
-#chat_content p{
+#chat-content p{
     margin-bottom:10px;
 }
 
@@ -575,7 +575,7 @@ p{
     border:none;
 }
 
-#plus_c3{
+#plus-c3{
     background-image:url(https://i.imgur.com/KNUm5uW.png);
     background-size:24px;
     background-repeat:no-repeat;
@@ -589,7 +589,7 @@ p{
     border-right:1px solid #36393f;
 }
 
-#type_message{
+#type-message{
     display:inline-block;
     vertical-align:top;
     margin-top:3px;
@@ -598,7 +598,7 @@ p{
     border:none;
 }
 
-#type_message input{
+#type-message input{
     width:550px;
     background-color:#40444b !important;
     border:none !important;
@@ -607,13 +607,13 @@ p{
     font-weight:500 !important;
 }
 
-.messaging_right_icon{
+.messaging-right-icon{
     float:right;
     margin-top:10px;
     margin-right:10px;
 }
 
-#smiley_c3{
+#smiley-c3{
     background-image:url(https://i.imgur.com/jYWODeK.png);
     background-size:24px;
     background-repeat:no-repeat;
@@ -621,7 +621,7 @@ p{
     height:24px;
 }
 
-#gif_c3{
+#gif-c3{
     background-image:url(https://i.imgur.com/FKFEuzz.png);
     background-size:40px;
     background-repeat:no-repeat;
@@ -631,7 +631,7 @@ p{
     bottom:8px;
 }
 
-#gift_c3{
+#gift-c3{
     background-image:url(https://i.imgur.com/ZOUVr8g.png);
     background-size:23px;
     background-repeat:no-repeat;
@@ -639,7 +639,7 @@ p{
     height:33px;
 }
 
-.container_4{
+.container-4{
     overflow-x:hidden;
     display:inline-block;
     background-color:#2F3136;
@@ -651,9 +651,9 @@ p{
     overflow-y:auto;
 }
 
-.container_4::-webkit-scrollbar { width: 0 !important}
+.container-4::-webkit-scrollbar { width: 0 !important}
 
-.c4_header{
+.c4-header{
     position:absolute;
     left:14px;
     color:#8E9297;
@@ -664,27 +664,27 @@ p{
     font-weight:900 !important;
 }
 
-#member_logo{
+#member-logo{
     width:35px;
 }
 
-.members_list{
+.members-list{
     width:100%;
     height:1px solid 
 }
 
-.members_content{
+.members-content{
     position:relative;
     top:45px;
     padding-top:2px;
     display:inline;
 }
 
-.members_content img{
+.members-content img{
     position:relative;
     left:17px;}
 
-.members_content p{
+.members-content p{
     display:inline-block;
     position:absolute;
     left:64px;
