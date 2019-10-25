@@ -113,8 +113,10 @@
 (defn channel_list [arg]
   (let [current (-> @state :server (@active-server) arg)]
     (map #(identity [:div.c2_rooms
-                     [:img#channel_logo {:src (:logo current)} [:ul [:li (val %)]]]
-                     [:br]]) (-> current :list))))
+                     [:div#channel_logo
+                      [:img {:src (:logo current)}]
+                      [:ul [:li (val %)]]
+                      [:br]]]) (-> current :list))))
 
 ;;User Details and options
 (defn container_2_footer []
