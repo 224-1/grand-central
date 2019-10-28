@@ -137,8 +137,8 @@
 ;;Top bar
 (defn main-header []
   [:div.main-header
-   [:div#mh-hash.mh-channel-name {:src (-> @state :server (@active-server) :rooms :logo)}
-    [:p#mh-p.mh-channel-name (-> @state :server (@active-server) :rooms :list (@active-server))]]
+   [:div#mh-hash.mh-channel-name [:img {:src (-> @state :server (@active-server) :rooms :logo)}]
+    [:div#mh-p.mh-channel-name [:p (-> @state :server (@active-server) :rooms :list (@active-server))]]]
    [:div.main-header-icons
     [:div#help.mh-right-icon]
     [:div#mentions.mh-right-icon]
@@ -154,7 +154,7 @@
    [:div#github-head
     [:div#github-tag
      [:p (-> @messages (@active-server) :chat0 :host first)
-      [:div {:src (-> @messages (@active-server) :chat0 :host second)}]]]
+      [:div [:img {:src (-> @messages (@active-server) :chat0 :host second)}]]]]
     [:p#github-date (-> @messages (@active-server) :chat0 :timestamp)]]
    [:div.chat-received
     [:div.chat-received-head
@@ -166,7 +166,7 @@
 (defn chat-direct []
   [:div.chat-direct
    [:div#direct-userlogo [:img {:src (-> @messages (@active-server) :chat1 :sender-logo)}]]
-   [:div#direct-username [:p {:style (str "color:" (rand-nth (-> @state :color)) ";")}] (-> @messages (@active-server)  :chat1 :sender)]
+   [:div#direct-username [:p {:style {:color (rand-nth (-> @state :color))}}(-> @messages (@active-server)  :chat1 :sender)]]
    [:div#direct-timestamp [:p (-> @messages (@active-server) :chat1 :timestamp)]]
    [:div#direct-message [:p (-> @messages (@active-server) :chat1 :content)]]])
 
@@ -190,7 +190,7 @@
 (defn members-list [arg]
   (let [current (-> @state :members arg)]
     [:div.members-list (map #(identity [:div.members-content
-                                        [:div#member-logo {:src (get-logo %)} [:p {:style (str "color:" (rand-nth (-> @state :color))";")} %]]
+                                        [:div#member-logo [:img {:src (get-logo %)}] [:p {:style {:color (rand-nth (-> @state :color))}} %]]
                                         [:br]]) (-> current))]))
 
 ;;Member counting function
@@ -219,9 +219,8 @@
   [:div
    (container-1)
   (container-2)
-  ;; (main-header)
-   ;; (container-3)
-;;   (chat-direct)
+ (main-header)
+   (container-3)
   (container-4)
    ])
 

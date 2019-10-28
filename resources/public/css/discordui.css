@@ -220,8 +220,8 @@ p{
     padding:0;
 }
 
-#channel-logo{
-    width:23px;
+#channel-logo img{
+    width:24px;
 }
 
 .c2-footer-icon{
@@ -254,7 +254,7 @@ p{
     color:#fcfcfc;
 }
 
-#c2-userlogo{
+#c2-userlogo img{
     width:35px;
     position:absolute;
     left:10px;
@@ -292,7 +292,7 @@ p{
     height:48px;
 }
 
-#mh-hash{
+#mh-hash img{
     width:26px;
     height:26px;
 }
@@ -664,7 +664,7 @@ p{
     font-weight:900 !important;
 }
 
-#member-logo{
+#member-logo img{
     width:35px;
 }
 

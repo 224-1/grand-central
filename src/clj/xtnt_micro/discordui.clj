@@ -113,9 +113,10 @@
 (defn channel-list [arg]
   (let [current (-> @state :server (@active-server) arg)]
     (map #(identity [:div.c2-rooms
-                     [:img#channel-logo {:src (:logo current)}
-                      [:ul [:li (val %)]]]
-                     [:br]]) (-> current :list))))
+                     [:div#channel_logo
+                      [:img {:src (:logo current)}]
+                      [:ul [:li (val %)]]
+                      [:br]]]) (-> current :list))))
 
 ;;User Details and options
 (defn container-2-footer []
@@ -148,7 +149,7 @@
 ;;Top bar
 (defn main-header []
   [:div.main-header
-   [:div#mh-hash.mh-channel-name {:src (-> @state :server (@active-server) :rooms :logo)}
+   [:div#mh-hash.mh-channel-name [:img {:src (-> @state :server (@active-server) :rooms :logo)}]
      [:p#mh-p.mh-channel-name (-> @state :server (@active-server) :rooms :list (@active-server))]]
    [:div.main-header-icons
     [:div#help.mh-right-icon]
@@ -165,7 +166,7 @@
    [:div#github-head
     [:div#github-tag
      [:p (-> @messages (@active-server) :chat0 :host first)
-      [:div {:src (-> @messages (@active-server) :chat0 :host second)}]]]
+      [:div [:img {:src (-> @messages (@active-server) :chat0 :host second)}]]]]
     [:p#github-date (-> @messages (@active-server) :chat0 :timestamp)]]
    [:div.chat-received
     [:div.chat-received-head
@@ -177,7 +178,7 @@
 (defn chat-direct []
   [:div.chat-direct
    [:div#direct-userlogo [:img {:src (-> @messages (@active-server) :chat1 :sender-logo)}]]
-   [:div#direct-username [:p {:style (str "color:" (rand-nth (-> @state :color))";")} (-> @messages (@active-server)  :chat1 :sender)]]
+   [:div#direct-username [:p {:style {:color (rand-nth (-> @state :color))}} (-> @messages (@active-server)  :chat1 :sender)]]
    [:div#direct-timestamp [:p (-> @messages (@active-server) :chat1 :timestamp)]]
    [:div#direct-message [:p (-> @messages (@active-server) :chat1 :content)]]])
 
@@ -201,7 +202,7 @@
 (defn members-list [arg]
   (let [current (-> @state :members arg)]
     [:div.members-list (map #(identity [:div.members-content
-                     [:img#member-logo {:src (get-logo %)} [:p {:style (str "color:" (rand-nth (-> @state :color))";")} %]]
+                                        [:div#member-logo [:img {:src (get-logo %)}] [:p {:style {:color (rand-nth (-> @state :color))}} %]]
                      [:br]]) (-> current))]))
 
 ;;Member counting function
