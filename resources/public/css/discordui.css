@@ -504,12 +504,13 @@ p{
 }
 
 #github-date{
-    font-size:12px !important;
-    font-weight:500 !important;
-    color:#8E9297;
-    position:relative;
-    right:420px;
-    top:-19px;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    z-index: 10;
+    color: #8E9297;
+    position: relative;
+    right: 437px;
+    top: 19px;
 }
 
 .chat-received{
@@ -669,14 +670,16 @@ p{
 }
 
 #member-logo img{
-    position: absolute;
-    top: -17px;
-    width:35px;
+    position: relative;
+    top: -3px;
+    width: 29px;
+    display: grid;
 }
 
 #member-logo p{
     position: absolute;
-    top: -1px;
+    top: -5px;
+    display: block;
 }
 .members-list{
     width:100%;
