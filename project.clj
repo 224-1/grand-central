@@ -62,6 +62,14 @@
                            :output-to "target/public/cljs-out/trlo-main.js"
                            :output-dir "target/public/cljs-out/trlo"
                            :source-map-timestamp true}}
+                   :dscrd {:source-paths ["src/cljs"]
+                          :figwheel true
+                          :compiler
+                          {:main xtnt-micro.discordui
+                           :asset-path "cljs-out/trlo"
+                           :output-to "target/public/cljs-out/dscrd-main.js"
+                           :output-dir "target/public/cljs-out/dscrd"
+                           :source-map-timestamp true}}
           }}
 
      :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}

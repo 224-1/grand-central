@@ -1,11 +1,7 @@
 (ns xtnt-micro.discordui
-  (:require [ring.adapter.jetty :as jetty]
-            [hiccup.core :refer :all]
-            [hiccup.page :refer :all]
-            [compojure.core :refer [defroutes GET]]
-            [compojure.route  :refer [resources]]
-            [ring.adapter.jetty :as jetty]
-            [ring.middleware.reload :refer [wrap-reload]]))
+  (:require [reagent.core :as reagent :refer [atom]]
+            [goog.dom :as gdom]))
+
 
 (def active-server (atom :0))
 (def state (atom {:user-name "Parikshith"
@@ -79,13 +75,6 @@
   (let [usr (keyword user)]
     (->> @state :logos usr)))
 
-;; page header
-(defn head []
-  [:head (include-css "css/discordui.css" "css/skeleton.css" "css/normalize.css")
-   [:title "DISCORD-UI"]
-   [:meta {:name "viewport" :content "width=device-width, initial-scale=1"}]
-   [:link {:href "https://fonts.googleapis.com/css?family=Lato&display=swap" :rel "stylesheet"}]])
-
 ;; Discord Home button
 (defn home []
   [:div#home.c1-ele])
@@ -113,16 +102,15 @@
 (defn channel-list [arg]
   (let [current (-> @state :server (@active-server) arg)]
     (map #(identity [:div.c2-rooms
-                     [:div#channel_logo
-                      [:img {:src (:logo current)}]
-                      [:ul [:li (val %)]]
-                      [:br]]]) (-> current :list))))
+                     [:div#channel-logo [:img {:src (:logo current)}]
+                                         [:ul [:li (val %)]]
+                     [:br]]]) (-> current :list))))
 
 ;;User Details and options
 (defn container-2-footer []
   [:div.container-2-footer
    [:div.user-details
-    [:img#c2-userlogo {:src (:user-logo @state)}]
+    [:div#c2-userlogo [:img {:src (:user-logo @state)}]]
     [:p#c2-username (:user-name @state)]
     [:p#c2-userid (:user-id @state)]]
    [:div#settings.c2-footer-icon]
@@ -150,14 +138,14 @@
 (defn main-header []
   [:div.main-header
    [:div#mh-hash.mh-channel-name [:img {:src (-> @state :server (@active-server) :rooms :logo)}]
-     [:p#mh-p.mh-channel-name (-> @state :server (@active-server) :rooms :list (@active-server))]]
+    [:div#mh-p.mh-channel-name [:p (-> @state :server (@active-server) :rooms :list (@active-server))]]]
    [:div.main-header-icons
     [:div#help.mh-right-icon]
     [:div#mentions.mh-right-icon]
     [:input#searchbar.mh-right-icon {:type "search" :placeholder "Search"}]
     [:div#members.mh-right-icon]
-   [:div#pinned.mh-right-icon]
-   [:div#notification.mh-right-icon]]])
+    [:div#pinned.mh-right-icon]
+    [:div#notification.mh-right-icon]]])
 
 ;;Middle section chat messages
 (defn chat-bot []
@@ -178,7 +166,7 @@
 (defn chat-direct []
   [:div.chat-direct
    [:div#direct-userlogo [:img {:src (-> @messages (@active-server) :chat1 :sender-logo)}]]
-   [:div#direct-username [:p {:style {:color (rand-nth (-> @state :color))}} (-> @messages (@active-server)  :chat1 :sender)]]
+   [:div#direct-username [:p {:style {:color (rand-nth (-> @state :color))}}(-> @messages (@active-server)  :chat1 :sender)]]
    [:div#direct-timestamp [:p (-> @messages (@active-server) :chat1 :timestamp)]]
    [:div#direct-message [:p (-> @messages (@active-server) :chat1 :content)]]])
 
@@ -203,7 +191,7 @@
   (let [current (-> @state :members arg)]
     [:div.members-list (map #(identity [:div.members-content
                                         [:div#member-logo [:img {:src (get-logo %)}] [:p {:style {:color (rand-nth (-> @state :color))}} %]]
-                     [:br]]) (-> current))]))
+                                        [:br]]) (-> current))]))
 
 ;;Member counting function
 (defn member-counter [arg]
@@ -222,19 +210,26 @@
      (members-list :dev)]
     [:div.members-list-head.intern
      [:p.c4-header "intern- " (member-counter :intern)]
-    (members-list :intern)]
+     (members-list :intern)]
     [:div.members-list-head.offline
      [:p.c4-header "Offline- " (member-counter :offline)]
-    [:div#offline(members-list :offline)]]]])
+     [:div#offline(members-list :offline)]]]])
 
-;;Main function
-(defn discord-ui
-  [request]
-  (html5
-   [:html
-    (head)
-    (container-1)
-    (container-2)
-    (main-header)
-    (container-3)
-    (container-4)]))
+(defn discord-ui []
+  [:div
+   (container-1)
+  (container-2)
+ (main-header)
+   (container-3)
+  (container-4)
+   ])
+
+;;(defn get-app-element []
+;;  (gdom/getElement "app"))
+
+;;(defn mount [el]
+;;  (reagent/render-component [build-app] el))
+
+(reagent/render-component
+[discord-ui]
+ (. js/document (getElementById "app")))
