@@ -1,30 +1,24 @@
-*** Number of time outs
-*** Captain metrics
-*** handler metrics
-*** Defuser metrics
-*** Team pair metrics
-*** Waiting time,  post allocation and Execution time  per module
-*** Number of Mistakes
-*** Number of Abandoned Modules
-*** User Stats per player / pair
-*** Handler Stats
-*** Module Level records
-*** Time players spend waiting to be allocated a new task
-*** Number of modules Completed
-*** Times per module per player 
-*** Emoji's / moods
-*** Voting calls
-*** Vote Share
-*** HRV
+* Data in Forge Games
+What is the data Forge is interested in getting out of gameplay sessions?
 
-Allocation of modules per team member graph, to show distribution of workload within group.
-regardless of whatever the modules are, this data set will come out of the generic highlevel structure.
-each module has its own timer, this timer does not start unless the pair picks and clicks on the module
-this allows us to capture allocation / strategizing and execution time at a module level.
-we should be able to compare these across rounds, pairs, teams and game plays
+** Measuring Engagement
+*** What does this mean?
+We need to be able to measure engagement with the game at the user and the team level. Engagement maybe defined as active time spent interacting with the game.
+*** How do we do it?
+- Timestamp all actions taken by the user in-game
+- Track user inactivity ( > 120 seconds without an action performed)
+- Measure/aggregate actions taken at the team level
 
-Allocation of modules per team member graph, to show distribution of workload within group.
-regardless of whatever the modules are, this data set will come out of the generic highlevel structure.
-each module has its own timer, this timer does not start unless the pair picks and clicks on the module
-this allows us to capture allocation / strategizing and execution time at a module level.
-we should be able to compare these across rounds, pairs, teams and game plays
+** Know about the team
+*** What does this mean?
+We (may) need to capture data about the players, teams and/or customers (managers/employers) so that we can understand the relationship dynamics between the players in order to power some analytics.
+*** How do we do it?
+- Ask if players know each other / have worked with each other
+- Ask about the extent of previous collaboration between individual players / as a team on the whole
+
+** Know about players
+*** What does this mean?
+We (may) need to capture data about the players so that we can understand and build their personal player profiles.
+*** How do we do it?
+- Ask about their personal details : gender, location, phone etc
+- Ask about their professional details: years in organisation, linked in profile
