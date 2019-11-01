@@ -1,9 +1,9 @@
 * Data in Forge Games
-What is the data Forge is interested in getting out of gameplay sessions?
+  What is the data Forge is interested in getting out of gameplay sessions?
 
 ** Measuring Engagement
 *** What does this mean?
-We need to be able to measure engagement with the game at the user and the team level. Engagement maybe defined as active time spent interacting with the game.
+- We need to be able to measure engagement with the game at the user and the team level. Engagement maybe defined as active time spent interacting with the game.
 *** How do we do it?
 - Timestamp all actions taken by the user in-game
 - Track user inactivity ( > 120 seconds without an action performed)
@@ -11,14 +11,124 @@ We need to be able to measure engagement with the game at the user and the team 
 
 ** Know about the team
 *** What does this mean?
-We (may) need to capture data about the players, teams and/or customers (managers/employers) so that we can understand the relationship dynamics between the players in order to power some analytics.
+- We (may) need to capture data about the players, teams and/or customers (managers/employers) so that we can understand the relationship dynamics between the players in order to power some analytics.
 *** How do we do it?
 - Ask if players know each other / have worked with each other
 - Ask about the extent of previous collaboration between individual players / as a team on the whole
 
 ** Know about players
 *** What does this mean?
-We (may) need to capture data about the players so that we can understand and build their personal player profiles.
+- We (may) need to capture data about the players so that we can understand and build their personal player profiles.
 *** How do we do it?
 - Ask about their personal details : gender, location, phone etc
 - Ask about their professional details: years in organisation, linked in profile
+ 
+** Know about the game 
+*** What?
+- This is the settings section of the game where all the configurations for the game is presented
+*** contents?
+- Teams 
+- Group goal
+- No. of players
+- subteams (no. of handlers and defusers config)
+- Total time
+- Number of modules per team per X min ( restriction for equal distribution) 
+- Number of time out options available  per team
+- Time per time out option 
+- Number of rounds 
+- Time per round break
+- Enable / Disable team self assessment surveys
+- Enable / Disable auto role allocation
+
+
+** Know about the score mechanism 
+*** What?
+- All the information related to the game. 
+*** How? Display what?
+- Module level points / penalties and record bonus 
+- Bonus points for records
+- Time out penalty
+- Hint penalty
+
+  
+** Know about roles 
+*** what?
+- To constantly what what role each guy plays on a separate page
+*** what are the contents?
+- gameplay
+- team name
+- User
+- role
+
+** Know about the challenge
+*** what?
+- Setup of the modules and its related properties 
+*** contents?
+- Module name
+- Hint 1
+- Hint 2
+- Hint 3
+- Hint 4
+- Time target
+- Serial Number
+- Strike count ( number of strikes allowed per module)
+- Module Type
+
+** Know about the team  Game Play at module level 
+*** what?
+- results page after the game ends (includes performance of both handler and defuser)
+*** contents?
+- Name of the module
+- Time stamp of selecting the module 
+- Time stamp of  activating the module
+- Time stamp of  end result ( success / failure)
+- Time out stamp if applicable on the module 
+- Number of mistakes made in the module
+- Users tagged to the module ( the pair that worked on the module) 
+
+** Know about the leader game play
+*** what?
+- The role played by the team leader
+*** What can he do?
+- Number of time outs ( only team lead can initiate a time out, time out effects the whole team) 
+- Number of hints shared with the teams ?
+- Allocation time ( time teams spend waiting to be allocated work) 
+- Number of times the team / user did not do anything for more than 120 seconds
+
+** Know about communication 
+*** what?
+- A board to see how the whole team communicates
+*** whats to/can be displayed?
+- Time stamp + chat
+- Number of voting calls by the team lead
+- Vote share percentages
+- Emojis
+
+** Know about self assessments
+*** what?
+- Ability to configure upto 4 questions to assess how the team members feels about the  team , ideally at  the end of each round 
+
+** Wearable / Sensor Data
+*** what?
+- Ability to fetch data from a player's wearable device(through its sensor)
+*** what kind of data?
+- Time stamp 
+- Value
+- Player 
+- Team
+
+** Pre / Post Game Feedback
+*** what?
+- Feedback to measure satisfaction levels pre and  post completion of the game
+*** what questions? 
+- gameplay satisfation
+- Player allocated satisfation
+- Team allocation satisfation
+
+** Know about Audience
+*** what?
+- Ability to track the number of audience 
+*** What audience?
+- Number of people watching
+-Actions with time stamp
+
