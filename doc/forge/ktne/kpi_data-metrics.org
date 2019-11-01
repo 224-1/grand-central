@@ -24,7 +24,7 @@
 - Ask about their professional details: years in organisation, linked in profile
  
 ** Game Metadata
-*** What?
+*** What does this mean?
 - Display the metadata of the game session to the viewer / for analytics.
 *** contents?
 - Teams 
@@ -42,7 +42,7 @@
 
 
 ** Know about the score mechanism 
-*** What?
+*** What does this mean?
 - All the information related to the game. 
 *** How? Display what?
 - Module level points / penalties and record bonus 
@@ -52,7 +52,7 @@
 
   
 ** Know about roles 
-*** what?
+*** what does this mean?
 - User Roles
 *** what are the contents?
 - Gameplay/Session ID
@@ -61,7 +61,7 @@
 - user role
 
 ** Know about the challenge
-*** what?
+*** what does this mean?
 - Setup of the modules and its related properties 
 *** contents?
 - Module name
@@ -75,7 +75,7 @@
 - Module Type
 
 ** Know about the team  Game Play at module level 
-*** what?
+*** what does this mean?
 - results page after the game ends (includes performance of both handler and defuser)
 *** contents?
 - Name of the module
@@ -86,31 +86,27 @@
 - Number of mistakes made in the module
 - Users tagged to the module ( the pair that worked on the module) 
 
-** Know about the leader game play
-*** what?
-- The role played by the team leader
+** Team Gameplay Statistics
+*** what does this mean?
+- Display team gameplay highlights at the end of the game session.
 *** What can he do?
 - Number of time outs ( only team lead can initiate a time out, time out effects the whole team) 
 - Number of hints shared with the teams ?
 - Allocation time ( time teams spend waiting to be allocated work) 
 - Number of times the team / user did not do anything for more than 120 seconds
-
-** Know about communication 
-*** what?
-- A board to see how the whole team communicates
-*** whats to/can be displayed?
+*** what do you see when a player or a team communicates?
 - Time stamp + chat
 - Number of voting calls by the team lead
 - Vote share percentages
 - Emojis
 
-** Know about self assessments
-*** what?
+** self assessments
+*** what does this mean? 
 - Ability to configure upto 4 questions to assess how the team members feels about the  team , ideally at  the end of each round 
 
 ** Wearable / Sensor Data
-*** what?
-- Ability to fetch data from a player's wearable device(through its sensor)
+*** what does this mean?
+- Fetch data from a player's wearable device(through its sensor)
 *** what kind of data?
 - Time stamp 
 - Value
@@ -118,7 +114,7 @@
 - Team
 
 ** Pre / Post Game Feedback
-*** what?
+*** what does this mean?
 - Feedback to measure satisfaction levels pre and  post completion of the game
 *** what questions? 
 - gameplay satisfation
@@ -126,9 +122,5 @@
 - Team allocation satisfation
 
 ** Know about Audience
-*** what?
-- Ability to track the number of audience 
-*** What audience?
-- Number of people watching
--Actions with time stamp
-
+*** what does this mean?
+- To track the number of audience and their actions with a timestamp
