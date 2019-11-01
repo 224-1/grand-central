@@ -23,9 +23,9 @@
 - Ask about their personal details : gender, location, phone etc
 - Ask about their professional details: years in organisation, linked in profile
  
-** Know about the game 
+** Game Metadata
 *** What?
-- This is the settings section of the game where all the configurations for the game is presented
+- Display the metadata of the game session to the viewer / for analytics.
 *** contents?
 - Teams 
 - Group goal
@@ -53,12 +53,12 @@
   
 ** Know about roles 
 *** what?
-- To constantly what what role each guy plays on a separate page
+- User Roles
 *** what are the contents?
-- gameplay
-- team name
-- User
-- role
+- Gameplay/Session ID
+- team data( name/id)
+- username
+- user role
 
 ** Know about the challenge
 *** what?
