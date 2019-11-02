@@ -1,14 +1,76 @@
-* A quick review of Keep Talking and No body explodes - Why it doesn't work as a FORGE Game.
+* How Forge games shold work
+-----
+** (te)N commandments
+- Data First Gaming - Work up from what data you want to collect (make data and dashboards a vital part of game play)
+- No idling - make sure all players are engaged
+- Easy Learning Curve - Reduce onboarding time for gameplay
+- Scale - Design for large numbers of players / teams competing at the same time
+- Ease of Use - prioritise speed and ease of use for non core gameplay functions (no unnecessary animations)
+- Endless Tunnel - levels dont end, they keep coming at you (like subway surf)
+- Strategizing - strategising and setting goals and targets should happen in game (and be captured for analytics)
+- Viewability - it should be fun for an audience to watch the game, and understand whats happening, pick sides, and enjoy the journey
+- Fun - the player is the master of a weird fun universe, never make the player a pawn in an experiment. Make all of the above improve the players sense of control of the universe, not the other way around.
 
-** The Table
-                    
-| Business Objective                          | What we learnt from KTNE                                                                                                                            | Our Version                                                                                                                                                                                                                                                                                                                                                                                                     |
-|---------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Engage Every one as opposed to some players | Only VR guy gets to have fun.Interaction patter is not dense and peer to peer                                                                       | Have multiple handlers / Pairs.Include peer to peer interaction mechanisms. Group announcement type feature in addition to sub team chat                                                                                                                                                                                                                                                                        |
-| Engage more people at scale                 | Does not scale to Multi team due to VR Constraints.Modules restricted to 10 and 10 min game play                                                    | Use the Web .Have larger Teams.Have more Teams competing.Reduce Onboarding related time .Have more modules.Have longer game play sesions.                                                                                                                                                                                                                                                                       |
-| Reduce time to Onboard                      | Module names are a barrier.Flipping the suitcase is a barrier.Right click doesnt work on mobile                                                     | Replace module names with Sub Serial numbers. Digitize the manual to make it easy for defuser teams to get to the module Take away flipping motion                                                                                                                                                                                                                                                              |
-| Collect Data, present it visually           | Game play communication is outside the game. Strategy is outside the game                                                                           | Communication mechanism wihtin the game. Team lead has to Allocate modules to sub teams , Strategising and Execution via proxy phases in the game.Time out option to track when teams have to stop and regroup ( on Demand) .Standard round interval ( like half time) .Voting Mechanism  will give vote share info. Emojis ( Emptional info) .Pair teams ( will give info on how teams work at sub team level) |
-| Uniformity                                  | Bomb Explodes people have nothing to do. Record times leaves teams with nothing to do for the round                                                 | Unlimited Mistakes. Unlimited supply of modules as and  when modules are solved                                                                                                                                                                                                                                                                                                                                 |
-| Achievement                                 | You are fighting against your best score, causes people to restart as soon as they realise they are not beating the best score. No group based goal | Need to set a group based goal .Need to compete with others instead of your best score                                                                                                                                                                                                                                                                                                                          |
-| Audience / Player Fun                       | The game isnt as fun to watch as an audience. The handler can get mentally strained out quickly                                                     | The game need to be more audience friendly .Chat within the game, real time leaderboards and insights, emojis communication etc. Auto allocation of the teams and swapping of team roles.                                                                                                                                                                                                                       |
-|                                             |                                                                                                                                                     |                                                                                                                                                                                                                                                                                                                                                                                                                 |
+* Data in Forge Games
+-----  
+What is the data Forge is interested in getting out of gameplay sessions?
+
+*** Gameplay
+Gameplay data is actions performed during gameplay, broken up by roles. Game designers have to factor in tracking these actions during gameplay.
+
+**** Team Lead
+- Setting up the team pairs
+- Choosing the strategies of the game (TBD)
+- Starting the game
+- Allocation of modules to players
+- Passing a hint
+- Initiating a pause / time out
+- Communicating
+- Opening dashboard view / "manager" panel
+- Waiting
+- Call for a survey/vote
+
+**** Handler
+- Viewing their allocated module
+- Activating their allocated module
+- Asking the team lead for a hint 
+- Communicating with the defusers written and visual 
+- Updating the module ( clicking on specific points) 
+- Communicating with the team lead
+- Communicate with the entire team 
+- Request a time out
+
+**** Diffuser
+- Pull up the manual of the module 
+- Communicate with the handler written and visual 
+- Communicate with the team leader
+- Communicate with the entire team 
+- Communicate with other defusers in his team 
+- Request a time out 
+
+*** Metadata
+- Team Name
+- Number of modules
+- Time Limit
+- Number of players
+- Player roles
+- Strategy chosen
+
+*** Module metadata
+- Module name
+- Module Time allocation
+- Module description
+- Module solution
+- Module solution / rules / legend
+
+*** Player Details
+- Years in organisation
+- Linkedin profile
+- Gender & Personal Details
+
+*** Strategies
+TBD
+
+*** Game survey
+TBD
+
