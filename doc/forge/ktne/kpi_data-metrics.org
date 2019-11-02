@@ -1,126 +1,62 @@
 * Data in Forge Games
-  What is the data Forge is interested in getting out of gameplay sessions?
+What is the data Forge is interested in getting out of gameplay sessions?
 
-** Measuring Engagement
-*** What does this mean?
-- We need to be able to measure engagement with the game at the user and the team level. Engagement maybe defined as active time spent interacting with the game.
-*** How do we do it?
-- Timestamp all actions taken by the user in-game
-- Track user inactivity ( > 120 seconds without an action performed)
-- Measure/aggregate actions taken at the team level
+*** Gameplay
+Gameplay data is actions performed during gameplay, broken up by roles. Game designers have to factor in tracking these actions during gameplay.
 
-** Know about the team
-*** What does this mean?
-- We (may) need to capture data about the players, teams and/or customers (managers/employers) so that we can understand the relationship dynamics between the players in order to power some analytics.
-*** How do we do it?
-- Ask if players know each other / have worked with each other
-- Ask about the extent of previous collaboration between individual players / as a team on the whole
+**** Team Lead
+- Setting up the team pairs
+- Choosing the strategies of the game (TBD)
+- Starting the game
+- Allocation of modules to players
+- Passing a hint
+- Initiating a pause / time out
+- Communicating
+- Opening dashboard view / "manager" panel
+- Waiting
+- Call for a survey/vote
 
-** Know about players
-*** What does this mean?
-- We (may) need to capture data about the players so that we can understand and build their personal player profiles.
-*** How do we do it?
-- Ask about their personal details : gender, location, phone etc
-- Ask about their professional details: years in organisation, linked in profile
- 
-** Game Metadata
-*** What does this mean?
-- Display the metadata of the game session to the viewer / for analytics.
-*** contents?
-- Teams 
-- Group goal
-- No. of players
-- subteams (no. of handlers and defusers config)
-- Total time
-- Number of modules per team per X min ( restriction for equal distribution) 
-- Number of time out options available  per team
-- Time per time out option 
-- Number of rounds 
-- Time per round break
-- Enable / Disable team self assessment surveys
-- Enable / Disable auto role allocation
+**** Handler
+- Viewing their allocated module
+- Activating their allocated module
+- Asking the team lead for a hint 
+- Communicating with the defusers written and visual 
+- Updating the module ( clicking on specific points) 
+- Communicating with the team lead
+- Communicate with the entire team 
+- Request a time out
 
+**** Diffuser
+- Pull up the manual of the module 
+- Communicate with the handler written and visual 
+- Communicate with the team leader
+- Communicate with the entire team 
+- Communicate with other defusers in his team 
+- Request a time out 
 
-** Know about the score mechanism 
-*** What does this mean?
-- All the information related to the game. 
-*** How? Display what?
-- Module level points / penalties and record bonus 
-- Bonus points for records
-- Time out penalty
-- Hint penalty
+*** Metadata
+- Team Name
+- Number of modules
+- Time Limit
+- Number of players
+- Player roles
+- Strategy chosen
 
-  
-** Know about roles 
-*** what does this mean?
-- User Roles
-*** what are the contents?
-- Gameplay/Session ID
-- team data( name/id)
-- username
-- user role
-
-** Know about the challenge
-*** what does this mean?
-- Setup of the modules and its related properties 
-*** contents?
+*** Module metadata
 - Module name
-- Hint 1
-- Hint 2
-- Hint 3
-- Hint 4
-- Time target
-- Serial Number
-- Strike count ( number of strikes allowed per module)
-- Module Type
+- Module Time allocation
+- Module description
+- Module solution
+- Module solution / rules / legend
 
-** Know about the team  Game Play at module level 
-*** what does this mean?
-- results page after the game ends (includes performance of both handler and defuser)
-*** contents?
-- Name of the module
-- Time stamp of selecting the module 
-- Time stamp of  activating the module
-- Time stamp of  end result ( success / failure)
-- Time out stamp if applicable on the module 
-- Number of mistakes made in the module
-- Users tagged to the module ( the pair that worked on the module) 
+*** Player Details
+- Years in organisation
+- Linkedin profile
+- Gender & Personal Details
 
-** Team Gameplay Statistics
-*** what does this mean?
-- Display team gameplay highlights at the end of the game session.
-*** What can he do?
-- Number of time outs ( only team lead can initiate a time out, time out effects the whole team) 
-- Number of hints shared with the teams ?
-- Allocation time ( time teams spend waiting to be allocated work) 
-- Number of times the team / user did not do anything for more than 120 seconds
-*** what do you see when a player or a team communicates?
-- Time stamp + chat
-- Number of voting calls by the team lead
-- Vote share percentages
-- Emojis
+*** Strategies
+TBD
 
-** self assessments
-*** what does this mean? 
-- Ability to configure upto 4 questions to assess how the team members feels about the  team , ideally at  the end of each round 
+*** Game survey
+TBD
 
-** Wearable / Sensor Data
-*** what does this mean?
-- Fetch data from a player's wearable device(through its sensor)
-*** what kind of data?
-- Time stamp 
-- Value
-- Player 
-- Team
-
-** Pre / Post Game Feedback
-*** what does this mean?
-- Feedback to measure satisfaction levels pre and  post completion of the game
-*** what questions? 
-- gameplay satisfation
-- Player allocated satisfation
-- Team allocation satisfation
-
-** Know about Audience
-*** what does this mean?
-- To track the number of audience and their actions with a timestamp
