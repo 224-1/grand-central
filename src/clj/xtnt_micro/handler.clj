@@ -58,10 +58,11 @@
   (GET "/ws" [] ws-handler)
   (GET "/" [] (resp/resource-response "index.html" {:root "public"}))
   (GET "/newsfeed" [] news/feedfunc)
-;;  (GET "/trelloui" [] trlo/trello_ui)
+;;  (GET "/trelloui" [] trlo/trello-ui)
 ;;  (GET "/discordui" [] dscrd/discord_ui)
   (GET "/trelloui" [] (resp/resource-response "trello.html" {:root "public"}))
   (GET "/discordui" [] (resp/resource-response "discord.html" {:root "public"}))
+  (GET "/wsmsg" [] (resp/resource-response "wsmsg.html" {:root "public"}))
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 

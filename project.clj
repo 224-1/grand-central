@@ -70,6 +70,14 @@
                            :output-to "target/public/cljs-out/dscrd-main.js"
                            :output-dir "target/public/cljs-out/dscrd"
                            :source-map-timestamp true}}
+                   :wsmsg {:source-paths ["src/cljs"]
+                           :figwheel true
+                           :compiler
+                           {:main xtnt-micro.wsmsg
+                            :asset-path "cljs-out/wsmsg"
+                            :output-to "target/public/cljs-out/wsmsg-main.js"
+                            :output-dir "target/public/cljs-out/wsmsg"
+                            :source-map-timestamp true}}
           }}
 
      :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
