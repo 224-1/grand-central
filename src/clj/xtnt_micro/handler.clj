@@ -40,8 +40,11 @@
           ws-ch ([{:keys [message]}]
                  (if message
                    (do
-                     (async/>! main-channel message))
-                   (recur))))))))
+                     (async/>! main-channel message)
+                     (recur))
+                   (do
+                     (async/untap main-multiplexer client-chan)
+                     (async/>! main-channel "user left")))))))))
 
 (defn ws-handler
   [req]

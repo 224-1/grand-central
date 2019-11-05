@@ -1,5 +1,5 @@
 (ns xtnt-micro.wsmsg
-  (:require [cljs.core.async :as async]
+  (:require [cljs.core.async :as async :include-macros true]
             [reagent.core :as reagent :refer [atom]]
             [chord.client :refer [ws-ch]]))
 
@@ -47,6 +47,7 @@
        [:input {:type "text"
                 :value @v
                 :on-change #(reset! v (-> % .-target .-value))}]
+       [:b]
        [:button {:type "submit"} "Send"]])))
 
 (defn chat-history []
