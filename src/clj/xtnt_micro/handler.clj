@@ -22,6 +22,27 @@
 (defonce main-mult (async/mult main-chan))
 (def users (atom {}))
 
+(defonce main-channel (async/chan))
+(defonce main-multiplexer (async/mult main-channel))
+
+(defn your-handler [req]
+  (with-channel req ws-ch
+    (let [client-chan (async/chan)]
+      (async/tap main-multiplexer client-chan)
+      (async/go-loop []
+        (async/alt!
+          client-chan ([message]
+                       (if message
+                         (do
+                           (async/>! ws-ch message)
+                           (recur))
+                         (async/close! ws-ch)))
+          ws-ch ([{:keys [message]}]
+                 (if message
+                   (do
+                     (async/>! main-channel message))
+                   (recur))))))))
+
 (defn ws-handler
   [req]
   (with-channel req ws-ch
@@ -63,6 +84,7 @@
   (GET "/trelloui" [] (resp/resource-response "trello.html" {:root "public"}))
   (GET "/discordui" [] (resp/resource-response "discord.html" {:root "public"}))
   (GET "/wsmsg" [] (resp/resource-response "wsmsg.html" {:root "public"}))
+  ;; (GET "/msg" [] your-handler)
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 

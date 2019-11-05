@@ -66,7 +66,7 @@
                           :figwheel true
                           :compiler
                           {:main xtnt-micro.discordui
-                           :asset-path "cljs-out/trlo"
+                           :asset-path "cljs-out/dscrd"
                            :output-to "target/public/cljs-out/dscrd-main.js"
                            :output-dir "target/public/cljs-out/dscrd"
                            :source-map-timestamp true}}
