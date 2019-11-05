@@ -84,7 +84,7 @@
   (GET "/trelloui" [] (resp/resource-response "trello.html" {:root "public"}))
   (GET "/discordui" [] (resp/resource-response "discord.html" {:root "public"}))
   (GET "/wsmsg" [] (resp/resource-response "wsmsg.html" {:root "public"}))
-  ;; (GET "/msg" [] your-handler)
+  (GET "/msg" [] your-handler)
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 
