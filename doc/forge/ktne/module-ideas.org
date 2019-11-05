@@ -1,0 +1,25 @@
+* Module 1 - Maze
+- The handler is presented with a maze similar to ktne(just dots, no obstructions). But there are only two symbols here - red and green. The catch is that the symbols look different and its handler's job to describe exactly what the symbols look like, to the defuser. The defuser has six different mazes with different red and green symbols in front of him. Based on the information given by the handler, the defuser has to pick one of the six mazes and help the handler move the red symbol to the green.
+*** Strikes: 3 max
+[[https://i.imgur.com/tz3AWxh.png]]
+
+* Module 2 - Pinwheel conversion
+** Objective
+*** To crack the code using alphabets and symbols.
+** Handler
+- The handler's screen has 3 elements. There is a row of 8 boxes with numbers between the range 1 to 26, written inside them. There is another set of eight boxes that are empty. The handler has to type in letters to crack the code. The third element is a pinwheel, which has eight symbols in it. This pinwheel rotates when a button is pressed. Now its the handler's job to describe the symbol to the handler when the pin lands on any one of the symbols and also to read out the number written in the boxes.
+[[https://i.imgur.com/62XLqvQ.png]]
+
+** Defuser
+- The defuser notes down the numbers and has to match them to their respective alphabets. For example: 3 = C . Next, when the defuser understands the symbol, he has to find the value associated with it. so if its a pumpkin the value associated with it is +3, next the defuser has to add 3 to each number and rematch the new numbers to the respective alphabets. Once the answer is found, the defuser has to read it out to the handler. The handler can then type in the letters in the empty boxes. The module is completed when the handler types in the correct code.
+[[https://i.imgur.com/UXG2u0W.png]]
+
+** Answer to the above problem: P F M W A D T V
+
+* Module 3 - Morse Code
+- Same as ktne morse code but simpler. The handler is presented with 3 bulbs (yellow, blue, green), a frequency meter and a button. The yellow bulb gives out dots and dashes, the blue bulb blinks to denote the end of a word and the green bulb shows if the module has been cleared.
+- The handler has to note down the dots & dashes and has to report it to the defuser. The defuser has to combine all the information received and form a word. Then find the frequency linked to that word and report it back to the handler. The handler can then set the frequency in the meter and press the 'go' button. If the frequency is right, the green bulb will glow, else all the bulbs turn red.
+*** strikes: 3 max
+
+[[https://i.imgur.com/uL1OubY.png]]
+[[https://i.imgur.com/DPpH0GI.png]]

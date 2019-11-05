@@ -1,0 +1,76 @@
+* How Forge games shold work
+-----
+** (te)N commandments
+- Data First Gaming - Work up from what data you want to collect (make data and dashboards a vital part of game play)
+- No idling - make sure all players are engaged
+- Easy Learning Curve - Reduce onboarding time for gameplay
+- Scale - Design for large numbers of players / teams competing at the same time
+- Ease of Use - prioritise speed and ease of use for non core gameplay functions (no unnecessary animations)
+- Endless Tunnel - levels dont end, they keep coming at you (like subway surf)
+- Strategizing - strategising and setting goals and targets should happen in game (and be captured for analytics)
+- Viewability - it should be fun for an audience to watch the game, and understand whats happening, pick sides, and enjoy the journey
+- Fun - the player is the master of a weird fun universe, never make the player a pawn in an experiment. Make all of the above improve the players sense of control of the universe, not the other way around.
+
+* Data in Forge Games
+-----  
+What is the data Forge is interested in getting out of gameplay sessions?
+
+*** Gameplay
+Gameplay data is actions performed during gameplay, broken up by roles. Game designers have to factor in tracking these actions during gameplay.
+
+**** Team Lead
+- Setting up the team pairs
+- Choosing the strategies of the game (TBD)
+- Starting the game
+- Allocation of modules to players
+- Passing a hint
+- Initiating a pause / time out
+- Communicating
+- Opening dashboard view / "manager" panel
+- Waiting
+- Call for a survey/vote
+
+**** Handler
+- Viewing their allocated module
+- Activating their allocated module
+- Asking the team lead for a hint 
+- Communicating with the defusers written and visual 
+- Updating the module ( clicking on specific points) 
+- Communicating with the team lead
+- Communicate with the entire team 
+- Request a time out
+
+**** Diffuser
+- Pull up the manual of the module 
+- Communicate with the handler written and visual 
+- Communicate with the team leader
+- Communicate with the entire team 
+- Communicate with other defusers in his team 
+- Request a time out 
+
+*** Metadata
+- Team Name
+- Number of modules
+- Time Limit
+- Number of players
+- Player roles
+- Strategy chosen
+
+*** Module metadata
+- Module name
+- Module Time allocation
+- Module description
+- Module solution
+- Module solution / rules / legend
+
+*** Player Details
+- Years in organisation
+- Linkedin profile
+- Gender & Personal Details
+
+*** Strategies
+TBD
+
+*** Game survey
+TBD
+
