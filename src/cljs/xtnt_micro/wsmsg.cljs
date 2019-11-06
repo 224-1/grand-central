@@ -7,8 +7,12 @@
 
 (enable-console-print!)
 
+(println websocket-url)
+
 (defonce messages (atom []))
 (defonce sending-channel (async/chan))
+
+(println @messages)
 
 (defn sending-message [msg]
   (async/put! sending-channel msg))
@@ -24,7 +28,8 @@
     (if-let [new-message (:message (<! chn))]
       (do
         (swap! messages conj new-message)
-        (recur)))))
+        (recur))
+      (println "websocket closed"))))
 
 (defn setup-ws []
   (async/go
@@ -39,10 +44,11 @@
 
 (defn chat-input []
   (let [v (atom nil)]
+    ;; (setup-ws)
     (fn []
       [:form
        {:on-submit (fn [x]
-                     (when-let [msg @v] (sending-message {:msg msg}))
+                     (when-let [msg @v] (sending-message msg))
                      (reset! v nil))}
        [:input {:type "text"
                 :value @v
