@@ -22,29 +22,13 @@
 (defonce main-mult (async/mult main-chan))
 (def users (atom {}))
 
-(defonce main-channel (async/chan))
-(defonce main-multiplexer (async/mult main-channel))
-
 (defn your-handler [req]
   (with-channel req ws-ch
-    (let [client-chan (async/chan)]
-      (async/tap main-multiplexer client-chan)
-      (async/go-loop []
-        (async/alt!
-          client-chan ([message]
-                       (if message
-                         (do
-                           (async/>! ws-ch message)
-                           (recur))
-                         (async/close! ws-ch)))
-          ws-ch ([{:keys [message]}]
-                 (if message
-                   (do
-                     (async/>! main-channel message)
-                     (recur))
-                   (do
-                     (async/untap main-multiplexer client-chan)
-                     (async/>! main-channel "user left")))))))))
+    (async/go
+      (let [{:keys [message]} (async/<! ws-ch)]
+        (println (str "message received: " message))
+        (async/>! ws-ch "Hello client from server")
+        (async/close! ws-ch)))))
 
 (defn ws-handler
   [req]

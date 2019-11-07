@@ -3,77 +3,22 @@
             [reagent.core :as reagent :refer [atom]]
             [chord.client :refer [ws-ch]]))
 
-(goog-define websocket-url "ws://localhost:8000/msg")
+(defonce messages (atom []))
 
 (enable-console-print!)
 
-(println websocket-url)
-
-(defonce messages (atom []))
-(defonce sending-channel (async/chan))
+(swap! messages conj 1)
 
 (println @messages)
 
-(defn sending-message [msg]
-  (async/put! sending-channel msg))
+(async/go
+  (let [{:keys [ws-channel error]} (ws-ch "ws://localhost:8000/msg")]
+    (if-not error
+      (async/>! ws-channel "Hello server from client")
+      (println "error"))))
 
-(defn sending-to-ws [chn]
-  (async/go-loop []
-    (when-let [msg (async/<! sending-channel)]
-      (async/>! chn msg)
-      (recur))))
+(async/go
+  (let [{:keys [ws-channel]} (ws-ch "ws://localhost:8000/msg")
+        {:keys [message]} (async/<! ws-channel)]
+    (println (str "Got message from server: " message))))
 
-(defn receiving-from-ws [chn]
-  (async/go-loop []
-    (if-let [new-message (:message (<! chn))]
-      (do
-        (swap! messages conj new-message)
-        (recur))
-      (println "websocket closed"))))
-
-(defn setup-ws []
-  (async/go
-    (let [{:keys [ws-channel error]} (async/<! (ws-ch websocket-url))]
-      (if error
-        (println "websocket not working")
-        (do
-          (sending-to-ws ws-channel)
-          (receiving-from-ws ws-channel))))))
-
-(setup-ws)
-
-(defn chat-input []
-  (let [v (atom nil)]
-    ;; (setup-ws)
-    (fn []
-      [:form
-       {:on-submit (fn [x]
-                     (when-let [msg @v] (sending-message msg))
-                     (reset! v nil))}
-       [:input {:type "text"
-                :value @v
-                :on-change #(reset! v (-> % .-target .-value))}]
-       [:b]
-       [:button {:type "submit"} "Send"]])))
-
-(defn chat-history []
-  ;; [:ul
-  ;;  (for [msg @messages] [:li msg])]
-  (reagent/create-class
-   {:render (fn []
-              [:div {:class "history"}
-               (for [m @messages]
-                 [:p (str m)])])
-    :component-did-update (fn [this]
-                            (let [node (reagent/dom-node this)]
-                              (set! (.-scrollTop node) (.-scrollHeight node))))
-    })
-  )
-
-(defn app-container []
-  [:div
-   [chat-history]
-   [chat-input]
-   ])
-
-(reagent/render-component [app-container] (. js/document (getElementById "app")))
