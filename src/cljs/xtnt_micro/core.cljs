@@ -3,7 +3,7 @@
             [chord.client :refer [ws-ch]]
             [cljs.core.async :as async :include-macros true]))
 
-(goog-define ws-url "ws://localhost:8000/ws")
+(goog-define ws-url "ws://localhost:8000/msg")
 
 (enable-console-print!)
 
@@ -88,6 +88,7 @@
 (defn login-view []
   (let [v (atom nil)]
     (fn []
+      (println "logged in")
       [:div {:class "login-container"}
        [:div {:class "login"}
         [:form

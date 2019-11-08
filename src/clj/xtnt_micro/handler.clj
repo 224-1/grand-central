@@ -28,7 +28,8 @@
       (let [{:keys [message]} (async/<! ws-ch)]
         (println (str "message received: " message))
         (async/>! ws-ch "Hello client from server")
-        (async/close! ws-ch)))))
+        ;; (async/close! ws-ch)
+        ))))
 
 (defn ws-handler
   [req]
@@ -63,7 +64,6 @@
                      (swap! users dissoc client-id)))))))))
 
 (defroutes app
-  (GET "/ws" [] ws-handler)
   (GET "/" [] (resp/resource-response "index.html" {:root "public"}))
   (GET "/newsfeed" [] news/feedfunc)
 ;;  (GET "/trelloui" [] trlo/trello-ui)
