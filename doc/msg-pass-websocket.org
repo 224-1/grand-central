@@ -1,0 +1,102 @@
+* Highlevel documentation for websockets
+*** Overview of websockets 
+
+A websocket connection when opened between a client/browser and a server provides a way 
+to send and receive data through the connection, being similar to a
+handshake, providing an interactive two-way commmunication.
+
+Through websockets, one can send data to the server and receive event-driven responses.
+
+A simple example to use websockets entails a client sending a websocket message or data to
+the server, which in-turn gets thrown back to the client and written on the page.  
+
+We have used this example in another build called :wsmsg which demonstrates the implementation of simple message passing 
+between the browser and server.
+
+*** How to use websockets in clojure project
+
+We use the chord library to bridge the gap between clojure/clojurescript, websockets and core async.
+
+We start with including the chord library in project.clj dependencies
+
+#+begin_src clojure
+[jarohen/chord "0.8.1"]
+#+end_src
+
+To initiate a connection, we need the URL of a websocket resource. Think of a url source as this single purpose
+channel that you can use for things such as games or a simple chatroom.
+
+The only function from chord we use is ws-ch which is a websocket constructor that takes in a url. 
+
+The url scheme starts with ws:// for local connections.
+For example - ws://localhost:8000/msg
+
+A client has to start the WebSocket handshake process by contacting the server and requesting a WebSocket connection.
+So you must know how to interpret the client's request.
+
+**** Clojurescript
+
+***** Adding dependencies and libraries for cljs
+In your clojurescript file, you need to add within your namespace the libraries you will require.
+In the simple demonstration example we require core async, reagent and chord.client.
+
+#+begin_src clojure
+(ns xtnt-micro.wsmsg
+  (:require [reagent.core :as reagent :refer [atom]]
+            [chord.client :refer [ws-ch]]
+            [cljs.core.async :as async])
+  (:require-macros [cljs.core.async.macros :refer [go]]))
+#+end_src
+
+***** Clojurescript code
+
+chord.client/ws-ch takes in the web-socket URL and returns a map, containing either :ws-channel or :error. 
+When the connection opens successfully, this channel then returns a two-way channel that you can use to communicate 
+with the web-socket server.
+
+The url of the websocket is defined in a variable websocket-url.
+     
+#+begin_src clojure
+(goog-define websocket-url "ws://localhost:8000/msg")
+
+(go
+  (let [{:keys [ws-channel error]} (async/<! (ws-ch websocket-url))]
+    (println "from client")
+    (if-not error
+      (async/>! ws-channel "Hello server from client")
+      (println error))))
+#+end_src
+
+We use core.async library's shorthand for take, i.e <! to obtain the map returned after passing ws-url to ws-ch. 
+core.async's functions such as <! >! <!! >!! are always performed inside go blocks.
+
+If there is infact a map with the key :ws-channel returned, we pass a message to the server from a client via the channel as shown
+above.
+
+The messages that come from the server are received as map with a key :message.
+
+#+begin_src clojure
+(go
+  (let [{:keys [ws-channel]} (async/<! (ws-ch websocket-url))
+        {:keys [message]} (async/<! ws-channel)]
+    (println "got message from server:" message)))
+#+end_src
+
+**** Clojure
+
+***** Adding dependencies and libraries for clj
+
+
+Chord wraps the websocket support provided by http-kit, a fast Clojure web server compatible with Ring.
+Jetty is not compatible with websockets.
+
+
+
+** handler.clj
+
+add the following dependencies
+[org.httpkit.server :as hk]
+[chord.http-kit :refer [with-channel]]
+
+entry point to remember here: a wrapper around http-kit’s with-channel macro.
+

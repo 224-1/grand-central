@@ -28,7 +28,7 @@
       (let [{:keys [message]} (async/<! ws-ch)]
         (println (str "message received: " message))
         (async/>! ws-ch "Hello client from server")
-        ;; (async/close! ws-ch)
+        (async/close! ws-ch)
         ))))
 
 (defn ws-handler
