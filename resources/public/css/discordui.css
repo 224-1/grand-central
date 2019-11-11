@@ -103,12 +103,12 @@ p{
     background-image:url(https://i.imgur.com/phXJURZ.png);
 }
 
-@media only screen and (max-width: 800px) {
-    .container-1 {
-        margin-left:0px;
-        width:48px;
-    }
-}
+;;@media only screen and (max-width: 800px) {
+    ;;  .container-1 {
+        ;;  margin-left:0px;
+        ;;    width:48px;
+        ;;    }
+    ;;}
 
 .container-2 {
     position:absolute;
@@ -288,6 +288,7 @@ p{
     .container-2 {
         margin-left:-2px;
         width: 222px;
+        z-index: 2;
     }
 }
 .main-header{
@@ -409,6 +410,7 @@ p{
 @media only screen and (max-width: 800px) {
     .main-header {
         margin-left:-2px;
+        z-index: 3;
     }
 }
 
@@ -661,8 +663,9 @@ p{
 
 @media only screen and (max-width: 800px) {
     .container-3 {
-        margin-left: -30px;
-        width: 783px;
+        margin-left: -317px;
+        width: 796px;
+        z-index: 3;
     }
 }
 .container-4{
