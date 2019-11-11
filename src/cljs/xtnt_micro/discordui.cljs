@@ -11,7 +11,7 @@
                                    :rooms {:name "Interaction room"
                                            :list {:0 "xtnt-micro"
                                                   :1 "horizon"
-                                                  :2 "horizon-system-t"
+                                                  :2 "horizon-system"
                                                   :3 "horizon-t15"
                                                   :4 "dev-support"
                                                   :5 "lounge"

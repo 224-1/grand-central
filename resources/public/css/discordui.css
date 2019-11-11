@@ -103,6 +103,13 @@ p{
     background-image:url(https://i.imgur.com/phXJURZ.png);
 }
 
+@media only screen and (max-width: 800px) {
+    .container-1 {
+        margin-left:0px;
+        width:48px;
+    }
+}
+
 .container-2 {
     position:absolute;
     top:0;
@@ -277,7 +284,12 @@ p{
     left:53px;
     display:inline-block
 }
-
+@media only screen and (max-width: 800px) {
+    .container-2 {
+        margin-left:-2px;
+        width: 222px;
+    }
+}
 .main-header{
     display:inline-block !important;
     width:100%;
@@ -305,8 +317,6 @@ p{
     height:46px;
     z-index:1;
 }
-
-
 .mh-right-icon{
     padding:10px 17px 0px 0;
     display:inline-block !important;
@@ -323,12 +333,6 @@ p{
     position:relative;
     top:2px;
 }
-
-
-
-
-
-
 
 #mentions{
     background-image:url(https://i.imgur.com/PxV9PsS.png);
@@ -401,6 +405,11 @@ p{
     top: -13px;
     position: absolute;
     left: -290px;
+}
+@media only screen and (max-width: 800px) {
+    .main-header {
+        margin-left:-2px;
+    }
 }
 
 .container-3{
@@ -650,6 +659,12 @@ p{
     height:33px;
 }
 
+@media only screen and (max-width: 800px) {
+    .container-3 {
+        margin-left: -30px;
+        width: 783px;
+    }
+}
 .container-4{
     overflow-x:hidden;
     display:inline-block;
@@ -723,3 +738,9 @@ p{
 
 #offline{
     opacity:0.3;}
+@media only screen and (max-width: 800px) {
+    .container-4 {
+        margin-left:-2px;
+        width: 2px;
+    }
+}
