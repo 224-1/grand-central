@@ -408,7 +408,7 @@ p{
     left: -290px;
 }
 @media only screen and (max-width: 800px) {
-    .main-header {
+    .main-header  {
         margin-left:-2px;
         z-index: 3;
     }
