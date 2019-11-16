@@ -1,7 +1,8 @@
 html,body{
-    height:100% !important;
-    padding:0 !important;
-    margin:0 !important;
+    height:100%;
+    width:100%;
+    padding:0;
+    margin:0;
     overflow-y:hidden;
     overflow-x:hidden;
 }
@@ -13,10 +14,22 @@ p{
     font-weight:800 !important;
 }
 
+#app{
+    position:relative;
+    width:100%;
+    height:100%;
+}
+
+.view{
+    position:relative;
+    height:100%;
+    width:100%;
+}
+
 .container-1{
     padding:10px;
     display:inline-block !important;
-    height:880px;
+    height:100%;
     background-color:#202225;
 }
 
@@ -53,7 +66,6 @@ p{
     background-repeat:no-repeat;
     border-radius:16px;
 }
-
 
 .left-border{
     position:relative;
@@ -103,6 +115,7 @@ p{
     background-image:url(https://i.imgur.com/phXJURZ.png);
 }
 
+
 ;;@media only screen and (max-width: 800px) {
     ;;  .container-1 {
         ;;  margin-left:0px;
@@ -116,7 +129,7 @@ p{
     display:inline-block !important;
     width:243px;
     height:100%;
-    background-color:#2F3136;
+    background-color:red;
 }
 
 .container-2-head{
@@ -418,7 +431,6 @@ p{
     display:inline-block ;
     background-color:#36393F;
     position:absolute;
-    top:48px;
     left:314px;
     width:813px;
     height:100%;
@@ -431,6 +443,8 @@ p{
     height:525px;
     border-bottom:1px solid #40444b;
     overflow-y:auto !important;
+    padding-top:48px;
+    padding-right:250px;
 }
 
 .c3-contents::-webkit-scrollbar { width: 0 !important}
@@ -747,3 +761,274 @@ p{
         width: 2px;
     }
 }
+#servers
+{
+    background:#434356;
+    height:100%;
+    width:20%;
+}
+
+#home{
+    width: 51px;
+    height: 58px;
+    background-image: url(https://i.imgur.com/YD8cAku.png);
+    background-size: 51px;
+    background-repeat: no-repeat;
+    position: fixed;
+    left: 2px;
+    top: 15px;
+}
+
+#forge{
+    width: 51px;
+    height: 58px;
+    background-image: url(https://i.imgur.com/5Nddaj9.png);
+    background-size: 51px;
+    background-repeat: no-repeat;
+    position: fixed;
+    top: 70px;
+    left: 2px;
+}
+
+#XTNT{
+    width: 51px;
+    height: 47px;
+    margin-bottom: 9px;
+    background-image: url(https://i.imgur.com/5qpZZMo.png);
+    background-size: 51px;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    position: fixed;
+    left: 5px;
+    top: 195px;
+}
+
+#Parsec
+{
+    background-image: url(https://i.ibb.co/m8xtDrJ/parsec.png);
+    width: 58px;
+    height: 51px;
+    position: fixed;
+    top: 132px;
+    left: 2px;
+    background-size: 50px;
+}
+#plus
+{
+    background-image: url(https://i.imgur.com/L0oSuHh.png);
+    width: 58px;
+    height: 51px;
+    background-size: 51px;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    left: 5px;
+    position: fixed;
+    top: 258px;
+}
+  
+#search
+{
+    background-image: url(https://i.imgur.com/bBN1Xwg.png);
+    width: 58px;
+    height: 51px;
+    background-size: 51px;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    left: 5px;
+    position: fixed;
+    top: 321px;
+}
+
+#download{
+    background-image: url(https://i.imgur.com/phXJURZ.png);
+    width: 58px;
+    height: 51px;
+    background-size: 51px;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    left: 5px;
+    position: fixed;
+    top: 380px;
+}
+
+
+ @media only screen and (max-width: 800px) {
+        #servers  {
+            margin-left:-2px;
+            z-index: 3;
+        }
+    }
+.channels
+ {
+     position:absolute;
+     top:0;
+     display:inline-block !important;
+     width:243px;
+     height:100%;
+     background-color:#2F3136;
+ }
+
+ @media only screen and (max-width: 800px) {
+     .channels{
+         margin-left:80px; 
+     }
+ }
+
+ .user-details {
+     position: absolute;
+     display: inline-block;
+     color: #fcfcfc;
+     bottom: 57px;
+ }
+ #channel-footer{
+ position:absolute;
+ bottom:0px;
+ width:100%;
+ height:52px;
+ background-color #292b2f;
+ }
+
+ #c2-userlogo
+ {
+      position: fixed;
+      bottom: 51px;
+ }
+ #c2-username {
+     display: inline-block;
+     margin: 5px;
+     vertical-align: bottom;
+     position: absolute;
+     left: 50px;
+     bottom: -28px;
+ }
+ #c2-userid {
+     font-size: 10px !important;
+     color: #8E9297;
+     position:absolute;
+     bottom: -37px;
+     left: 56px;
+     display: inline-block;
+ }
+
+ #headphones {
+     background-image: url(https://i.imgur.com/BMf07ds.png);
+     position: fixed;
+     width: 73px;
+     height: 32px;
+     background-repeat: no-repeat;
+     left: 243px;
+     bottom: 10px;
+ }
+
+ #mic {
+     background-image: url(https://i.imgur.com/aSmfWmk.png);
+     position: fixed;
+     width: 75px;
+     height: 32px;
+     background-repeat: no-repeat;
+     left: 211px;
+     bottom: 11px;
+ }
+
+ #settings
+ {
+     background-image: url(https://i.imgur.com/eBKL08g.png);
+     position: fixed;
+     width: 73px;
+     height: 32px;
+     background-repeat: no-repeat;
+     left: 275px;
+     bottom: 13px;
+ }
+ #current-channel
+ {
+     font-size:16px !important;
+     color:#fcfcfc;
+     top:10px;
+     position:absolute;
+     left:17px; 
+ }
+
+ .voice-channel p{
+     top:-2.5px;
+ }
+
+ .c2-rooms {
+     display:inline;
+ }
+
+ .c2-rooms img{
+     padding:0 5px 2px 16px;
+ }
+
+ .c2-rooms ul{
+     display:inline;
+     margin:0;
+     margin-bottom:10px;
+ }
+
+ .chnnel-list li{
+     display:inline-block;
+     vertical-align:top;
+     text-decoration:none;
+     color:#8E9297;
+     font-size:15px !important;
+     font-weight:600 !important;
+     padding:0;
+ }
+ .current-channel{
+     width:100%;
+     border-bottom:0.1px solid #202225;
+     box-shadow: 0 0.5px 0px 0 rgba(32, 34, 37, 0.5), 0 0.5px 0px 0 rgba(32, 34, 37, 0.19);
+     height:48px;
+ }
+ .room-title p{
+     position: absolute;
+     top: 34px;
+     left: 11px;
+     color: gray;
+ }
+
+ .channel ul{
+     display:inline;
+     margin:0;
+     margin-bottom:10px;
+ }
+ .channel val {
+     display:inline-block;
+     position: fixed;
+     top: 54px;
+     color: green;
+     left: 98px;
+     font-size: 15px;
+     font-weight: 600;
+ }
+
+ .active-channel
+ {
+     position: absolute;
+     top: -37px;
+     left: 21px;
+     background-color: #3a9dca;
+     width: 52%;
+     height: 8%;
+ 
+ }
+
+ @media only screen and (max-width: 800px) {
+     .chat {
+         margin-left: -21px;
+         /* z-index: 3; */
+         position: fixed;
+         top: 11px;
+         width: 198%;
+         height: 140%;
+         background-color: #463030;
+     }
+ }
+ @media only screen and (max-width: 800px) {
+     .people {
+         margin-left:-2px;
+         z-index: 3;
+     }
+ }
