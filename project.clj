@@ -19,13 +19,15 @@
 
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.10.439"]
-                 [org.clojure/core.async  "0.4.490"]
+                 [org.clojure/core.async  "0.5.527"]
+                 [org.clojure/tools.logging "0.3.1"]
+                 [environ "1.1.0"]
                  [ring "1.7.1"]
                  [compojure "1.6.1"]
-                 [jarohen/chord "0.8.1"]
+                 [http-kit "2.3.0"]
+                 [cheshire "5.9.0"]
                  [reagent "0.8.1"]
-                 [medley "1.1.0"]
-                 [http-kit "2.4.0-alpha2"]]
+                 [medley "1.1.0"]]
   :main xtnt-micro.handler
 
   :source-paths ["src/clj" "src/cljs"]
