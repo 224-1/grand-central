@@ -27,7 +27,8 @@
                  [http-kit "2.3.0"]
                  [cheshire "5.9.0"]
                  [reagent "0.8.1"]
-                 [medley "1.1.0"]]
+                 [medley "1.1.0"]
+                 [haslett "0.1.6"]]
   :main xtnt-micro.handler
 
   :source-paths ["src/clj" "src/cljs"]
