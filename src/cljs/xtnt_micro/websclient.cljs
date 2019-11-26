@@ -10,7 +10,16 @@
 (enable-console-print!)
 
 ;; try weavejester/haslett as a cljs websocket library
-(go (let [stream (<! ws/connect websocket-url)]
-      (>! (:sink stream) "Hello server from client")
+(go (let [stream (<! (ws/connect
+                      websocket-url
+                      {:format fmt/json}
+                      ))]
+      (>!
+       (:sink stream)
+       {:type "echo" :data "something"}
+       ;; "{\"type\":\"echo\",\"data\":\"haha\"}"
+       ;; "\"message\""
+       ;; "Hello server from client"
+       )
       (println (<! (:source stream)))
       (ws/close stream)))
