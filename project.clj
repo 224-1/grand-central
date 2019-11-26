@@ -28,7 +28,8 @@
                  [cheshire "5.9.0"]
                  [reagent "0.8.1"]
                  [medley "1.1.0"]
-                 [haslett "0.1.6"]]
+                 [haslett "0.1.6"]
+                 [jarohen/chord "0.8.1"]]
   :main xtnt-micro.handler
 
   :source-paths ["src/clj" "src/cljs"]
@@ -73,15 +74,14 @@
                            :output-to "target/public/cljs-out/dscrd-main.js"
                            :output-dir "target/public/cljs-out/dscrd"
                            :source-map-timestamp true}}
-                   :wsmsg {:source-paths ["src/cljs"]
-                           :figwheel true
-                           :compiler
-                           {:main xtnt-micro.wsmsg
-                            :asset-path "cljs-out/wsmsg"
-                            :output-to "target/public/cljs-out/wsmsg-main.js"
-                            :output-dir "target/public/cljs-out/wsmsg"
-                            :source-map-timestamp true}}
-          }}
+                   :webs {:source-paths ["src/cljs"]
+                          :figwheel true
+                          :compiler
+                          {:main xtnt-micro.websclient
+                           :asset-path "cljs-out/webs"
+                           :output-to "target/public/cljs-out/webs-main.js"
+                           :output-dir "target/public/cljs-out/webs"
+                           :source-map-timestamp true}}}}
 
      :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
      ;; need to add the compliled assets to the :clean-targets
