@@ -19,7 +19,6 @@
        {:type "echo" :data "something"}
        ;; "{\"type\":\"echo\",\"data\":\"haha\"}"
        ;; "\"message\""
-       ;; "Hello server from client"
        )
       (println (<! (:source stream)))
       (ws/close stream)))
