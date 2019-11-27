@@ -55,11 +55,9 @@ Haslett provides a simple interface for using websockets.
 
 The websocket url is provided to the =connect= function.
 
-- When the connection opens successfully, this channel then returns a two-way channel that you can use to communicate 
-with the web-socket server.
+- When the connection opens successfully, this channel then returns a two-way channel that you can use to communicate with the web-socket server.
 - A four key map is produced as a result, the keys being =:socket=, =:close-status=, =:source= and =:sink=
-- In the current implementation, we use =:source= which is the core.async channel to read from and =:sink= being the core.async channel
-to write to
+- In the current implementation, we use =:source= which is the core.async channel to read from and =:sink= being the core.async channel to write to
 
 The url of the websocket is defined in a variable =websocket-url=.
      
@@ -114,9 +112,7 @@ We use =org.http-kit.server= to send messages to the client, messages being stri
 #+end_src
 
 - We can create multiple channels or a single channel, according to our requirements.
-
-- The following code block explains implementation of two basic functionalities, one being to echo the message received in json format
-back to the websocket client and the other being to broadcast the message to all available channels.
+- The following code block explains implementation of two basic functionalities, one being to echo the message received in json format back to the websocket client and the other being to broadcast the message to all available channels.
 
 We begin by creating an atom in the form of a hash-set that can have multiple channels added or removed from it.
 
@@ -189,11 +185,8 @@ and sending data across the channel accordingly
 #+end_src
 
 - The handler function =ws-handler= is used to connect, receive from client, dispatch and close the channel if needed.
-- =ws-handler= which is called inside the appropriate route which is the websocket url, namely =/ws= within =defroutes= contains the 
-=with-channel= function of =org.httpkit.server= that takes in request containing the channel, through which a websocket connection is 
-made.
-- Upon receiving a message via either the client or externally via =websocket.org=, =dispatch= function is run across the channel
-depending on the message type.
+- =ws-handler= which is called inside the appropriate route which is the websocket url, namely =/ws= within =defroutes= contains the =with-channel= function of =org.httpkit.server= that takes in request containing the channel, through which a websocket connection is made.
+- Upon receiving a message via either the client or externally via =websocket.org=, =dispatch= function is run across the channel depending on the message type.
 
 #+begin_src clojure
 ;; Socket Handler - connect, recieve, dispatch, close
