@@ -186,7 +186,7 @@ and sending data across the channel accordingly
 
 - The handler function =ws-handler= is used to connect, receive from client, dispatch and close the channel if needed.
 - =ws-handler= which is called inside the appropriate route which is the websocket url, namely =/ws= within =defroutes= contains the =with-channel= function of =org.httpkit.server= that takes in request containing the channel, through which a websocket connection is made.
-- Upon receiving a message via either the client or externally via =websocket.org=, =dispatch= function is run across the channel depending on the message type.
+- Upon receiving a message via either the client or externally via =websocket.org/echo=, =dispatch= function is run across the channel depending on the message type.
 
 #+begin_src clojure
 ;; Socket Handler - connect, recieve, dispatch, close
@@ -197,7 +197,7 @@ and sending data across the channel accordingly
     (on-receive channel #(dispatch channel %))))
 #+end_src
 
-The websocket can be tested manually by going to =websocket.org= and typing in the websocket url, for example =ws://localhost:8000/ws=
+The websocket can be tested manually by going to =websocket.org/echo= and typing in the websocket url, for example =ws://localhost:8000/ws=
 to make the connection and the message to be typed being in json format to test out each funtionality. 
 ex - ={"type": "echo", "data": "something"}=
 
