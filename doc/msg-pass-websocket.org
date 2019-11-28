@@ -10,7 +10,7 @@ Through websockets, one can send data to the server and receive event-driven res
 A simple example to use websockets entails a client sending a websocket message or data to
 the server, which in-turn gets thrown back to the client and written on the page.  
 
-We have used this example in another build called :wsmsg which demonstrates the implementation of simple message passing 
+We have used this example in another build called :webs which demonstrates the implementation of simple message passing 
 between the browser and server.
 
 *** How to use websockets in a clojure/clojurescript project
