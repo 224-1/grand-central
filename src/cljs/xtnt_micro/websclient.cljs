@@ -5,7 +5,7 @@
             [haslett.format :as fmt]
             [cljs.core.async :as a :refer [<! >!]])
   (:require-macros [cljs.core.async.macros :refer [go go-loop]]))
-
+;;{"type":"echo","data":"dsdf"}
 (goog-define websocket-url "ws://localhost:8000/ws")
 
 (enable-console-print!)
@@ -15,6 +15,7 @@
 ;; -----
 (defonce messages (atom {}))
 (defonce message-id (atom 0))
+(defonce message-to-send (atom {:type "echo" :data ""}))
 
 ;; ----
 ;; FX
@@ -57,11 +58,18 @@
   (let [stream (<! (ws/connect websocket-url {:format fmt/json}))]
     (if stream
       (do
-;; how do you send messages?
-;; (send-message (>! (:sink stream) what-comes-here?))
+        (send-message (>! (:sink stream)
+                          ;; {:type "broadcast" :data "some"}
+                          @message-to-send
+                          ))
         (recieve-message (<! (:source stream)))
-        (recur))
-      (ws/close stream))))
+        ;; (recur)
+        )
+      (ws/close stream))
+    ;; (recur)
+    )
+  ;; (recur)
+  )
 
 ;; -----
 ;; VIEW
@@ -72,14 +80,15 @@
     (map #(vector :li {:key (key %)} (-> % val :data)) @messages)]])
 
 (defn textbox []
-  [:div#test
+  (let [v (atom nil)]
+   [:div#test
    [:form
-    {:on-submit (fn [x]
-                  (.preventDefault x)
-                  (reset! messages nil))}
-    [:input#msgval {:type "text"}]
-    [:input {:type "submit" :onClick #(reset! messages (-> % .-target .-value))}]
-    [:button "Send"]]])
+    {:on-submit (fn [x] (.preventDefault x) (swap! @message-to-send assoc :data @v))}
+    [:input {:type "text"
+             :value @v
+             :on-change #(reset! v (-> % .-target .-value))
+             }]
+    [:button {:type "submit"} "Send"]]]))
 
 (defn msg-body []
   [:div
