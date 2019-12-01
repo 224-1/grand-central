@@ -45,6 +45,10 @@
 (defn send-message [msg]
   (prn msg))
 
+(defn update-dom []
+  (let [dom (-> js/document (.getElementById "mytext"))]
+    (swap! message-to-send assoc :data (. dom -value))))
+
 ;; -----
 ;; SUBS
 ;; -----
@@ -80,15 +84,21 @@
     (map #(vector :li {:key (key %)} (-> % val :data)) @messages)]])
 
 (defn textbox []
-  (let [v (atom nil)]
+  (let [v (atom "")]
    [:div#test
-   [:form
-    {:on-submit (fn [x] (.preventDefault x) (swap! @message-to-send assoc :data @v))}
-    [:input {:type "text"
-             :value @v
-             :on-change #(reset! v (-> % .-target .-value))
+   ;; [:form
+   ;;  {:on-submit (fn [x] (.preventDefault x) (swap! @message-to-send assoc :data @v))}
+    [:input#mytext {:type "text"
+                    ;; :defaultValue "some" 
+             ;; :value @v
+             ;; :on-change #(reset! v (-> % .-target .-value))
              }]
-    [:button {:type "submit"} "Send"]]]))
+    [:button {
+              ;; :type "submit"
+              :onClick update-dom
+              } "Send"]
+    ;; ]
+    ]))
 
 (defn msg-body []
   [:div
