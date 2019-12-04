@@ -57,7 +57,7 @@
 ;; send a broadcast message, the go-loop will pick it up - as many as you like
 ;; the previous go block was not a loop, it would run once - send one message to sink
 ;; read one message from source, and then shut down - clearly not helpful
-
+ 
 (go-loop []
   (let [stream (<! (ws/connect websocket-url {:format fmt/json}))]
     (if stream
@@ -84,18 +84,15 @@
     (map #(vector :li {:key (key %)} (-> % val :data)) @messages)]])
 
 (defn textbox []
-  (let [v (atom "")
-        msg-update (atom {:type "broadcast" :data ""})]
+  (let [v (atom "")]
     (fn []
       [:div#test
        [:form
         {:on-submit (fn [x]
                       (.preventDefault x)
-                      ;; (swap! @message-to-send assoc :data @v)
-                      ;; (println (str "dsf" @v))
-                      (swap! @msg-update assoc :data @v)
-                      (reset! @message-to-send @msg-update)
-                      )}
+                      (swap! message-to-send assoc :data @v)
+                      (println @message-to-send)
+                     )}
         [:input#mytext {:type "text"
                         :value @v
                         :on-change #(reset! v (-> % .-target .-value))
@@ -108,9 +105,13 @@
         ]
        ])))
 
+;; (type ((textbox)))
+
 (defn msg-body []
-   (message-list)
-   (textbox)
+  ;; [:div
+  ;;  (message-list)
+  ;;  ((textbox))]
+  (textbox)
   )
 
 ;; -----
