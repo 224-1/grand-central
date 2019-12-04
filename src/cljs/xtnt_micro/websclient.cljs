@@ -84,13 +84,18 @@
     (map #(vector :li {:key (key %)} (-> % val :data)) @messages)]])
 
 (defn textbox []
-  (let [v (atom "")]
+  (let [v (atom "")
+        msg-update (atom {:type "broadcast" :data ""})]
     (fn []
       [:div#test
        [:form
         {:on-submit (fn [x]
                       (.preventDefault x)
-                      (swap! @message-to-send assoc :data @v))}
+                      ;; (swap! @message-to-send assoc :data @v)
+                      ;; (println (str "dsf" @v))
+                      (swap! @msg-update assoc :data @v)
+                      (reset! @message-to-send @msg-update)
+                      )}
         [:input#mytext {:type "text"
                         :value @v
                         :on-change #(reset! v (-> % .-target .-value))
