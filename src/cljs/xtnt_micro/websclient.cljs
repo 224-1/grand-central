@@ -79,32 +79,34 @@
 ;; VIEW
 ;; -----
 (defn message-list []
-  [:div
+  [:div#msglist
    [:ul
     (map #(vector :li {:key (key %)} (-> % val :data)) @messages)]])
 
 (defn textbox []
   (let [v (atom "")]
-   [:div#test
-   [:form
-    {:on-submit (fn [x] (.preventDefault x) (swap! @message-to-send assoc :data @v))}
-    [:input#mytext {:type "text"
-                    :defaultValue "some"
-                    :value @v
-                    :on-change #(reset! v (-> % .-target .-value))
-                    }]
-    [:br]
-    [:button {
-              :type "submit"
-              ;; :onClick update-dom
-              } "Send"]
-    ]
-    ]))
+    (fn []
+      [:div#test
+       [:form
+        {:on-submit (fn [x]
+                      (.preventDefault x)
+                      (swap! @message-to-send assoc :data @v))}
+        [:input#mytext {:type "text"
+                        :value @v
+                        :on-change #(reset! v (-> % .-target .-value))
+                        }]
+        [:br]
+        [:button {
+                  :type "submit"
+                  ;; :onClick update-dom
+                  } "Send"]
+        ]
+       ])))
 
 (defn msg-body []
-  [:div
    (message-list)
-   (textbox)])
+   (textbox)
+  )
 
 ;; -----
 ;; RENDER / MOUNT
