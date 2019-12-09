@@ -57,23 +57,14 @@
 ;; send a broadcast message, the go-loop will pick it up - as many as you like
 ;; the previous go block was not a loop, it would run once - send one message to sink
 ;; read one message from source, and then shut down - clearly not helpful
- 
+
 (go-loop []
   (let [stream (<! (ws/connect websocket-url {:format fmt/json}))]
     (if stream
       (do
-        (send-message (>! (:sink stream)
-                          ;; {:type "broadcast" :data "some"}
-                          @message-to-send
-                          ))
-        (recieve-message (<! (:source stream)))
-        ;; (recur)
-        )
-      (ws/close stream))
-    ;; (recur)
-    )
-  ;; (recur)
-  )
+        (send-message (>! (:sink stream) @message-to-send))
+        (recieve-message (<! (:source stream))) (recur))
+      (ws/close stream))))
 
 ;; -----
 ;; VIEW
@@ -91,28 +82,16 @@
         {:on-submit (fn [x]
                       (.preventDefault x)
                       (swap! message-to-send assoc :data @v)
-                      (println @message-to-send)
-                     )}
+                      (println @message-to-send))}
         [:input#mytext {:type "text"
                         :value @v
-                        :on-change #(reset! v (-> % .-target .-value))
-                        }]
+                        :on-change #(reset! v (-> % .-target .-value))}]
         [:br]
-        [:button {
-                  :type "submit"
-                  ;; :onClick update-dom
-                  } "Send"]
-        ]
-       ])))
-
-;; (type ((textbox)))
+        [:button {:type "submit"} "Send"]]])))
 
 (defn msg-body []
-  ;; [:div
-  ;;  (message-list)
-  ;;  ((textbox))]
-  (textbox)
-  )
+  [:div
+   (message-list) [(textbox)]])
 
 ;; -----
 ;; RENDER / MOUNT
