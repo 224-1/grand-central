@@ -39,7 +39,7 @@
 (defn recieve-message [msg]
   (let [id (make-id)
         msg-edn (to-edn msg)]
-    (swap! messages assoc-in [id] msg-edn)))
+    (prn (swap! messages assoc-in [id] msg-edn))))
 
 ;; Send messages
 (defn send-message [msg]
@@ -58,13 +58,13 @@
 ;; the previous go block was not a loop, it would run once - send one message to sink
 ;; read one message from source, and then shut down - clearly not helpful
 
-(go-loop []
-  (let [stream (<! (ws/connect websocket-url {:format fmt/json}))]
-    (if stream
-      (do
-        (send-message (>! (:sink stream) @message-to-send))
-        (recieve-message (<! (:source stream))) (recur))
-      (ws/close stream))))
+(def async-ch (a/chan))
+
+(go (let [stream (<! (ws/connect websocket-url {:format fmt/json}))]
+      (send-message (>! (:sink stream) @message-to-send))
+      (>! async-ch (<! (:source stream)))
+      (recieve-message (<! async-ch))
+      (ws/close stream)))
 
 ;; -----
 ;; VIEW

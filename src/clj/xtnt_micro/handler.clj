@@ -93,15 +93,12 @@
 
 ;; on-receieve handler
 (defn dispatch [ch msg]
-  (let [parsed (json/decode msg)
-        async-ch (async/chan)]
-    (async/go (async/>! async-ch (get parsed "data")))
-    (async/go-loop []
-      ((case (get parsed "type")
+  (let [parsed (json/decode msg)]
+    ((case (get parsed "type")
        "echo" echo
        "broadcast" broadcast
        unknown-type-response)
-       ch (async/<! async-ch)))))
+     ch (get parsed "data"))))
 
 ;; Socket Handler - connect, recieve, dispatch, close
 (defn ws-handler [request]
