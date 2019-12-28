@@ -15,7 +15,6 @@
 ;; -----
 (defonce messages (atom {}))
 (defonce message-id (atom 0))
-(defonce message-to-send (atom {:type "echo" :data ""}))
 
 ;; ----
 ;; FX
@@ -39,59 +38,17 @@
 (defn recieve-message [msg]
   (let [id (make-id)
         msg-edn (to-edn msg)]
-    (prn (swap! messages assoc-in [id] msg-edn))))
+    (swap! messages assoc-in [id] msg-edn)))
 
 ;; Send messages
 (defn send-message [msg]
   (prn msg))
 
-;; (defn update-dom []
-;;   (let [dom (-> js/document (.getElementById "mytext"))]
-;;     (swap! message-to-send assoc :data (. dom -value))))
-
-;; -----
-;; SUBS
-;; -----
-;; Open / operate websocket
-;; open a connection to the server from an extneral websocket tool like websocket.org
-;; send a broadcast message, the go-loop will pick it up - as many as you like
-;; the previous go block was not a loop, it would run once - send one message to sink
-;; read one message from source, and then shut down - clearly not helpful
-
-(def async-ch (a/chan))
-
-(go (let [stream (<! (ws/connect websocket-url {:format fmt/json}))]
-      (send-message (>! (:sink stream) @message-to-send))
-      (>! async-ch (<! (:source stream)))
-      (recieve-message (<! async-ch))
-      (ws/close stream)))
-
-;; -----
-;; VIEW
-;; -----
-(defn message-list []
-  [:div#msglist
-   [:ul
-    (map #(vector :li {:key (key %)} (-> % val :data)) @messages)]])
-
-(defn textbox []
-  (let [v (atom "")]
-    (fn []
-      [:div#test
-       [:form
-        {:on-submit (fn [x]
-                      (.preventDefault x)
-                      (swap! message-to-send assoc :data @v)
-                      (println @message-to-send))}
-        [:input#mytext {:type "text"
-                        :value @v
-                        :on-change #(reset! v (-> % .-target .-value))}]
-        [:br]
-        [:button {:type "submit"} "Send"]]])))
-
-(defn msg-body []
-  [:div
-   (message-list) [(textbox)]])
+;; SOLVE THIS NOW AND NOTHING ELSE
+;; 1. Connect to the websocket server and keep the connection open
+;; 2. Recieve messages being sent from somewhere else and store it in the atom
+;; 3. reagent component to display all messages as [:p] elements
+;; 4. Commit
 
 ;; -----
 ;; RENDER / MOUNT
