@@ -58,21 +58,30 @@
         (recur))
       (ws/close stream))))
 
+(defn message-received []
+  [:div
+   [:ul
+    (map #(vector :li {:key (key %)} (:data (val %))) @messages)]])
+
+(defn msg-body []
+  [:div
+   (message-received)])
+
 ;; -----
 ;; RENDER / MOUNT
 ;; -----
-;; (defn get-app-element []
-;;   (gdom/getElement "app"))
+(defn get-app-element []
+  (gdom/getElement "app"))
 
-;; (defn mount [el]
-;;   (r/render-component [msg-body] el))
+(defn mount [el]
+  (r/render-component [msg-body] el))
 
-;; (defn mount-app-element []
-;;   (when-let [el (get-app-element)]
-;;     (mount el)))
+(defn mount-app-element []
+  (when-let [el (get-app-element)]
+    (mount el)))
 
-;; (mount-app-element)
+(mount-app-element)
 
 ;; specify reload hook with ^;after-load metadata
-;; (defn ^:after-load on-reload []
-;;   (mount-app-element))
+(defn ^:after-load on-reload []
+  (mount-app-element))
