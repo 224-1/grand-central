@@ -35,7 +35,7 @@
 ;; EVENTS
 ;; -----
 ;; Recieve messages
-(defn recieve-message [msg]
+(defn receive-message [msg]
   (let [id (make-id)
         msg-edn (to-edn msg)]
     (swap! messages assoc-in [id] msg-edn)))
@@ -50,21 +50,29 @@
 ;; 3. reagent component to display all messages as [:p] elements
 ;; 4. Commit
 
+(go-loop []
+  (let [stream (<! (ws/connect websocket-url {:format fmt/json}))]
+    (if stream
+      (do
+        (receive-message (<! (:source stream)))
+        (recur))
+      (ws/close stream))))
+
 ;; -----
 ;; RENDER / MOUNT
 ;; -----
-(defn get-app-element []
-  (gdom/getElement "app"))
+;; (defn get-app-element []
+;;   (gdom/getElement "app"))
 
-(defn mount [el]
-  (r/render-component [msg-body] el))
+;; (defn mount [el]
+;;   (r/render-component [msg-body] el))
 
-(defn mount-app-element []
-  (when-let [el (get-app-element)]
-    (mount el)))
+;; (defn mount-app-element []
+;;   (when-let [el (get-app-element)]
+;;     (mount el)))
 
-(mount-app-element)
+;; (mount-app-element)
 
 ;; specify reload hook with ^;after-load metadata
-(defn ^:after-load on-reload []
-  (mount-app-element))
+;; (defn ^:after-load on-reload []
+;;   (mount-app-element))
