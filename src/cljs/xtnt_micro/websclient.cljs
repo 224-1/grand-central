@@ -15,6 +15,7 @@
 ;; -----
 (defonce messages (atom {}))
 (defonce message-id (atom 0))
+(defonce form-message (atom {:type "broadcast" :data "xxt"}))
 
 ;; ----
 ;; FX
@@ -50,13 +51,33 @@
 ;; 3. reagent component to display all messages as [:p] elements
 ;; 4. Commit
 
+;; WRITE MESSAGES TO BE DISPLAYED
+;; 1. Send a hard coded message via websocket from within cljs file
+;; 1. Create a reagent form-2 component consisting of a textbox and a submit button
+;; 2. Write messages inside the texbox and store it in an atom upon submitting
+;; 3. Message to be sent from within the atom via websocket
+
 (go-loop []
   (let [stream (<! (ws/connect websocket-url {:format fmt/json}))]
     (if stream
+      (send-message (>! (:sink stream) @form-message))
       (do
         (receive-message (<! (:source stream)))
         (recur))
       (ws/close stream))))
+
+(defn send-message-form []
+  (let [v (atom "")]
+    (fn []
+      [:form {:on-submit (fn [e]
+                           (.preventDefault e)
+                           (swap! form-message assoc :data @v)
+                           (println @form-message))}
+       [:input {:type "text"
+                :value @v
+                :on-change #(reset! v (-> % .-target .-value))}]
+       [:br]
+       [:button {:type "submit"} "Send"]])))
 
 (defn message-received []
   [:div
@@ -65,7 +86,9 @@
 
 (defn msg-body []
   [:div
-   (message-received)])
+   (message-received)
+   [(send-message-form)]
+   ])
 
 ;; -----
 ;; RENDER / MOUNT
