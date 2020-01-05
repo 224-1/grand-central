@@ -1,9 +1,9 @@
 (ns xtnt-micro.websclient
   (:require [goog.dom :as gdom]
-            [reagent.core :as r :refer [atom]]
+            [reagent.core :as r]
             [haslett.client :as ws]
             [haslett.format :as fmt]
-            [cljs.core.async :as a :refer [<! >!]])
+            [cljs.core.async :as a :refer [<! >! put! take!]])
   (:require-macros [cljs.core.async.macros :refer [go go-loop]]))
 ;;{"type":"echo","data":"dsdf"}
 (goog-define websocket-url "ws://localhost:8000/ws")
@@ -13,9 +13,11 @@
 ;; -----
 ;; DATA
 ;; -----
-(defonce messages (atom {}))
+(defonce messages (r/atom {}))
 (defonce message-id (atom 0))
-(defonce form-message (atom {:type "broadcast" :data "xxt"}))
+(defonce form-message (r/atom {:type "broadcast" :data "xxt"}))
+(defonce stream-channel (r/atom ""))
+;; (def stream-channel (take! (ws/connect websocket-url {:format fmt/json})))
 
 ;; ----
 ;; FX
@@ -45,6 +47,9 @@
 (defn send-message [msg]
   (prn msg))
 
+;; Receive test
+(swap! messages assoc-in [0] {:type "broadcast" :data "some data"})
+
 ;; SOLVE THIS NOW AND NOTHING ELSE
 ;; 1. Connect to the websocket server and keep the connection open
 ;; 2. Recieve messages being sent from somewhere else and store it in the atom
@@ -57,17 +62,25 @@
 ;; 2. Write messages inside the texbox and store it in an atom upon submitting
 ;; 3. Message to be sent from within the atom via websocket
 
+;; (go-loop []
+;;   (if stream-channel
+;;     (do
+;;       (receive-message (<! (:source stream-channel)))
+;;       (recur))
+;;     (ws/close stream-channel)))
+
 (go-loop []
   (let [stream (<! (ws/connect websocket-url {:format fmt/json}))]
     (if stream
-      (send-message (>! (:sink stream) @form-message))
+      (reset! stream-channel stream)
+      (send-message (>! (:sink stream-channel) @form-message))
       (do
         (receive-message (<! (:source stream)))
         (recur))
       (ws/close stream))))
 
 (defn send-message-form []
-  (let [v (atom "")]
+  (let [v (r/atom "")]
     (fn []
       [:form {:on-submit (fn [e]
                            (.preventDefault e)
@@ -86,9 +99,8 @@
 
 (defn msg-body []
   [:div
-   (message-received)
    [(send-message-form)]
-   ])
+   (message-received)])
 
 ;; -----
 ;; RENDER / MOUNT
