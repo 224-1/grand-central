@@ -6,7 +6,7 @@
             [cljs.core.async :as a :refer [<! >! put! take!]])
   (:require-macros [cljs.core.async.macros :refer [go go-loop]]))
 ;;{"type":"echo","data":"dsdf"}
-(goog-define websocket-url "ws://localhost:8000/ws")
+(goog-define websocket-url "wss://localhost:8000/ws")
 
 (enable-console-print!)
 
@@ -62,18 +62,14 @@
 ;; 2. Write messages inside the texbox and store it in an atom upon submitting
 ;; 3. Message to be sent from within the atom via websocket
 
-;; (go-loop []
-;;   (if stream-channel
-;;     (do
-;;       (receive-message (<! (:source stream-channel)))
-;;       (recur))
-;;     (ws/close stream-channel)))
+(defn submit-message []
+  (go
+    (send-message (>! (:sink stream-channel) @form-message))))
 
 (go-loop []
   (let [stream (<! (ws/connect websocket-url {:format fmt/json}))]
     (if stream
       (reset! stream-channel stream)
-      (send-message (>! (:sink stream-channel) @form-message))
       (do
         (receive-message (<! (:source stream)))
         (recur))
@@ -85,12 +81,12 @@
       [:form {:on-submit (fn [e]
                            (.preventDefault e)
                            (swap! form-message assoc :data @v)
-                           (println @form-message))}
+                           (submit-message))}
        [:input {:type "text"
                 :value @v
                 :on-change #(reset! v (-> % .-target .-value))}]
        [:br]
-       [:button {:type "submit"} "Send"]])))
+       [:Button {:type "submit"} "Send"]])))
 
 (defn message-received []
   [:div
