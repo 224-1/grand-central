@@ -6,7 +6,7 @@
             [cljs.core.async :as a :refer [<! >! put! take!]])
   (:require-macros [cljs.core.async.macros :refer [go go-loop]]))
 ;;{"type":"echo","data":"dsdf"}
-(goog-define websocket-url "wss://localhost:8000/ws")
+(goog-define websocket-url "ws://localhost:8000/ws")
 
 (enable-console-print!)
 
@@ -48,7 +48,7 @@
   (prn msg))
 
 ;; Receive test
-(swap! messages assoc-in [0] {:type "broadcast" :data "some data"})
+;; (swap! messages assoc-in [0] {:type "broadcast" :data "some data"})
 
 ;; SOLVE THIS NOW AND NOTHING ELSE
 ;; 1. Connect to the websocket server and keep the connection open
@@ -64,12 +64,12 @@
 
 (defn submit-message []
   (go
-    (send-message (>! (:sink stream-channel) @form-message))))
+    (>! (:sink @stream-channel) @form-message)))
 
 (go-loop []
   (let [stream (<! (ws/connect websocket-url {:format fmt/json}))]
+    (reset! stream-channel stream)
     (if stream
-      (reset! stream-channel stream)
       (do
         (receive-message (<! (:source stream)))
         (recur))
@@ -86,7 +86,7 @@
                 :value @v
                 :on-change #(reset! v (-> % .-target .-value))}]
        [:br]
-       [:Button {:type "submit"} "Send"]])))
+       [:button {:type "submit"} "Send"]])))
 
 (defn message-received []
   [:div
