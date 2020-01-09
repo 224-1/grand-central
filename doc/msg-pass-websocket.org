@@ -1,0 +1,205 @@
+* Highlevel documentation for websockets
+*** Overview of websockets 
+
+A websocket connection when opened between a client/browser and a server provides a way 
+to send and receive data through the connection, being similar to a
+handshake, providing an interactive two-way commmunication.
+
+Through websockets, one can send data to the server and receive event-driven responses.
+
+A simple example to use websockets entails a client sending a websocket message or data to
+the server, which in-turn gets thrown back to the client and written on the page.  
+
+We have used this example in another build called :webs which demonstrates the implementation of simple message passing 
+between the browser and server.
+
+*** How to use websockets in a clojure/clojurescript project
+
+We use the haslett library to bridge the gap between clojure/clojurescript, websockets and core.async.
+
+We start with including the =weavejester/haslett= library in =project.clj= dependencies
+
+#+begin_src clojure
+[haslett "0.1.6"]
+#+end_src
+
+To initiate a connection, we need the URL of a websocket resource. Think of a url source as this single purpose
+channel that you can use for things such as games or a simple chatroom.
+
+The only function from chord we use is ws-ch which is a websocket constructor that takes in a url. 
+
+The url scheme starts with =ws://= for local connections. In this example, =/ws= is the route of the connection.
+For example - =ws://localhost:8000/ws=
+
+A client has to start the WebSocket handshake process by contacting the server and requesting a WebSocket connection.
+So you must know how to interpret the client's request.
+
+**** Client side Clojurescript implementation
+
+***** Adding dependencies and libraries for cljs
+In your clojurescript file, you need to add within your namespace the libraries you will require.
+In the simple demonstration example we require core.async, reagent and weavejester/haslett.
+
+#+begin_src clojure
+(ns xtnt-micro.websclient
+  (:require [reagent.core :as reagent :refer [atom]]
+            [haslett.client :as ws]
+            [haslett.format :as fmt]
+            [cljs.core.async :as a :refer [<! >!]])
+  (:require-macros [cljs.core.async.macros :refer [go]]))
+#+end_src
+
+***** Clojurescript code
+
+Haslett provides a simple interface for using websockets.
+
+The websocket url is provided to the =connect= function.
+
+- When the connection opens successfully, this channel then returns a two-way channel that you can use to communicate with the web-socket server.
+- A four key map is produced as a result, the keys being =:socket=, =:close-status=, =:source= and =:sink=
+- In the current implementation, we use =:source= which is the core.async channel to read from and =:sink= being the core.async channel to write to
+
+The url of the websocket is defined in a variable =websocket-url=.
+     
+By default, haslett sends raw strings so we use a json formatter provided by haslett.format inside the =connect= function as its
+second argument after the url.
+
+Without the formatter, the data needs to be sent in json format in the form of ="{\"type\":\"echo\",\"data\":\"haha\"}= and with it
+it's in the format of ={:type "echo" :data "something"}=
+
+Why the data needs to be in this format will be explained in the server side code done in clojure.
+
+#+begin_src clojure
+(goog-define websocket-url "ws://localhost:8000/ws")
+
+(go (let [stream (<! (ws/connect
+                      websocket-url
+                      {:format fmt/json}
+                      ))]
+      (>!
+       (:sink stream)
+       {:type "echo" :data "something"}
+       ;; "{\"type\":\"echo\",\"data\":\"haha\"}"
+       ;; "\"message\""
+       )
+      (println (<! (:source stream)))
+      (ws/close stream)))
+#+end_src
+
+We use core.async library's shorthand for =take!=, i.e =<!= to obtain the websocket channel returned upon passing url to =connect=
+and store it in =stream=.
+
+Now, we use =:sink= to obtain the core,async channel of =stream= to write the data to, in this case in the form of a map which is eventually
+translated into json format. We use the functionality of core.async i.e =put!=, its shorthand being =>!=. 
+ 
+core.async's functions such as =<!=, =>!=, =<!!= and =>!!= are always performed inside go blocks.
+
+The server returns data upon receiving from client, in this case also being in in json format. This message is received on the same 
+channel and read from, via =:sink= and we can view it on the console. core.async =take!= i.e =<!=. 
+
+We close the channel after receiving message from the server.
+
+**** Server side Clojure implementation 
+
+***** Adding dependencies and libraries for clj
+
+In your clojure file, i.e =handler.clj=, we add the necessary dependencies. 
+We use =org.http-kit.server= to send messages to the client, messages being strictly in json format using =cheshire.core= library.
+
+#+begin_src clojure
+[org.httpkit.server :refer[send! with-channel on-close on-receive run-server]]
+[cheshire.core :as json]
+#+end_src
+
+- We can create multiple channels or a single channel, according to our requirements.
+- The following code block explains implementation of two basic functionalities, one being to echo the message received in json format back to the websocket client and the other being to broadcast the message to all available channels.
+
+We begin by creating an atom in the form of a hash-set that can have multiple channels added or removed from it.
+
+#+begin_src clojure
+;; Atom for channel set
+(defonce channels (atom #{}))
+#+end_src
+
+We create a function =connect!= that simply adds a channel which is provided as its argument to the atom.
+
+#+begin_src clojure
+;; Connect Channel
+(defn connect! [channel]
+  (swap! channels conj channel))
+#+end_src
+
+Similarly, the function =disconnect!= removes a channel provided to it from the atom.
+
+#+begin_src clojure
+;; Disconnect Channel
+(defn disconnect! [channel status]
+  (swap! channels disj channel))
+#+end_src
+
+- The first functionality of the server to send a message is by echoing or passing back whatever it receives from the client.
+- This is done via the function =echo= which takes in a channel and some data as its argument. 
+- The function =encode= from =cheshire.core= library is used to ensure that the clojure map is converted into its equivalent json format.
+- The data format has two keys =type= having the functionality for the message passing in this case =echo= and =data= having the data.
+- The =org.httpkit.server='s =send!= function is used to pass this message across the channel provided in the function's argument.
+
+#+begin_src clojure
+;; Echo message back on same channel
+(defn echo [ch data]
+  (send! ch (json/encode {:type "echo" :data data})))
+#+end_src
+
+- The second functionality being implemented is to broadcast the message received from client across all channels present in the atom.
+- This is done via the function =broadcast= which again takes in channel and data as its argument.
+- A message is stored inside a variable within =let= block, namely =msg= and each message is mounted in channels from the atom.
+- These messages are returned being of the =type= broadcastResult. 
+
+#+begin_src clojure
+;; Broadcast message to all channels
+(defn broadcast [ch data]
+  (let [msg (json/encode {:type "broadcast" :data data})]
+    (run! #(send! % msg) @channels))
+  (send! ch (json/encode {:type "broadcastResult" :data data})))
+#+end_src
+
+In case the json message doesn't match either =echo= or =broadcast=, an error is returned to the channel via function below.
+
+#+begin_src clojure
+;; Error
+(defn unknown-type-response [ch _]
+  (send! ch (json/encode {:type "error" :data "ERROR: unknown message type"})))
+#+end_src
+
+A function =dispatch= is written which makes sure that the message is functionally appropriate by checking its =type= by parsing it
+and sending data across the channel accordingly
+
+#+begin_src clojure
+;; on-receieve handler
+(defn dispatch [ch msg]
+  (let [parsed (json/decode msg)]
+    ((case (get parsed "type")
+       "echo" echo
+       "broadcast" broadcast
+       unknown-type-response)
+     ch (get parsed "data"))))
+#+end_src
+
+- The handler function =ws-handler= is used to connect, receive from client, dispatch and close the channel if needed.
+- =ws-handler= which is called inside the appropriate route which is the websocket url, namely =/ws= within =defroutes= contains the =with-channel= function of =org.httpkit.server= that takes in request containing the channel, through which a websocket connection is made.
+- Upon receiving a message via either the client or externally via =websocket.org/echo=, =dispatch= function is run across the channel depending on the message type.
+
+#+begin_src clojure
+;; Socket Handler - connect, recieve, dispatch, close
+(defn ws-handler [request]
+  (with-channel request channel
+    (connect! channel)
+    (on-close channel #(disconnect! channel %))
+    (on-receive channel #(dispatch channel %))))
+#+end_src
+
+The websocket can be tested manually by going to =websocket.org/echo= and typing in the websocket url, for example =ws://localhost:8000/ws=
+to make the connection and the message to be typed being in json format to test out each funtionality. 
+ex - ={"type": "echo", "data": "something"}=
+
+
+
