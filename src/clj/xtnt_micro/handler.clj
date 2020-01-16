@@ -116,7 +116,9 @@
   (GET "/discordui" [] (resp/resource-response "discord.html" {:root "public"}))
   (GET "/wsmsg" [] (resp/resource-response "wsmsg.html" {:root "public"}))
   (GET "/ws" [] ws-handler)
-;;  (GET "/msg" [] your-handler)
+  ;;  (GET "/msg" [] your-handler)
+  (GET "/login" [] (resp/resource-response "login.html" {:root "public"}))
+  (GET "/signup" [] (resp/resource-response "signup.html" {:root "public"}))
   (route/resources "/")
   (route/not-found "<h1>Page not found</h1>"))
 

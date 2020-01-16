@@ -1,12 +1,3 @@
-;; Main clojurescript configuration file - project.cljs
-;; Configuration of clojure dependencies and compilation targets
-;; Plugin used to auto-compile clojurescript code to javascript called cljs-build
-;; Beyond basic compiler support, Lein-cljsbuild has built-in support for launching clojurescript REPLs
-;; -> lein trampoline cljsbuild-repl-rhino
-;; lein cljsbuild auto command watches for changes in your source files and automatically rebuilds them
-
-;; Main difference between Figwheel and cljsbuild is that figwheel features hotloading allowing interactive programming
-
 (defproject xtnt-micro "0.1.0-SNAPSHOT"
   :description "FIXME: write this!"
   :url "http://example.com/FIXME"
@@ -15,7 +6,6 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :min-lein-version "2.7.1"
-
 
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.10.439"]
@@ -29,7 +19,10 @@
                  [reagent "0.8.1"]
                  [medley "1.1.0"]
                  [haslett "0.1.6"]
-                 [jarohen/chord "0.8.1"]]
+                 [jarohen/chord "0.8.1"]
+                 [ring/ring-json "0.5.0"]
+                 [hiccups "0.3.0"]
+                 [cljs-ajax "0.8.0"]]
   :main xtnt-micro.handler
 
   :source-paths ["src/clj" "src/cljs"]
@@ -81,7 +74,24 @@
                            :asset-path "cljs-out/webs"
                            :output-to "target/public/cljs-out/webs-main.js"
                            :output-dir "target/public/cljs-out/webs"
-                           :source-map-timestamp true}}}}
+                           :source-map-timestamp true}}
+                   :login {:source-paths ["src/cljs"]
+                           :figwheel true
+                           :compiler
+                           {:main xtnt-micro.login
+                            :asset-path "cljs-out/login"
+                            :output-to "target/public/cljs-out/login-main.js"
+                            :output-dir "target/public/cljs-out/login"
+                            :source-map-timestamp true}}
+                   :signup {:source-paths ["src/cljs"]
+                           :figwheel true
+                           :compiler
+                           {:main xtnt-micro.signup
+                            :asset-path "cljs-out/signup"
+                            :output-to "target/public/cljs-out/signup-main.js"
+                            :output-dir "target/public/cljs-out/signup"
+                            :source-map-timestamp true}}
+                   }}
 
      :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}
      ;; need to add the compliled assets to the :clean-targets

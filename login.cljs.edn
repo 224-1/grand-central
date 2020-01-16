@@ -1,0 +1,2 @@
+^{:open-url "http://localhost:[[server-port]]/login.html"}
+{:main xtnt-micro.login}
