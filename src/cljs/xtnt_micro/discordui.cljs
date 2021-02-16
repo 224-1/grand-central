@@ -11,7 +11,7 @@
                                    :rooms {:name "Interaction room"
                                            :list {:0 "xtnt-micro"
                                                   :1 "horizon"
-                                                  :2 "horizon-system-t"
+                                                  :2 "horizon-system"
                                                   :3 "horizon-t15"
                                                   :4 "dev-support"
                                                   :5 "lounge"
@@ -28,7 +28,9 @@
                                                   :5 "ui/ux"
                                                   :6 "backend & db"}
                                            :active nil
-                                           :logo "https://i.imgur.com/wpabDPl.png"}}}
+                                           :logo "https://i.imgur.com/wpabDPl.png"}}
+                               :1 {:name "forge"}
+                               :2 {:name "Parsec"}}
                       :members{:product ["azureus","hobbes"]
                                :dev ["Parikshith","Vikram","kavya","baishakhi"]
                                :intern ["Noobno1","cheesepopcorn99","vazir"]
@@ -75,77 +77,69 @@
   (let [usr (keyword user)]
     (->> @state :logos usr)))
 
-;; Discord Home button
-(defn home []
-  [:div#home.c1-ele])
+;; Server List
+(defn servers []
+  [:div#servers
+   [:div#home]
+   (map #(identity [:div {:id (-> % val :name)
+                          :key (-> % val :name)}]) (:server @state))
+   [:div#plus]
+   [:div#search]
+   [:div#download]])
 
-;; Server Panel
-(defn container-1 []
-  [:div.container-1
-   (home)
-   [:hr.c1-hr ]
-   [:div#forge-channel.c1-ele]
-   [:div#xtnt-channel.c1-ele.left-border ]
-   [:div#plus-c1.c1-ele.c1-op ]
-   [:div#search-c1.c1-ele.c1-op]
-   [:hr.c1-hr]
-   [:div#download-c1.c1-ele.c1-op ]])
+;; Channel List
+(defn current-channel []
+  [:div#current-channel
+   (-> @state :server (@active-server) :name)])
 
-;; Active Server
-(defn container-2-head []
-  [:div.container-2-head
-  [:div.c2-head
-   [:p (-> @state :server (@active-server) :name)]
-   [:div#c2-expand]]])
 
 ;;Channel lists and rooms organization function
 (defn channel-list [arg]
   (let [current (-> @state :server (@active-server) arg)]
-    (map #(identity [:div.c2-rooms
-                     [:div#channel-logo [:img {:src (:logo current)}]
-                                         [:ul [:li (val %)]]
-                     [:br]]]) (-> current :list))))
+    (map #(identity [:div.channel {:key (val %)} (val %)]) (-> current :list))))
 
 ;;User Details and options
-(defn container-2-footer []
-  [:div.container-2-footer
+(defn channel-footer []
+  [:div#channel-footer
    [:div.user-details
     [:div#c2-userlogo [:img {:src (:user-logo @state)}]]
     [:p#c2-username (:user-name @state)]
     [:p#c2-userid (:user-id @state)]]
-   [:div#settings.c2-footer-icon]
-   [:div#headphones.c2-footer-icon]
-   [:div#mic.c2-footer-icon]])
+   [:div.channel-icons
+    [:div#settings.icon]
+    [:div#headphones.icon]
+    [:div#mic.icon]]])
 
 ;;Channel list & user details section
-(defn container-2 []
-  [:div.container-2
-   (container-2-head)
-   [:div.c2-channels
-    [:div.interaction-room
-     [:div.c2-channel-heads
-      [:div#channel-expand]
+(defn channels []
+  [:div.channels
+   (current-channel)
+   [:div.channel-list
+    [:div
+     [:div.room-title
+      [:div.add]
       [:p "interaction room"]]
      (channel-list :rooms)]
-    [:div.voice-channel
-     [:div.c2-channel-heads
-      [:div#channel-expand]
+    [:div
+     [:div.room-title
+      [:div.add]
       [:p "voice channels"]]
      (channel-list :voice)]]
-   (container-2-footer)])
+   (channel-footer)])
 
 ;;Top bar
-(defn main-header []
-  [:div.main-header
-   [:div#mh-hash.mh-channel-name [:img {:src (-> @state :server (@active-server) :rooms :logo)}]
-    [:div#mh-p.mh-channel-name [:p (-> @state :server (@active-server) :rooms :list (@active-server))]]]
-   [:div.main-header-icons
-    [:div#help.mh-right-icon]
-    [:div#mentions.mh-right-icon]
-    [:input#searchbar.mh-right-icon {:type "search" :placeholder "Search"}]
-    [:div#members.mh-right-icon]
-    [:div#pinned.mh-right-icon]
-    [:div#notification.mh-right-icon]]])
+(defn active-channel []
+  [:div.active-channel
+   [:div.name [:div
+               [:img {:src (-> @state :server (@active-server) :rooms :logo)}]
+               (-> @state :server (@active-server) :rooms :list (@active-server))]]
+   [:div.icons
+    [:div#help]
+    [:div#mentions]
+    [:input#searchbar {:type "search" :placeholder "Search"}]
+    [:div#members]
+    [:div#pinned]
+    [:div#notification]]])
 
 ;;Middle section chat messages
 (defn chat-bot []
@@ -174,8 +168,9 @@
 (defn chat-condition2 [] (if (= (-> @messages (@active-server) :chat1 :host first) "direct")  (chat-direct)))
 
 ;;Whole middle section with messages typing
-(defn container-3 []
-  [:div.container-3
+(defn chat []
+  [:div.chat
+   (active-channel)
    [:div.c3-contents
     (chat-condition1)
     (chat-condition2)]
@@ -199,8 +194,8 @@
     (str (count (-> counter)))))
 
 ;;All group member list-Right most container
-(defn container-4 []
-  [:div.container-4
+(defn people []
+  [:div.people
    [:div
     [:div.members-list-head.product
      [:p.c4-header "Product- " (member-counter :product)]
@@ -216,12 +211,11 @@
      [:div#offline(members-list :offline)]]]])
 
 (defn discord-ui []
-  [:div
-   (container-1)
-  (container-2)
- (main-header)
-   (container-3)
-  (container-4)
+  [:div.view
+;;   [servers]
+;;  [channels]
+ [chat]
+ ;; [people]
    ])
 
 ;;(defn get-app-element []
